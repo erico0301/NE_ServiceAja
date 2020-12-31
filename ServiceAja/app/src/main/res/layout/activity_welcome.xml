@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginRegister.WelcomeActivity">
+
+    <View
+        android:layout_width="427dp"
+        android:layout_height="382dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-79dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-193dp"
+        android:background="@drawable/top_rounc_background_pink"/>
+    <TextView
+        android:id="@+id/serviceaja"
+        android:layout_width="217dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="23dp"
+        android:text="@string/serviceaja"
+        android:textAppearance="@style/serviceaja"
+        android:gravity="top" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selamat Datang, User"
+            android:textSize="28sp"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/akuntelah"/>
+
+        <Button
+            android:id="@+id/startBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mulai"
+            android:fontFamily="@font/poppins_medium"
+            android:background="@drawable/round_button"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

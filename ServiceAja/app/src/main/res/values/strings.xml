@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Service Aja</string>
+    <string name="serviceaja">ServiceAja</string>
+    <string name="slogan">Solusi terbaik perawatan kendaraan anda</string>
+    <string name="welcomeslogan">Apakah kendaraan Anda dalam keadaan baik?</string>
+    <string name="daftarkansekarang">Daftarkan Akun baru Anda untuk mendapatkan keuntungannya, sekarang!</string>
+    <string name="agree">Dengan mendaftar, saya setuju dengan syarat dan ketentuan yang berlaku</string>
+    <string name="instantregister">- Atau Daftar Dengan Akun -</string>
+    <string name="masukkankode">Masukkan 4 digit kode konfirmasi</string>
+    <string name="kode4digit">Kode 4 digit verifikasi akun telah dikirim ke e-mail/no.telepon Anda. Silahkan periksa dan masukkan kode tersebut di bawah ini.</string>
+    <string name="akuntelah">Akun anda telah terdaftar! Masuk sekarang, pedulilah dengan kendaraan Anda!</string>
+    <string name="masukkanpassbaru">Masukkan Password baru yang mudah diingat, dan sulit ditebak!</string>
+    <string name="cekinfo"><b>Cek Informasi Kendaraan Anda Sekarang!</b></string>
+    <string name="bengkeltersedia"><b>Bengkel yang tersedia untuk Anda, Pesan Sekarang!</b></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

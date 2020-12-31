@@ -1,0 +1,51 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ServiceAja" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/darkestBlue</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/gold</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/gold</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Service Aja Logo -->
+    <style name="serviceaja">
+        <item name="android:textSize">50sp</item>
+        <item name="android:textColor">@color/darkestBlue</item>
+        <item name="android:fontFamily">@font/rakkas_regular</item>
+    </style>
+
+    <!-- slogan -->
+    <style name="slogan">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/darkBlue</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <!-- maps round corner -->
+    <style name="mapsRoundCorner">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+</resources>

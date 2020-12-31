@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HomeFragment">
+
+    <View
+        android:layout_width="657dp"
+        android:layout_height="323dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-123dp"
+        android:background="@drawable/home_background_top" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@drawable/search_border"
+            android:layout_weight="8"
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:hint="Telusuri"
+            android:drawableLeft="@drawable/ic_search" />
+
+        <ImageView
+            android:layout_toRightOf="@+id/searchEditText"
+            android:layout_width="10dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_love_like"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="75dp"
+        android:text="Halo, User"
+        android:textColor="@color/darkestBlue"
+        android:textSize="28sp"/>
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/hello"
+        android:text="@string/welcomeslogan"
+        android:textColor="@color/darkBlue"
+        android:textSize="18sp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cekinfo"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/round_car_details">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/carImg"
+                    android:layout_width="115dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="10dp"
+                    android:scaleType="fitXY"
+                    app:shapeAppearanceOverlay="@style/mapsRoundCorner"
+                    android:src="@drawable/xpander" />
+
+                <TextView
+                    android:id="@+id/platNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/carImg"
+                    android:fontFamily="@font/poppins_medium"
+                    android:letterSpacing="0.1"
+                    android:text="BK 2323 W"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/merkTxt"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/platNo"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/carImg"
+                    android:text="Merk"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/carBrand"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/merkTxt"
+                    android:layout_toRightOf="@+id/carImg"
+                    android:text="Mitsubishi"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/namaTxt"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/platNo"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/merkTxt"
+                    android:text="Nama"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/carName"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/merkTxt"
+                    android:layout_toRightOf="@+id/carBrand"
+                    android:text="Xpander"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tahunTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/platNo"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/namaTxt"
+                    android:text="Tahun"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/carYear"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/merkTxt"
+                    android:layout_toRightOf="@+id/carName"
+                    android:text="2020"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/serviceTerakhirTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/carBrand"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/carImg"
+                    android:text="Service Terakhir :"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lastServiceDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/carBrand"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@+id/serviceTerakhirTxt"
+                    android:text="26 Desember 2020"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/otherCar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lastServiceDate"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Kendaraan Lain"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold|italic" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="20dp"
+                android:background="@color/darkestBlue"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/catTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori"
+                    android:textSize="18sp"
+                    android:textColor="@color/gold"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
+
+                <ImageView
+                    android:id="@+id/serviceCatIcon"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_below="@+id/catTxt"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_shopping_cart"/>
+                <TextView
+                    android:id="@+id/serviceCatTxt"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="Service"
+                    android:layout_marginRight="20dp"
+                    android:textSize="10dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/dm_sans"
+                    android:layout_below="@+id/serviceCatIcon"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"/>
+
+                <ImageView
+                    android:id="@+id/sparepartCatIcon"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_below="@+id/catTxt"
+                    android:layout_toRightOf="@+id/serviceCatIcon"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_add_circle"/>
+                <TextView
+                    android:id="@+id/sparepartCatTxt"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sparepart"
+                    android:layout_toRightOf="@+id/serviceCatTxt"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="10dp"
+                    android:fontFamily="@font/dm_sans"
+                    android:layout_below="@+id/sparepartCatIcon"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"/>
+
+                <ImageView
+                    android:id="@+id/cuciCatIcon"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_below="@+id/catTxt"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/sparepartCatIcon"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_search"/>
+                <TextView
+                    android:id="@+id/cuciCatTxt"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cuci"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/sparepartCatTxt"
+                    android:textSize="10dp"
+                    android:fontFamily="@font/dm_sans"
+                    android:layout_below="@+id/cuciCatIcon"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"/>
+
+                <ImageView
+                    android:id="@+id/derekCatIcon"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_below="@+id/catTxt"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/cuciCatIcon"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_home"/>
+                <TextView
+                    android:id="@+id/derekCatTxt"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mobil Derek"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/cuciCatTxt"
+                    android:textSize="10dp"
+                    android:fontFamily="@font/dm_sans"
+                    android:layout_below="@+id/derekCatIcon"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"/>
+
+                <ImageView
+                    android:id="@+id/lainCatIcon"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_below="@+id/catTxt"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/derekCatIcon"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_history"/>
+                <TextView
+                    android:id="@+id/lainCatTxt"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lain-Lain"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/derekCatTxt"
+                    android:textSize="10dp"
+                    android:fontFamily="@font/dm_sans"
+                    android:layout_below="@+id/lainCatIcon"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bengkeltersedia"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    app:shapeAppearanceOverlay="@style/mapsRoundCorner"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/maps" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewBengkelDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

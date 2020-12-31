@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginRegister.KodePemulihanActivity">
+
+    <View
+        android:layout_width="427dp"
+        android:layout_height="382dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-79dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-193dp"
+        android:background="@drawable/top_rounc_background_lightblue"/>
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_action_back"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lupa Password"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="185dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="217dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/serviceaja"
+        android:textAppearance="@style/serviceaja"
+        android:gravity="top" />
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="232dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="20dp"
+    android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/masukkankode"
+            android:textSize="28sp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/kode4digit"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lightBlue"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:text="Kirim Ulang e-mail"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lightBlue"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="mail@gmail.com"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:maxLength="1"
+                android:textSize="25sp"
+                android:inputType="numberPassword"
+                android:gravity="center"
+                android:layout_marginEnd="10dp"
+                android:imeOptions="actionDone" />
+            <EditText
+                android:id="@+id/codeSecond"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:maxLength="1"
+                android:textSize="25sp"
+                android:inputType="numberPassword"
+                android:gravity="center"
+                android:layout_marginEnd="10dp"
+                android:imeOptions="actionDone" />
+            <EditText
+                android:id="@+id/codeThird"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:maxLength="1"
+                android:textSize="25sp"
+                android:inputType="numberPassword"
+                android:gravity="center"
+                android:layout_marginEnd="10dp"
+                android:imeOptions="actionDone" />
+            <EditText
+                android:id="@+id/forthCode"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:maxLength="1"
+                android:textSize="25sp"
+                android:inputType="numberPassword"
+                android:gravity="center"
+                android:layout_marginEnd="10dp"
+                android:imeOptions="actionDone"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/lanjutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Lanjut"
+            android:fontFamily="@font/poppins_medium"
+            android:background="@drawable/round_button"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

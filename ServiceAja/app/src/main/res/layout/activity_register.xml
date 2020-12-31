@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginRegister.RegisterActivity">
+
+    <View
+        android:layout_width="427dp"
+        android:layout_height="382dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-79dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-193dp"
+        android:background="@drawable/top_rounc_background_pink"/>
+    <TextView
+        android:layout_width="217dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="23dp"
+        android:text="@string/serviceaja"
+        android:textAppearance="@style/serviceaja"
+        android:gravity="top" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="212dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/daftarkansekarang"
+                android:textSize="19sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="15dp"/>
+
+            <EditText
+                android:id="@+id/inputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_border"/>
+            <EditText
+                android:id="@+id/inputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_border"/>
+            <EditText
+                android:id="@+id/inputPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="No. Telepon"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_border"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/inputPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/input_border"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/inputConfirmedPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Konfirmasi Password"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/input_border"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/agreeTCCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/agree"
+                android:textSize="16dp"/>
+
+            <Button
+                android:id="@+id/daftarBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:text="Daftar"
+                android:fontFamily="@font/poppins_medium"
+                android:background="@drawable/round_button"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/instantregister"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="10dp">
+
+                <ImageButton
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="50dp"
+                    android:scaleType="fitCenter"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:src="@drawable/google_logo"
+                    android:onClick="loginGmail"/>
+                <ImageButton
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:src="@drawable/facebook_logo"
+                    android:onClick="loginFB"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="10dp"
+                    android:text="Sudah Punya Akun?" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/lightBlue"
+                    android:text="Masuk Sekarang"
+                    android:onClick="masukSekarang"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
