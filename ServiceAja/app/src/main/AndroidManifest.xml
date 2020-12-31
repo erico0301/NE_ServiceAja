@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".DaftarKendaraan"></activity>
+        <activity android:name=".EditProfilUser" />
+        <activity android:name=".DaftarAlamat" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".LoginRegister.ResetPasswordActivity" />
         <activity android:name=".LoginRegister.ForgetPasswordActivity" />
         <activity android:name=".LoginRegister.KodePemulihanActivity" />
