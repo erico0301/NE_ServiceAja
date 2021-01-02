@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
         <activity android:name=".DaftarKendaraan"></activity>
+        <activity android:name=".DaftardanEditProfilMitra" />
         <activity android:name=".EditProfilUser" />
         <activity android:name=".DaftarAlamat" />
         <activity android:name=".HomeActivity" />

@@ -43,6 +43,7 @@
     <string name="delete">Hapus</string>
     <string name="edit">EDIT</string>
     <string name="change_password">Ubah Password</string>
+    <string name="warna">Warna</string>
 
     <string-array name="provinsi">
         <item>ACEH</item>

@@ -171,7 +171,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/vehicle_photo_card"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/more_vehicle"
+            app:layout_constraintBottom_toTopOf="@id/daftarKendaraan_btnEdit"
             android:layout_marginStart="10dp"
             android:text="123456789123"
             android:fontFamily="@font/poppins_light" />
@@ -180,7 +180,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/vehicle_photo_card"
-            app:layout_constraintBottom_toTopOf="@id/more_vehicle"
+            app:layout_constraintBottom_toTopOf="@id/daftarKendaraan_btnEdit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="234567891234"
@@ -190,7 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/vehicle_photo_card"
-            app:layout_constraintBottom_toTopOf="@id/more_vehicle"
+            app:layout_constraintBottom_toTopOf="@id/daftarKendaraan_btnEdit"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="10dp"
             android:text="345678912345"
@@ -198,7 +198,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/more_vehicle"
+            app:layout_constraintBottom_toTopOf="@id/daftarKendaraan_btnEdit"
             app:layout_constraintEnd_toStartOf="@id/last_service"
             android:layout_marginEnd="20dp"
             android:text="@string/last_service"
@@ -207,23 +207,29 @@
             android:id="@+id/last_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/more_vehicle"
+            app:layout_constraintBottom_toTopOf="@id/daftarKendaraan_btnEdit"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="10dp"
             android:text="1 Januari 2020"
             android:fontFamily="@font/poppins_light" />
-        <TextView
-            android:id="@+id/more_vehicle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/daftarKendaraan_btnDelete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/daftarKendaraan_btnEdit"
+            android:src="@drawable/ic_delete"
+            android:background="@color/transparent" />
+        <ImageButton
+            android:id="@+id/daftarKendaraan_btnEdit"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="10dp"
-            android:text="@string/other_vehicle"
-            android:fontFamily="@font/poppins_medium" />
+            android:src="@drawable/ic_edit"
+            android:background="@color/transparent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
