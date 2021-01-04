@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:padding="5dp"
+    android:background="@drawable/layout_transaction_details">
+
+    <ImageView
+        android:id="@+id/profileIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/profile_2"
+        android:scaleType="fitXY"
+        android:padding="5dp"
+        android:background="@drawable/profile_round_corner"/>
+
+    <TextView
+        android:id="@+id/namaMitra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mitsubishi"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/profileIcon"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/dm_sans"/>
+
+    <TextView
+        android:id="@+id/daftarTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daftar Service atau Produk"
+        android:layout_below="@id/profileIcon"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+
+    <TextView
+        android:id="@+id/namaService"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Service 1 tahun"
+        android:layout_marginLeft="3dp"
+        android:layout_below="@id/daftarTxt"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/hargaService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/daftarTxt"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/rpServiceTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp"
+        android:layout_below="@id/daftarTxt"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/quantityService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:layout_below="@id/daftarTxt"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="150dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+
+    <TextView
+        android:id="@+id/namaProduk"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Oil 4L"
+        android:layout_marginLeft="3dp"
+        android:layout_below="@id/namaService"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/hargaProduk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="230.000"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/namaService"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/rpProdukTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp"
+        android:layout_below="@id/namaService"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/quantityProduk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:layout_below="@id/namaService"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="150dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+
+    <TextView
+        android:id="@+id/totalTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/namaProduk"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="150dp"
+        android:fontFamily="@font/dm_sans"
+        android:text="Total :"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/totalHarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="230.000"
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/namaProduk"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/rpTotalTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_below="@id/namaProduk"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="115dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sedang Dikirim"
+        android:textSize="15sp"
+        android:layout_below="@id/totalHarga"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/statusTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status :"
+        android:textSize="15sp"
+        android:layout_below="@id/totalHarga"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/status"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dm_sans"/>
+
+</RelativeLayout>

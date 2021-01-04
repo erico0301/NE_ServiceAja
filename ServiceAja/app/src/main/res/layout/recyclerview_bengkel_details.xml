@@ -9,11 +9,13 @@
     android:layout_margin="5dp"
     android:background="@drawable/round_car_details">
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/bengkelImg"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/round_car_details"
+        android:layout_height="150dp"
+        app:riv_corner_radius_top_left="20dp"
+        app:riv_corner_radius_top_right="20dp"
+        android:padding="1dp"
         android:src="@drawable/service_xpander"
         android:scaleType="fitXY"/>
 
@@ -25,7 +27,8 @@
         android:fontFamily="@font/dm_sans"
         android:layout_margin="10dp"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:lines="2"
         android:textStyle="bold"/>
 
     <TextView

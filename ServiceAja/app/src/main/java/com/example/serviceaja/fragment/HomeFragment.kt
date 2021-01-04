@@ -1,5 +1,6 @@
 package com.example.serviceaja.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,9 +9,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceaja.HomeActivity
 import com.example.serviceaja.R
+import com.example.serviceaja.WishlistActivity
 import com.example.serviceaja.recyclerview.RecyclerViewBengkelDetails
+import com.example.serviceaja.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.recyclerview_wishlist_product_details.*
 
 class HomeFragment : Fragment() {
     private var layoutManager :RecyclerView.LayoutManager? = null
@@ -35,6 +40,16 @@ class HomeFragment : Fragment() {
 
         adapter = RecyclerViewBengkelDetails()
         recyclerViewBengkelDetails.adapter = adapter
+
+       searchEditText.setOnClickListener {
+            var searchIntent = Intent(context, SearchActivity::class.java)
+            startActivity(searchIntent)
+        }
+
+        wishlistIcon.setOnClickListener {
+            var wishlistIntent = Intent(context, WishlistActivity::class.java)
+            startActivity(wishlistIntent)
+        }
     }
 
     companion object {

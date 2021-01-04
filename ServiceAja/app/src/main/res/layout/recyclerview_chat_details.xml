@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:padding="10dp"
+    android:background="@drawable/round_corner_black_lightestbluebg">
+
+    <ImageView
+        android:id="@+id/bengkelImg"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/profile_2"
+        android:scaleType="fitXY"
+        android:padding="10dp"
+        android:background="@drawable/profile_round_corner"/>
+
+    <TextView
+        android:id="@+id/namaMitra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mitsubishi"
+        android:fontFamily="@font/dm_sans"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/bengkelImg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/lastMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terima Kasih!"
+        android:fontFamily="@font/dm_sans"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/bengkelImg"
+        android:layout_below="@+id/namaMitra"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/lastMessageHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10:23 pm"
+        android:fontFamily="@font/dm_sans"
+        android:textColor="@color/black"
+        android:layout_alignParentRight="true"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:id="@+id/totalUnreadMessage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="2"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:fontFamily="@font/dm_sans"
+        android:textColor="@color/lightestBlue"
+        android:background="@drawable/round_corner_redbg"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/lastMessageHour"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"/>
+
+</RelativeLayout>

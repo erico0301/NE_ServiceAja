@@ -9,18 +9,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
-        <activity android:name=".DaftarKendaraan"></activity>
-        <activity android:name=".DaftardanEditProfilMitra" />
-        <activity android:name=".EditProfilUser" />
-        <activity android:name=".DaftarAlamat" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".checkout.CheckoutActivity"
+            android:theme="@style/GoldStatusBar"></activity>
+        <activity
+            android:name=".transaction.DoneTransactionActivity"
+            android:theme="@style/GoldStatusBar" />
+        <activity
+            android:name=".transaction.OnGoingTransactionActivity"
+            android:theme="@style/GoldStatusBar" />
+        <activity
+            android:name=".search.ProductServiceDetailActivity"
+            android:theme="@style/GoldStatusBar" />
+        <activity
+            android:name=".search.SearchResultActivity"
+            android:theme="@style/GoldStatusBar" />
+        <activity
+            android:name=".WishlistActivity"
+            android:theme="@style/GoldStatusBar" />
+        <activity
+            android:name=".search.SearchActivity"
+            android:theme="@style/GoldStatusBar" />
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/GoldStatusBar" />
         <activity android:name=".LoginRegister.ResetPasswordActivity" />
         <activity android:name=".LoginRegister.ForgetPasswordActivity" />
         <activity android:name=".LoginRegister.KodePemulihanActivity" />
         <activity android:name=".LoginRegister.LoginActivity" />
-        <activity android:name=".LoginRegister.WelcomeActivity" />
-        <activity android:name=".LoginRegister.VerificationCodeActivity" />
-        <activity android:name=".LoginRegister.RegisterActivity" />
+        <activity
+            android:name=".LoginRegister.WelcomeActivity"
+            android:theme="@style/RedStatusBar" />
+        <activity
+            android:name=".LoginRegister.VerificationCodeActivity"
+            android:theme="@style/RedStatusBar" />
+        <activity
+            android:name=".LoginRegister.RegisterActivity"
+            android:theme="@style/RedStatusBar" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashScreenTheme">

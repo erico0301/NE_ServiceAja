@@ -11,6 +11,6 @@
         android:color="@color/lightBlue"/>
 
     <corners
-        android:radius="10dp"/>
+        android:radius="20dp"/>
 
 </shape>

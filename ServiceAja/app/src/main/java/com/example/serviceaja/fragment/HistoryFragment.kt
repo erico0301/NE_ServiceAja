@@ -12,6 +12,9 @@ import kotlinx.android.synthetic.main.fragment_history.*
 
 class HistoryFragment : Fragment() {
 
+    private val onGoingFragment = OnGoingTransactionFragment()
+    private val doneFragment = DoneTransactionFragment()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
@@ -21,17 +24,30 @@ class HistoryFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        onProcess.setOnClickListener {
-            onProcess.setTextColor(Color.WHITE)
-            done.setTextColor(Color.BLACK)
-        }
+        replaceFragment(onGoingFragment)
 
-        done.setOnClickListener {
-            onProcess.setTextColor(Color.BLACK)
-            done.setTextColor(Color.WHITE)
+        transactionMenu.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId) {
+                R.id.onProcess -> {
+                    onProcess.setTextColor(Color.WHITE)
+                    done.setTextColor(Color.BLACK)
+                    replaceFragment(onGoingFragment)
+                }
+                R.id.done -> {
+                    onProcess.setTextColor(Color.BLACK)
+                    done.setTextColor(Color.WHITE)
+                    replaceFragment(doneFragment)
+                }
+            }
         }
 
     }
+
+    private fun replaceFragment(fragment : Fragment) =
+            childFragmentManager.beginTransaction().apply {
+                replace(R.id.transaction_fragment, fragment)
+                commit()
+            }
 
     companion object {
 

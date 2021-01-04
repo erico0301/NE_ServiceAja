@@ -24,18 +24,21 @@
         <EditText
             android:id="@+id/searchEditText"
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:background="@drawable/search_border"
-            android:layout_weight="8"
+            android:layout_height="40dp"
             android:layout_marginRight="10dp"
-            android:padding="5dp"
-            android:hint="Telusuri"
-            android:drawableLeft="@drawable/ic_search" />
+            android:layout_weight="8"
+            android:paddingLeft="10dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/search_border"
+            android:drawableLeft="@drawable/ic_search"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Telusuri" />
 
         <ImageView
-            android:layout_toRightOf="@+id/searchEditText"
+            android:id="@+id/wishlistIcon"
             android:layout_width="10dp"
             android:layout_height="30dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:src="@drawable/ic_love_like"/>
 
@@ -47,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="75dp"
-        android:text="Halo, User"
+        android:text="Halo, Never End"
         android:textColor="@color/darkestBlue"
         android:textSize="28sp"/>
 
@@ -205,9 +208,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lastServiceDate"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
                     android:text="Kendaraan Lain"
                     android:textColor="@color/black"
                     android:textSize="15sp"
@@ -377,8 +379,7 @@
                 android:id="@+id/recyclerViewBengkelDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_margin="10dp"
                 android:orientation="horizontal" />
 
         </LinearLayout>

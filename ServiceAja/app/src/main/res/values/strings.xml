@@ -12,61 +12,17 @@
     <string name="masukkanpassbaru">Masukkan Password baru yang mudah diingat, dan sulit ditebak!</string>
     <string name="cekinfo"><b>Cek Informasi Kendaraan Anda Sekarang!</b></string>
     <string name="bengkeltersedia"><b>Bengkel yang tersedia untuk Anda, Pesan Sekarang!</b></string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="user">User</string>
-    <string name="partner">Mitra</string>
-    <string name="name">Nama</string>
-    <string name="email">E-mail</string>
-    <string name="registered_email">E-mail Terdaftar</string>
-    <string name="tel_number">No. Telp</string>
-    <string name="password">Password</string>
-    <string name="old_password">Password Lama</string>
-    <string name="new_password">Password Baru</string>
-    <string name="confirm_password">Konfimasi Password</string>
-
-    <string name="settings">Pengaturan</string>
-    <string name="logout">Keluar</string>
-    <string name="profile_picture">Foto Profil</string>
-    <string name="background_profile_picture">Foto Background Profil</string>
-    <string name="edit_profile">Edit Profil</string>
-    <string name="edit_address">Edit Alamat</string>
-
-    <string name="vehicle_info">Informasi Kendaraan</string>
-    <string name="vehicle_brand">Merk</string>
-    <string name="vehicle_year">Tahun</string>
-    <string name="vehicle_photo">Foto Kendaraan</string>
-    <string name="other_vehicle">Kendaraan Lain</string>
-    <string name="last_service">Service Terakhir</string>
-    <string name="add">Tambah</string>
-    <string name="delete">Hapus</string>
-    <string name="edit">EDIT</string>
-    <string name="change_password">Ubah Password</string>
-    <string name="warna">Warna</string>
-
-    <string-array name="provinsi">
-        <item>ACEH</item>
-        <item>SUMATERA UTARA</item>
-        <item>SUMATERA BARAT</item>
-        <item>SUMATERA SELATAN</item>
-        <item>RIAU</item>
-        <item>KEPULAUAN RIAU</item>
-        <item>JAMBI</item>
-        <item>BENGKULU</item>
-        <item>BANGKA BELITUNG</item>
-        <item>LAMPUNG</item>
-    </string-array>
-    <string-array name="kabupaten_kota">
-        <item>MEDAN</item>
-        <item>BINJAI</item>
-    </string-array>
-    <string-array name="kecamatan">
-        <item>BINJAI KOTA</item>
-        <item>BINJAI UTARA</item>
-        <item>BINJAI SELATAN</item>
-        <item>BINJAI BARAT</item>
-        <item>BINJAI TIMUR</item>
+    <string name="caribarang">Cari Barang, Service atau Bengkel</string>
+    <string name="masukkankatakunci">Masukkan kata kunci pencarian berupa nama bengkel, service, atau barang/sparepart</string>
+    <string name="segeratambah">Segera tambahkan ke Keranjang Anda!</string>
+    <string name="infoken">Informasi Kendaraan</string>
+    <string name="detailproduk">Balancing dan Spooring berteknologi 4D terbaru</string>
+    <string name="detailreview">Service bagus, ramah. Pelanggan dilayani dengan baik dan penjelasan yang detail</string>
+    <string name="alamatBuyer">Komplek Cemara Asri Jl. Boulevard Raya No.32J</string>
+    <string name="servicenote">Note :  Setiap pembelajaan produk yang disertai dengan dilakukannya service akan mengikuti metode service yang dilakukan.</string>
+    <string-array name="lokasispinner">
+        <item>Rumah</item>
+        <item>Kantor</item>
     </string-array>
 
 </resources>

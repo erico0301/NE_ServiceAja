@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.UserProfileFragment">
+
+    <ImageView
+        android:id="@+id/topBg"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/service"/>
+
+    <ImageButton
+        android:id="@+id/editBtn"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_edit"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
+    <ImageButton
+        android:id="@+id/gpsBtn"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_gps"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editBtn"
+        android:layout_marginRight="10dp"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
+
+    <ImageView
+        android:id="@+id/userProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:alpha="0.6"
+        android:background="@drawable/profile_round_corner_large"
+        android:padding="15dp"
+        android:src="@drawable/profile_2" />
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Never End"
+        android:textColor="@color/white"
+        android:layout_below="@+id/userProfile"
+        android:layout_centerInParent="true"
+        android:textSize="30sp"
+        android:fontFamily="@font/dm_sans"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E-Mail Terdaftar"
+        android:textColor="@color/white"
+        android:layout_below="@+id/userName"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/userEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="neverEnd@gmail.com"
+        android:textColor="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/userName"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="18dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/dm_sans"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No. Telepon"
+        android:textColor="@color/white"
+        android:layout_below="@+id/userEmail"
+        android:layout_marginLeft="30dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/dm_sans"/>
+    <TextView
+        android:id="@+id/userPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="neverEnd@gmail.com"
+        android:textColor="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/userEmail"
+        android:layout_marginRight="30dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/dm_sans"/>
+
+    <TextView
+        android:id="@+id/infoKendaraanTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/infoken"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_below="@+id/topBg"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_medium"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/infoKendaraanTxt"
+        android:background="@drawable/round_car_details">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/carImg"
+            android:layout_width="115dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:scaleType="fitXY"
+            app:riv_mutate_background="true"
+            app:riv_corner_radius="10dp"
+            android:src="@drawable/xpander" />
+
+        <TextView
+            android:id="@+id/platNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/carImg"
+            android:fontFamily="@font/poppins_medium"
+            android:letterSpacing="0.1"
+            android:text="BK 2323 W"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/merkTxt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/platNo"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@+id/carImg"
+            android:text="Merk"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/carBrand"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/merkTxt"
+            android:layout_toRightOf="@+id/carImg"
+            android:text="Mitsubishi"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/namaTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/platNo"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@+id/merkTxt"
+            android:text="Nama"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/carName"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/merkTxt"
+            android:layout_toRightOf="@+id/carBrand"
+            android:text="Xpander"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tahunTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/platNo"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@+id/namaTxt"
+            android:text="Tahun"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/carYear"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/merkTxt"
+            android:layout_toRightOf="@+id/carName"
+            android:text="2020"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/serviceTerakhirTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carBrand"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@+id/carImg"
+            android:text="Service Terakhir :"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lastServiceDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carBrand"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/serviceTerakhirTxt"
+            android:text="26 Desember 2020"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/othersIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_double_arrow_right"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_below="@+id/lastServiceDate"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp" />
+
+        <TextView
+            android:id="@+id/otherCar"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/lastServiceDate"
+            android:layout_toLeftOf="@+id/othersIcon"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Kendaraan Lain"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

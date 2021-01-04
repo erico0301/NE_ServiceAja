@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ProfileFragment">
+
+    <View
+        android:id="@+id/topBg"
+        android:layout_width="657dp"
+        android:layout_height="323dp"
+        android:layout_marginLeft="-80dp"
+        android:layout_marginRight="-80dp"
+        android:layout_marginTop="-203dp"
+        android:background="@drawable/home_background_top" />
+
+    <LinearLayout
+        android:id="@+id/topMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/search_border"
+            android:layout_weight="8"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:hint="Cari Pengaturan" />
+
+        <ImageView
+            android:id="@+id/settingIcon"
+            android:layout_width="10dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_setting"/>
+        <ImageView
+            android:id="@+id/logoutIcon"
+            android:layout_width="10dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_logout"/>
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/profileMenu"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/topMenu"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/user"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="User"
+            android:layout_weight="1"
+            android:checked="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="bold"
+            android:background="@drawable/top_menu_selector"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/mitra"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Mitra"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:gravity="center_vertical|center_horizontal"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="bold"
+            android:background="@drawable/top_menu_selector"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/userMitra_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topBg" />
+
+
+</RelativeLayout>

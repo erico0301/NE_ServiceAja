@@ -23,16 +23,18 @@
         <EditText
             android:id="@+id/searchEditText"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:background="@drawable/search_border"
             android:layout_weight="8"
             android:layout_marginRight="10dp"
-            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:padding="11dp"
             android:hint="Cari Pesanan" />
 
         <ImageView
             android:layout_toRightOf="@+id/searchEditText"
             android:layout_width="10dp"
+            android:layout_marginTop="5dp"
             android:layout_height="30dp"
             android:layout_weight="1"
             android:src="@drawable/ic_search"/>
@@ -51,9 +53,12 @@
         android:textSize="28sp"/>
 
     <RadioGroup
+        android:id="@+id/transactionMenu"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_below="@+id/transaksi"
         android:orientation="horizontal">
 
@@ -92,6 +97,6 @@
         android:id="@+id/transaction_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="230dp"/>
+        android:layout_marginTop="230dp" />
 
 </RelativeLayout>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".checkout.CheckoutActivity">
+
+    <View
+        android:id="@+id/topBg"
+        android:layout_width="657dp"
+        android:layout_height="323dp"
+        android:layout_marginLeft="-80dp"
+        android:layout_marginRight="-80dp"
+        android:layout_marginTop="-250dp"
+        android:background="@drawable/home_background_top" />
+    <LinearLayout
+        android:id="@+id/topMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_action_back"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Checkout"
+            android:fontFamily="@font/dm_sans"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/topBg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/bengkelImg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/bmw_logo"
+                android:scaleType="fitXY"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:background="@drawable/profile_round_corner"/>
+            <TextView
+                android:id="@+id/namaBengkel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BMW"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/bengkelImg"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewServiceProductDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_transaction_details"
+                android:layout_below="@+id/bengkelImg"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="750.000"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/recyclerViewServiceProductDetails"
+                android:layout_marginLeft="10dp"/>
+            <TextView
+                android:id="@+id/subtotalTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subtotal : Rp"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:layout_toLeftOf="@+id/subtotal"
+                android:layout_below="@+id/recyclerViewServiceProductDetails"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/serviceTxt"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="Service"
+                android:fontFamily="@font/dm_sans"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/subtotalTxt"/>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/subtotalTxt"
+                android:layout_toRightOf="@+id/serviceTxt">
+
+                <RadioButton
+                    android:id="@+id/onSite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="On-Site"
+                    android:fontFamily="@font/dm_sans"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/offSite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Off-Site"
+                    android:fontFamily="@font/dm_sans"
+                    android:layout_weight="1"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/servicenote"
+                android:fontFamily="@font/dm_sans"
+                android:textSize="15sp"
+                android:layout_below="@+id/serviceTxt"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/lokasiTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Lokasi"
+                android:fontFamily="@font/dm_sans"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/note"/>
+            <Spinner
+                android:id="@+id/lokasiSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/note"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/namaBuyer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Never End"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_below="@+id/lokasiSpinner" />
+            <TextView
+                android:id="@+id/noTeleponBuyer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="082323233232"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_below="@+id/namaBuyer"/>
+            <TextView
+                android:id="@+id/alamatBuyer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/alamatBuyer"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_below="@+id/noTeleponBuyer"
+                android:layout_marginBottom="30dp"/>
+
+            <Button
+                android:id="@+id/paymentBtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Payment"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/alamatBuyer"
+                android:fontFamily="@font/poppins_medium"
+                android:background="@drawable/round_button"
+                android:textSize="20sp"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
