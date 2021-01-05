@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/picture_background"
+    android:padding="10dp"
+    android:layout_marginVertical="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/serviceproductLayout_fotoItem"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/picture_background" />
+    <TextView
+        android:id="@+id/serviceproductLayout_namaItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/serviceproductLayout_fotoItem"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="Nama Service atau Produk"
+        android:textSize="20sp"
+        android:fontFamily="@font/dmsans_bold" />
+    <TextView
+        android:id="@+id/serviceproductLayout_hargaItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/serviceproductLayout_namaItem"
+        app:layout_constraintStart_toEndOf="@id/serviceproductLayout_fotoItem"
+        android:layout_marginStart="10dp"
+        android:text="Rp xxx.xxx,-"
+        android:textSize="20sp"
+        android:fontFamily="@font/dmsans_bold" />
+    <TextView
+        android:id="@+id/serviceproductLayout_namaMitra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/serviceproductLayout_hargaItem"
+        app:layout_constraintStart_toEndOf="@id/serviceproductLayout_fotoItem"
+        android:layout_marginStart="10dp"
+        android:text="@string/contohID"
+        android:textSize="20sp"
+        android:fontFamily="@font/dmsans_bold" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"
+            app:tint="@color/gold"
+            android:backgroundTint="@color/white"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"
+            app:tint="@color/gold"
+            android:backgroundTint="@color/white" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"
+            app:tint="@color/gold"
+            android:backgroundTint="@color/white" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"
+            app:tint="@color/gold"
+            android:backgroundTint="@color/white" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"
+            app:tint="@color/gold"
+            android:backgroundTint="@color/white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:text="5.0"
+            android:fontFamily="@font/dmsans_regular"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

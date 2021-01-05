@@ -13,7 +13,7 @@
         android:background="@color/gold"
         android:paddingVertical="20dp" >
         <Button
-            android:id="@+id/btn_user"
+            android:id="@+id/profilMitra_btnUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/user"
@@ -25,11 +25,11 @@
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium" />
         <Button
-            android:id="@+id/btn_mitra"
+            android:id="@+id/profileMitra_btnMitra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/partner"
-            app:layout_constraintStart_toEndOf="@+id/btn_user"
+            app:layout_constraintStart_toEndOf="@id/profilMitra_btnUser"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="50dp"
             android:fontFamily="@font/poppins_medium" />
@@ -88,7 +88,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <ImageButton
-            android:id="@+id/btn_edit"
+            android:id="@+id/profilMitra_btnEdit"
             android:layout_width="30dp"
             android:layout_height="30dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -101,14 +101,13 @@
             android:id="@+id/btn_location"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_edit"
+            app:layout_constraintTop_toBottomOf="@id/profilMitra_btnEdit"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_edit_location"
             android:contentDescription="@string/edit_address"
             android:tint="@color/white"
-            android:backgroundTint="@color/transparent"
-            android:onClick="openDaftarAlamat" />
+            android:backgroundTint="@color/transparent" />
         <TextView
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
@@ -117,7 +116,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
-            android:text="Nama Mitra"
+            android:text="@string/contohNama"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:fontFamily="@font/dmsans_regular" />
@@ -129,7 +128,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="5dp"
-            android:text="ID MITRA"
+            android:text="@string/contohID"
             android:textColor="@color/white"
             android:fontFamily="@font/dmsans_medium" />
         <TextView
@@ -140,7 +139,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="15dp"
             android:layout_marginStart="50dp"
-            android:text="Kota"
+            android:text="@string/city"
             android:textColor="@color/white"
             android:fontFamily="@font/dmsans_regular" />
         <TextView
@@ -151,7 +150,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="50dp"
-            android:text="Medan"
+            android:text="@string/contohKota"
             android:textColor="@color/white"
             android:fontFamily="@font/dmsans_medium" />
         <TextView
@@ -210,5 +209,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/profilMitra_tabServiceProduk" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profilMitra_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/profilMitra_tabServiceProduk" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

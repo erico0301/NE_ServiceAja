@@ -12,7 +12,7 @@ class HomeActivity : AppCompatActivity() {
     private val historyFragment = HistoryFragment()
     private val shoppingCartFragment = ShoppingCartFragment()
     private val chatFragment = ChatFragment()
-    private val profileFragment = ProfileFragment()
+    private val profileFragment = ProfilUserFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
