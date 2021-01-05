@@ -1,5 +1,6 @@
 package com.example.serviceaja.recyclerview
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
+import com.example.serviceaja.chatreview.ChatActivity
 
 class RecyclerViewChatDetails : RecyclerView.Adapter<RecyclerViewChatDetails.ViewHolder>() {
 
@@ -30,6 +32,13 @@ class RecyclerViewChatDetails : RecyclerView.Adapter<RecyclerViewChatDetails.Vie
             lastMessage = itemView.findViewById(R.id.lastMessage)
             lastHour = itemView.findViewById(R.id.lastMessageHour)
             totalUnreadMessage = itemView.findViewById(R.id.totalUnreadMessage)
+
+            itemView.setOnClickListener {
+                if (adapterPosition == 1) {
+                    val chatIntent = Intent(itemView.context, ChatActivity::class.java)
+                    itemView.context.startActivity(chatIntent)
+                }
+            }
         }
     }
 

@@ -32,11 +32,6 @@ class DoneTransactionFragment : Fragment() {
 
         adapter = RecyclerViewTransactionDoneDetails()
         recyclerViewDoneTransaction.adapter = adapter
-
-        details.setOnClickListener {
-            var transactionDetailIntent = Intent(activity, DoneTransactionActivity::class.java)
-            startActivity(transactionDetailIntent)
-        }
     }
 
     companion object {

@@ -33,6 +33,8 @@
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/dm_sans"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_marginTop="10dp"/>
         <TextView
             android:id="@+id/rpTxt"

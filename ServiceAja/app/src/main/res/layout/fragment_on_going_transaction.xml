@@ -7,14 +7,6 @@
     android:orientation="vertical"
     tools:context=".fragment.OnGoingTransactionFragment">
 
-      <TextView
-          android:id="@+id/details"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Details"
-          android:textColor="@color/black"
-          android:textSize="32sp"/>
-
       <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/recyclerViewOnGoingTransaction"
           android:layout_width="match_parent"

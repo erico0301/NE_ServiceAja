@@ -9,8 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
-        <activity android:name=".checkout.CheckoutActivity"
+        <activity android:name=".chatreview.ChatActivity"
             android:theme="@style/GoldStatusBar"></activity>
+        <activity android:name=".chatreview.ReviewActivity"
+            android:theme="@style/GoldStatusBar"/>
+        <activity android:name=".checkout.ConfirmPaymentActivity"
+            android:theme="@style/GoldStatusBar"/>
+        <activity
+            android:name=".checkout.CheckoutActivity"
+            android:theme="@style/GoldStatusBar" />
         <activity
             android:name=".transaction.DoneTransactionActivity"
             android:theme="@style/GoldStatusBar" />

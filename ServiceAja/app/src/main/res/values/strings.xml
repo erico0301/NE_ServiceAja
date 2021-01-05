@@ -7,7 +7,8 @@
     <string name="agree">Dengan mendaftar, saya setuju dengan syarat dan ketentuan yang berlaku</string>
     <string name="instantregister">- Atau Daftar Dengan Akun -</string>
     <string name="masukkankode">Masukkan 4 digit kode konfirmasi</string>
-    <string name="kode4digit">Kode 4 digit verifikasi akun telah dikirim ke e-mail/no.telepon Anda. Silahkan periksa dan masukkan kode tersebut di bawah ini.</string>
+    <string name="kode4digit">Kode 4 digit verifikasi akun telah dikirim ke e-mail/no.telepon Anda.
+        Silahkan periksa dan masukkan kode tersebut di bawah ini.</string>
     <string name="akuntelah">Akun anda telah terdaftar! Masuk sekarang, pedulilah dengan kendaraan Anda!</string>
     <string name="masukkanpassbaru">Masukkan Password baru yang mudah diingat, dan sulit ditebak!</string>
     <string name="cekinfo"><b>Cek Informasi Kendaraan Anda Sekarang!</b></string>
@@ -17,12 +18,21 @@
     <string name="segeratambah">Segera tambahkan ke Keranjang Anda!</string>
     <string name="infoken">Informasi Kendaraan</string>
     <string name="detailproduk">Balancing dan Spooring berteknologi 4D terbaru</string>
-    <string name="detailreview">Service bagus, ramah. Pelanggan dilayani dengan baik dan penjelasan yang detail</string>
+    <string name="detailreview">Service bagus, ramah. Pelanggan dilayani dengan baik dan penjelasanyang detail</string>
     <string name="alamatBuyer">Komplek Cemara Asri Jl. Boulevard Raya No.32J</string>
-    <string name="servicenote">Note :  Setiap pembelajaan produk yang disertai dengan dilakukannya service akan mengikuti metode service yang dilakukan.</string>
+    <string name="servicenote">Note :  Jika pembelanjaan produk diambil sendiri, pilih "On-Site", jika
+        produk dikirim, pilih "Off-Site". Setiap pembelanjaan produk yang disertai dengan dilakukannya
+        service akan mengikuti metode service yang dilakukan.</string>
     <string-array name="lokasispinner">
         <item>Rumah</item>
         <item>Kantor</item>
+    </string-array>
+    <string-array name="paymentMethodSpinner">
+        <item>Transfer Bank</item>
+        <item>Kartu Kredit/Kartu Debit</item>
+        <item>Ovo</item>
+        <item>Gopay</item>
+        <item>COD</item>
     </string-array>
 
 </resources>

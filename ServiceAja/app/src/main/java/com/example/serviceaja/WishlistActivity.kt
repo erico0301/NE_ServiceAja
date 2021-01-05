@@ -1,5 +1,7 @@
 package com.example.serviceaja
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +27,20 @@ class WishlistActivity : AppCompatActivity() {
 
         adapter = RecyclerViewWishlistProductDetails()
         recyclerViewDetailsWishlist.adapter = adapter
+
+        wishTxt.setOnClickListener {
+            var dialog = AlertDialog.Builder(this)
+                .setTitle("Konfirmasi Hapus")
+                .setMessage("Apakah Anda yakin ingin menghapus barang ini dari Wishlist ?")
+                .setPositiveButton("Ya, hapus saja", DialogInterface.OnClickListener { dialog, which ->
+                    dialog.cancel()
+                })
+                .setNegativeButton("Tidak, tinggalkan di Wishlist",
+                    DialogInterface.OnClickListener { dialog, which ->
+                    dialog.cancel()
+                })
+            dialog.show()
+        }
 
     }
 }

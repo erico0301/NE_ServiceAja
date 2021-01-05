@@ -17,7 +17,7 @@ class RecyclerViewBengkelDetails : RecyclerView.Adapter<RecyclerViewBengkelDetai
     private val itemImgRating = intArrayOf(R.drawable.ic_rating_5, R.drawable.ic_rating_5)
     private val itemRatingTxt = arrayOf("5.0", "5.0")
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         var imgBengkel: ImageView
         var namaBengkel: TextView

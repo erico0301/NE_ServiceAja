@@ -38,10 +38,6 @@ class OnGoingTransactionFragment : Fragment() {
         adapter = RecyclerViewTransactionDetails()
         recyclerViewOnGoingTransaction.adapter = adapter
 
-        details.setOnClickListener {
-            var transactionDetailIntent = Intent(activity, OnGoingTransactionActivity::class.java)
-            startActivity(transactionDetailIntent)
-        }
     }
 
     companion object {

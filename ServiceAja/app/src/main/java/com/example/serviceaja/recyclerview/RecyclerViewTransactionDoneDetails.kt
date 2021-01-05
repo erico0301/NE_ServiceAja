@@ -1,5 +1,6 @@
 package com.example.serviceaja.recyclerview
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
+import com.example.serviceaja.transaction.DoneTransactionActivity
 
 class RecyclerViewTransactionDoneDetails : RecyclerView.Adapter<RecyclerViewTransactionDoneDetails.ViewHolder>() {
 
@@ -45,6 +47,13 @@ class RecyclerViewTransactionDoneDetails : RecyclerView.Adapter<RecyclerViewTran
             hargaProduk = itemView.findViewById(R.id.hargaProduk)
             totalHarga = itemView.findViewById(R.id.totalHarga)
             status = itemView.findViewById(R.id.status)
+
+            itemView.setOnClickListener {
+                if (adapterPosition == 1) {
+                    val transactionDetailsIntent = Intent(itemView.context, DoneTransactionActivity::class.java)
+                    itemView.context.startActivity(transactionDetailsIntent)
+                }
+            }
         }
     }
 

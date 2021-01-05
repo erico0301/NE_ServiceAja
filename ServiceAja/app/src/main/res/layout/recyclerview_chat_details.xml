@@ -24,6 +24,8 @@
         android:fontFamily="@font/dm_sans"
         android:textColor="@color/black"
         android:textStyle="bold"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:layout_toRightOf="@+id/bengkelImg"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"/>
@@ -35,6 +37,8 @@
         android:text="Terima Kasih!"
         android:fontFamily="@font/dm_sans"
         android:textColor="@color/black"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:layout_toRightOf="@+id/bengkelImg"
         android:layout_below="@+id/namaMitra"
         android:layout_marginLeft="10dp"

@@ -52,7 +52,9 @@
             android:text="Car Wash"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:fontFamily="@font/dm_sans"/>
+            android:fontFamily="@font/dm_sans"
+            android:maxLines="1"
+            android:ellipsize="end"/>
         <TextView
             android:id="@+id/rpTxt"
             android:layout_width="wrap_content"
@@ -110,7 +112,9 @@
             android:text="Battery Xpander"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:fontFamily="@font/dm_sans"/>
+            android:fontFamily="@font/dm_sans"
+            android:maxLines="1"
+            android:ellipsize="end"/>
         <TextView
             android:id="@+id/rpTxt2"
             android:layout_width="wrap_content"
