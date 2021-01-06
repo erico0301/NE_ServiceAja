@@ -40,14 +40,19 @@
 
     <TextView
         android:id="@+id/namaService"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Service 1 tahun"
         android:layout_marginLeft="3dp"
         android:layout_below="@id/daftarTxt"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/quantityService"
         android:textColor="@color/black"
-        android:fontFamily="@font/dm_sans"/>
+        android:fontFamily="@font/dm_sans"
+        android:maxLines="1"
+        android:ellipsize="end"/>
     <TextView
         android:id="@+id/hargaService"
         android:layout_width="wrap_content"
@@ -77,21 +82,26 @@
         android:text="1"
         android:layout_below="@id/daftarTxt"
         android:layout_marginTop="5dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="150dp"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@+id/rpServiceTxt"
         android:textColor="@color/black"
         android:fontFamily="@font/dm_sans"/>
 
     <TextView
         android:id="@+id/namaProduk"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Oil 4L"
         android:layout_marginLeft="3dp"
+        android:layout_marginRight="10dp"
         android:layout_below="@id/namaService"
+        android:layout_toLeftOf="@+id/quantityProduk"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="5dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/dm_sans"/>
+        android:fontFamily="@font/dm_sans"
+        android:maxLines="1"
+        android:ellipsize="end"/>
     <TextView
         android:id="@+id/hargaProduk"
         android:layout_width="wrap_content"
@@ -121,8 +131,8 @@
         android:text="1"
         android:layout_below="@id/namaService"
         android:layout_marginTop="5dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="150dp"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@+id/rpProdukTxt"
         android:textColor="@color/black"
         android:fontFamily="@font/dm_sans"/>
 

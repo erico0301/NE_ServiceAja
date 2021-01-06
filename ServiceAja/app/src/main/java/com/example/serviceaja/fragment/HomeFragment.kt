@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        layoutManager = GridLayoutManager (activity, 2, LinearLayoutManager.VERTICAL, false)
+        layoutManager = GridLayoutManager (activity, 1, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewBengkelDetails.layoutManager = layoutManager
 
         adapter = RecyclerViewBengkelDetails()
