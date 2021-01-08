@@ -1,5 +1,6 @@
 package com.example.serviceaja.recyclerview
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
+import com.example.serviceaja.search.ProductServiceDetailActivity
 
 class RecyclerViewServiceDetailsSearchResult : RecyclerView.Adapter<RecyclerViewServiceDetailsSearchResult.ViewHolder> () {
 
@@ -33,6 +35,13 @@ class RecyclerViewServiceDetailsSearchResult : RecyclerView.Adapter<RecyclerView
             kotaBengkel = itemView.findViewById(R.id.kotaBengkel)
             imgRating = itemView.findViewById(R.id.ratingIcon)
             ratingTxt = itemView.findViewById(R.id.ratingTxt)
+
+            itemView.setOnClickListener {
+                if (adapterPosition == 1) {
+                    val productServiceDetailsIntent = Intent(itemView.context, ProductServiceDetailActivity::class.java)
+                    itemView.context.startActivity(productServiceDetailsIntent)
+                }
+            }
         }
     }
 

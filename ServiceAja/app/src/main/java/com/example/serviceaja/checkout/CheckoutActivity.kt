@@ -1,5 +1,6 @@
 package com.example.serviceaja.checkout
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -26,5 +27,10 @@ class CheckoutActivity : AppCompatActivity() {
         val adapter = ArrayAdapter.createFromResource(this, R.array.lokasispinner,
             android.R.layout.simple_spinner_dropdown_item)
         lokasiSpinner.adapter = adapter
+
+        paymentBtn.setOnClickListener {
+            var confirmPaymentIntent = Intent(this, ConfirmPaymentActivity::class.java)
+            startActivity(confirmPaymentIntent)
+        }
     }
 }

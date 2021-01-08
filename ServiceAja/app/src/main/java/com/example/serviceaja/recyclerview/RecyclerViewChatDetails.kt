@@ -1,5 +1,6 @@
 package com.example.serviceaja.recyclerview
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,13 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
+import com.example.serviceaja.chatreview.ChatActivity
 
 class RecyclerViewChatDetails : RecyclerView.Adapter<RecyclerViewChatDetails.ViewHolder>() {
 
     private val itemImgBengkel = intArrayOf(R.drawable.mitsubishi_logo, R.drawable.bmw_logo, R.drawable.peugeot_logo)
     private val itemNamaBengkel = arrayOf("Mitsubishi", "BMW", "Peugeot")
     private val itemLastMessage = arrayOf("Terima kasih!", "Oke", "Harga OTR Medan")
-    private val itemLastHour = arrayOf("10:23 pm", "09:00 am", "12:32")
+    private val itemLastHour = arrayOf("10:32 pm", "10:23 am", "23 Des 20")
     private val itemTotalUnreadMessage = arrayOf("2", "3", "1")
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,6 +32,13 @@ class RecyclerViewChatDetails : RecyclerView.Adapter<RecyclerViewChatDetails.Vie
             lastMessage = itemView.findViewById(R.id.lastMessage)
             lastHour = itemView.findViewById(R.id.lastMessageHour)
             totalUnreadMessage = itemView.findViewById(R.id.totalUnreadMessage)
+
+            itemView.setOnClickListener {
+                if (adapterPosition == 1) {
+                    val chatIntent = Intent(itemView.context, ChatActivity::class.java)
+                    itemView.context.startActivity(chatIntent)
+                }
+            }
         }
     }
 

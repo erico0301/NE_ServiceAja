@@ -36,19 +36,14 @@ class SearchResultActivity : AppCompatActivity() {
         adapterBengkel = RecyclerViewBengkelDetailsSearchResult()
         recyclerViewBengkelDetailsSearch.adapter = adapterBengkel
 
-        layoutManagerService = GridLayoutManager (this, 2, LinearLayoutManager.VERTICAL, false)
+        layoutManagerService = GridLayoutManager (this, 1, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewServiceDetailsSR.layoutManager = layoutManagerService
         adapterService = RecyclerViewServiceDetailsSearchResult()
         recyclerViewServiceDetailsSR.adapter = adapterService
 
-        layoutManagerProduct = GridLayoutManager (this, 2, LinearLayoutManager.VERTICAL, false)
+        layoutManagerProduct = GridLayoutManager (this, 1, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewProductDetailsSR.layoutManager = layoutManagerProduct
         adapterProduct = RecyclerViewProductDetailsSearchResult()
         recyclerViewProductDetailsSR.adapter = adapterProduct
-    }
-
-    fun productDetail(view: View) {
-        var productDetailIntent = Intent(this, ProductServiceDetailActivity::class.java)
-        startActivity(productDetailIntent)
     }
 }
