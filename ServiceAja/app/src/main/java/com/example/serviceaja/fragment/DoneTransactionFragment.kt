@@ -32,7 +32,4 @@ class DoneTransactionFragment : Fragment() {
         recyclerViewDoneTransaction.adapter = adapter
     }
 
-    companion object {
-
-    }
 }
