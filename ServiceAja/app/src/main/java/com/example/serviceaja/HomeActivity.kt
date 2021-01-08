@@ -17,7 +17,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        replaceFragment(homeFragment)
+
+        replaceFragment(profileFragment)
 
         bottomNavBarMenu.setOnNavigationItemSelectedListener {
             when(it.itemId) {

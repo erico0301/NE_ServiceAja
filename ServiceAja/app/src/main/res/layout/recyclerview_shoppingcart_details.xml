@@ -34,7 +34,7 @@
         android:layout_below="@+id/namaMitra"
         android:padding="15dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/layout_transaction_details">
+        android:background="@drawable/picture_background">
 
         <ImageView
             android:id="@+id/serviceImg"
@@ -51,8 +51,8 @@
             android:layout_marginTop="10dp"
             android:text="Car Wash"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            android:fontFamily="@font/dm_sans"/>
+            android:textSize="20sp"
+            android:fontFamily="@font/dmsans_bold"/>
         <TextView
             android:id="@+id/rpTxt"
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:layout_marginTop="5dp"
             android:text="Rp"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="10sp"
             android:fontFamily="@font/dm_sans"
             android:textStyle="bold"/>
         <TextView
@@ -72,11 +72,11 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/rpTxt"
             android:layout_below="@id/namaService"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
             android:text="50.000"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:fontFamily="@font/dm_sans"
             android:textStyle="bold"/>
         <TextView
@@ -87,7 +87,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/dm_sans"
-            android:text="1"
+            android:text="x1"
             android:textColor="@color/black"
             android:textSize="15sp" />
 

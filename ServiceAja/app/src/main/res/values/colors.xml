@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#53B622</color>
     <color name="lightBlue">#80DCF9</color>
     <color name="pink">#FFA383</color>
     <color name="gold">#FFD55D</color>
@@ -14,8 +15,9 @@
     <color name="darkestBlue">#0024A6</color>
     <color name="darkBlue">#3993CD</color>
     <color name="gray">#B2B2B2</color>
+    <color name="darkGray">#303030</color>
     <color name="red">#FF0000</color>
-    <color name="grayBackground">#9A000000</color>
+    <color name="grayBackground">#7A303030</color>
     <color name="transparent">#00000000</color>
     <color name="light_blue">#E8F6FE</color>
     <color name="medium_blue">#3993CD</color>

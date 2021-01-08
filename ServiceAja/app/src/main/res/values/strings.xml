@@ -76,6 +76,17 @@
     <string name="contohNoRangka">123456789123</string>
     <string name="contohNoMesin">234567891234</string>
     <string name="contohNoBPKB">345678912345</string>
+    <string name="search">Telusuri</string>
+    <string name="greetings">Halo, User</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="kategori">Kategori</string>
+    <string name="service">Service</string>
+    <string name="sparepart">Sparepart</string>
+    <string name="cuci_mobil">Cuci Mobil</string>
+    <string name="mobil_derek">Mobil Derek</string>
+    <string name="more">Lain-Lain</string>
+    <string name="car">Mobil</string>
+    <string name="motorbike">Motor</string>
 
     <string-array name="provinsi">
         <item>ACEH</item>

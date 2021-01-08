@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,7 +28,9 @@
             android:layout_height="50dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_action_back"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
+            android:contentDescription="Icon Back"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            tools:ignore="HardcodedText" />
         <EditText
             android:id="@+id/searchEditText"
             android:layout_width="0dp"
@@ -39,14 +40,17 @@
             android:padding="11dp"
             android:inputType="text"
             android:imeOptions="actionSearch"
-            android:hint="Cari Barang, Service atau Bengkel" />
+            android:hint="Cari Barang, Service atau Bengkel"
+            tools:ignore="HardcodedText" />
         <ImageView
             android:id="@+id/searchIcon"
             android:layout_width="10dp"
             android:layout_marginTop="5dp"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_search"/>
+            android:src="@drawable/ic_search"
+            android:contentDescription="Icon Search"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 
@@ -62,7 +66,9 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="50dp"
-            android:src="@drawable/search_img"/>
+            android:contentDescription="Icon Search"
+            android:src="@drawable/search_img"
+            tools:ignore="HardcodedText" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,8 +85,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:paddingTop="30dp"
+        android:paddingHorizontal="10dp"
         android:layout_below="@+id/ketTop">
 
         <LinearLayout
@@ -95,7 +101,8 @@
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
             <TextView
                 android:id="@+id/historyKeyword"
                 android:layout_width="match_parent"
@@ -103,9 +110,10 @@
                 android:text="Car Wash"
                 android:fontFamily="@font/dm_sans"
                 android:textColor="@color/black"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
             <TextView
                 android:id="@+id/historyKeyword2"
                 android:layout_width="match_parent"
@@ -113,9 +121,10 @@
                 android:text="Aki Xpander"
                 android:fontFamily="@font/dm_sans"
                 android:textColor="@color/black"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
             <TextView
                 android:id="@+id/historyKeyword3"
                 android:layout_width="match_parent"
@@ -123,9 +132,10 @@
                 android:text="BMW"
                 android:fontFamily="@font/dm_sans"
                 android:textColor="@color/black"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -135,7 +145,8 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
             <TextView
                 android:id="@+id/serviceProdukTxt"
                 android:layout_width="match_parent"
@@ -144,20 +155,19 @@
                 android:fontFamily="@font/dm_sans"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewServiceProductDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="15dp"/>
+                android:orientation="vertical"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mitra"
+                android:text="@string/partner"
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"

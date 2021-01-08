@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.service_and_product_layout.view.*
+import kotlinx.android.synthetic.main.layout_service_product_small_pic.view.*
 
 class ItemAdapter(
     var items: List<ServiceItem>
@@ -15,16 +15,16 @@ class ItemAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.service_and_product_layout, parent, false)
+        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.layout_service_product_small_pic, parent, false)
         return ItemViewHolder(inflater)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.itemView.apply {
-            serviceproductLayout_fotoItem.setImageResource(items[position].fotoProduk)
-            serviceproductLayout_namaItem.setText(items[position].namaProduk)
-            serviceproductLayout_hargaItem.setText("Rp ${items[position].hargaProduk}")
-            serviceproductLayout_namaMitra.setText(items[position].idMitra)
+            layoutNarrow_fotoItem.setImageResource(items[position].fotoProduk)
+            layoutNarrow_namaItem.setText(items[position].namaProduk)
+            layoutNarrow_hargaItem.setText("Rp ${items[position].hargaProduk}")
+            layoutNarrow_namaMitra.setText(items[position].idMitra)
         }
     }
 

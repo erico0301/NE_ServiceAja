@@ -7,45 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".checkout.CheckoutActivity">
 
-    <View
-        android:id="@+id/topBg"
-        android:layout_width="657dp"
-        android:layout_height="323dp"
-        android:layout_marginLeft="-80dp"
-        android:layout_marginRight="-80dp"
-        android:layout_marginTop="-250dp"
-        android:background="@drawable/home_background_top" />
-    <LinearLayout
-        android:id="@+id/topMenu"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_action_back"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
-        <TextView
+        android:layout_height="wrap_content" >
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Checkout"
-            android:fontFamily="@font/dm_sans"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
-
-    </LinearLayout>
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_close"
+            app:title="Checkout"
+            app:titleMarginStart="100dp"
+            android:background="@color/gold"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="60dp"
+        android:padding="10dp"
         android:layout_below="@+id/topBg">
 
         <RelativeLayout

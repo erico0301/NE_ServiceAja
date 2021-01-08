@@ -13,7 +13,10 @@
             android:id="@+id/daftarKendaraan_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_close"/>
+            app:navigationIcon="@drawable/ic_close"
+            app:title="Daftar Kendaraan"
+            app:titleTextAppearance="@font/poppins_bold"
+            android:background="@color/gold" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView

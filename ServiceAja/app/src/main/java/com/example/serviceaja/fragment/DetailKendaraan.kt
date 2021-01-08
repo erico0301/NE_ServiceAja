@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.NumberPicker
 import android.widget.Spinner
 import androidx.fragment.app.DialogFragment
-import com.example.serviceaja.R
+import com.example.serviceaja.*
 
 class DetailKendaraan : DialogFragment() {
 
@@ -35,7 +37,7 @@ class DetailKendaraan : DialogFragment() {
         val toolbar = rootView.findViewById(R.id.detailKendaraan_toolbar) as androidx.appcompat.widget.Toolbar
         toolbar.apply {
             setNavigationOnClickListener { dismiss() }
-            setTitle("Tambah Alamat")
+            setTitle("Tambah Kendaraan")
         }
 
         val adapterMerk = ArrayAdapter.createFromResource(requireActivity(), R.array.merkMobil, android.R.layout.simple_spinner_dropdown_item)
@@ -45,6 +47,17 @@ class DetailKendaraan : DialogFragment() {
         rootView.findViewById<Spinner>(R.id.detailKendaraan_merk).adapter = adapterMerk
         rootView.findViewById<Spinner>(R.id.detailKendaraan_nama).adapter = adapterNama
         rootView.findViewById<Spinner>(R.id.detailKendaraan_bahanBakar).adapter = adapterBahanBakar
+
+        if (arguments != null) {
+            rootView.findViewById<EditText>(R.id.detailKendaraan_noPlat).setText(arguments?.getString(KENDARAAN_NO_PLAT))
+            rootView.findViewById<Spinner>(R.id.detailKendaraan_merk).setSelection(arguments?.getInt(KENDARAAN_MERK)?:0)
+            rootView.findViewById<Spinner>(R.id.detailKendaraan_nama).setSelection(arguments?.getInt(KENDARAAN_NAMA)?:0)
+            rootView.findViewById<NumberPicker>(R.id.detailKendaraan_tahun).setValue(arguments?.getInt(KENDARAAN_NO_PLAT)?:0)
+            rootView.findViewById<Spinner>(R.id.detailKendaraan_bahanBakar).setSelection(arguments?.getInt(KENDARAAN_BAHAN_BAKAR)?:0)
+            rootView.findViewById<EditText>(R.id.detailKendaraan_noRangka).setText(arguments?.getString(KENDARAAN_NO_PLAT))
+            rootView.findViewById<EditText>(R.id.detailKendaraan_noMesin).setText(arguments?.getString(KENDARAAN_NO_PLAT))
+            rootView.findViewById<EditText>(R.id.detailKendaraan_noBPKB).setText(arguments?.getString(KENDARAAN_NO_PLAT))
+        }
 
         return rootView
     }

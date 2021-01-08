@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
 import com.example.serviceaja.recyclerview.RecyclerViewCheckoutProductServiceDetails
 import kotlinx.android.synthetic.main.activity_checkout.*
-import kotlinx.android.synthetic.main.activity_checkout.backBtn
 
 class CheckoutActivity : AppCompatActivity() {
 
@@ -18,10 +17,6 @@ class CheckoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
-
-        backBtn.setOnClickListener {
-            onBackPressed()
-        }
 
         layoutManager = LinearLayoutManager (this)
         recyclerViewServiceProductDetails.layoutManager = layoutManager

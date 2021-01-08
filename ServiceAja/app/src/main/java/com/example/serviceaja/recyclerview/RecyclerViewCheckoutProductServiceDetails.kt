@@ -33,7 +33,7 @@ class RecyclerViewCheckoutProductServiceDetails : RecyclerView.Adapter<RecyclerV
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recyclerview_productservice_detail_transaction, parent, false)
+            .inflate(R.layout.layout_service_product_preview, parent, false)
         return ViewHolder(view)
     }
 

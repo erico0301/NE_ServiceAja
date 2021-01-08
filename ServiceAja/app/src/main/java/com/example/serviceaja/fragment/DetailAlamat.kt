@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.DialogFragment
-import com.example.serviceaja.R
+import com.example.serviceaja.*
 
 class DetailAlamat : DialogFragment() {
 
@@ -46,6 +47,18 @@ class DetailAlamat : DialogFragment() {
 
         rootView.findViewById<Button>(R.id.detailAlamat_btnBatal).setOnClickListener {
             dismiss()
+        }
+
+        when (arguments?.getString(ALAMAT_TIPE)) {
+            "EDIT" -> {
+                rootView.findViewById<EditText>(R.id.detailAlamat_namaAlamat).setText(arguments?.getString(ALAMAT_NAMA_ALAMAT))
+                rootView.findViewById<EditText>(R.id.detailAlamat_namaPenerima).setText(arguments?.getString(ALAMAT_NAMA_PENERIMA))
+                rootView.findViewById<EditText>(R.id.detailAlamat_noTelp).setText(arguments?.getString(ALAMAT_NO_TELP))
+                rootView.findViewById<EditText>(R.id.detailAlamat_detailAlamat).setText(arguments?.getString(ALAMAT_DETAIL_ALAMAT))
+                /*rootView.findViewById<Spinner>(R.id.detailAlamat_provinsi).setSelection(arguments?.getInt(ALAMAT_PROVINSI) ?: 0)
+                rootView.findViewById<Spinner>(R.id.detailAlamat_kabupatenKota).setSelection(arguments?.getInt(ALAMAT_KABUPATEN_KOTA) ?: 0)
+                rootView.findViewById<Spinner>(R.id.detailAlamat_kecamatan).setSelection(arguments?.getInt(ALAMAT_KECAMATAN) ?: 0)*/
+            }
         }
 
         return rootView

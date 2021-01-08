@@ -17,8 +17,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.serviceaja.DaftardanEditProfilMitra
 import com.example.serviceaja.EditProfilUser
 import com.example.serviceaja.R
-
-private const val NUM_PAGES = 2
+import kotlinx.android.synthetic.main.fragment_profil_mitra.view.*
 
 class ProfilMitraFragment : Fragment() {
 
@@ -43,18 +42,12 @@ class ProfilMitraFragment : Fragment() {
             startActivity(intent)
         }
 
-        val viewPager = fragment.findViewById<ViewPager2>(R.id.profilMitra_viewPager)
-        val pagerAdapter = PagerAdapterConstructor(this)
-        viewPager.adapter = pagerAdapter
+        childFragmentManager.beginTransaction().apply {
+            add(R.id.profilMitra_fragmentContainer, DaftarService())
+            commit()
+        }
 
         return fragment
-    }
-
-    private inner class PagerAdapterConstructor(fa: Fragment): FragmentStateAdapter(fa) {
-        override fun getItemCount(): Int = NUM_PAGES
-
-        override fun createFragment(position: Int): Fragment = DaftarService()
-
     }
 
 }

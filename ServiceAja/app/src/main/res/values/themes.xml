@@ -78,7 +78,7 @@
     <style name="AppTheme.FullScreenDialog" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="colorPrimaryDark">@color/purple_500</item>
         <item name="colorAccent">@color/teal_200</item>
-        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimary">@color/gold</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="actionMenuTextColor">@color/black</item>

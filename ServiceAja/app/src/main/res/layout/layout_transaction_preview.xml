@@ -1,32 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
-    android:padding="5dp"
-    android:background="@drawable/layout_transaction_details">
+    android:padding="10dp"
+    android:layout_marginVertical="10dp"
+    android:background="@drawable/picture_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/profileIcon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/profile_2"
+        android:id="@+id/previewTransaksi_fotoMitra"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/mitsubishi_logo"
         android:scaleType="fitXY"
         android:padding="5dp"
         android:background="@drawable/profile_round_corner"/>
 
     <TextView
-        android:id="@+id/namaMitra"
+        android:id="@+id/previewTransaksi_namaMitra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/previewTransaksi_fotoMitra"
+        app:layout_constraintTop_toTopOf="@id/previewTransaksi_fotoMitra"
+        app:layout_constraintBottom_toBottomOf="@id/previewTransaksi_fotoMitra"
         android:text="Mitsubishi"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/profileIcon"
+        android:layout_marginStart="10dp"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:fontFamily="@font/dm_sans"/>
+        android:fontFamily="@font/dmsans_bold"/>
+
+    <TextView
+        android:id="@+id/previewTransaksi_statusTransaksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/previewTransaksi_fotoMitra"
+        android:padding="10dp"
+        android:text="Dalam Proses"
+        android:textSize="10sp"
+        android:fontFamily="@font/poppins_medium"
+        android:background="@drawable/bg_transaction_status_ongoing" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/previewTransaksi_fotoItem"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@id/previewTransaksi_fotoMitra"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        app:shapeAppearanceOverlay="@drawable/picture_background" />
+
+    <TextView
+        android:id="@+id/previewTransaksi_namaItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/previewTransaksi_fotoItem"
+        app:layout_constraintTop_toTopOf="@id/previewTransaksi_fotoItem"
+        android:layout_marginStart="10dp"
+        android:text="Nama Service atau Produk"
+        android:fontFamily="@font/poppins_bold" />
+
+    <TextView
+        android:id="@+id/previewTransaksi_hargaItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/previewTransaksi_fotoItem"
+        app:layout_constraintTop_toBottomOf="@id/previewTransaksi_namaItem"
+        android:layout_marginStart="10dp"
+        android:text="Rp xxx.xxx,-"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/previewTransaksi_hargaItem"
+        app:layout_constraintStart_toEndOf="@id/previewTransaksi_fotoItem"
+        android:layout_marginStart="10dp"
+        android:text="Jumlah : "
+        android:fontFamily="@font/poppins_light" />
+
+    <TextView
+        android:id="@+id/previewTransaksi_jumlahItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/previewTransaksi_fotoItem"
+        app:layout_constraintTop_toBottomOf="@id/previewTransaksi_hargaItem"
+        android:layout_marginStart="80dp"
+        android:text="1"
+        android:fontFamily="@font/poppins_light" />
+
+    <TextView
+        android:id="@+id/previewTransaksi_totalItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/previewTransaksi_fotoItem"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="+2 item lainnya"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/previewTransaksi_totalHarga"
+        app:layout_constraintBottom_toTopOf="@id/previewTransaksi_totalHarga"
+        android:text="Total:"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_light"/>
+
+    <TextView
+        android:id="@+id/previewTransaksi_totalHarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/previewTransaksi_totalItem"
+        android:layout_marginEnd="10dp"
+        android:text="Rp xxx.xxx,-"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_bold" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+<!--
+<RelativeLayout
+
+    android:layout_marginBottom="20dp"
+    android:padding="5dp"
+    android:background="@drawable/layout_transaction_details">
+
+
 
     <TextView
         android:id="@+id/daftarTxt"
@@ -47,7 +151,7 @@
         android:layout_below="@id/daftarTxt"
         android:layout_marginTop="5dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/dm_sans"/>
+        android:fontFamily="@font/dmsans_bold"/>
     <TextView
         android:id="@+id/hargaService"
         android:layout_width="wrap_content"
@@ -74,7 +178,7 @@
         android:id="@+id/quantityService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
+        android:text="x1"
         android:layout_below="@id/daftarTxt"
         android:layout_marginTop="5dp"
         android:layout_alignParentRight="true"
@@ -91,7 +195,7 @@
         android:layout_below="@id/namaService"
         android:layout_marginTop="5dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/dm_sans"/>
+        android:fontFamily="@font/dmsans_bold"/>
     <TextView
         android:id="@+id/hargaProduk"
         android:layout_width="wrap_content"
@@ -118,7 +222,7 @@
         android:id="@+id/quantityProduk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
+        android:text="x1"
         android:layout_below="@id/namaService"
         android:layout_marginTop="5dp"
         android:layout_alignParentRight="true"
@@ -178,7 +282,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/dm_sans"/>
+        android:fontFamily="@font/dmsans_bold"/>
     <TextView
         android:id="@+id/statusTxt"
         android:layout_width="wrap_content"
@@ -194,3 +298,4 @@
         android:fontFamily="@font/dm_sans"/>
 
 </RelativeLayout>
+-->

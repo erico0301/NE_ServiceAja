@@ -1,0 +1,21 @@
+package com.example.serviceaja
+
+const val ALAMAT_TIPE = "com.example.serviceaja.DaftarAlamat.ALAMAT_TIPE"
+const val ALAMAT_NAMA_ALAMAT = "com.example.serviceaja.DaftarAlamat.ALAMAT_NAMA_ALAMAT"
+const val ALAMAT_NAMA_PENERIMA = "com.example.serviceaja.DaftarAlamat.ALAMAT_NAMA_PENERIMA"
+const val ALAMAT_NO_TELP = "com.example.serviceaja.DaftarAlamat.ALAMAT_NO_TELP"
+const val ALAMAT_PROVINSI = "com.example.serviceaja.DaftarAlamat.ALAMAT_PROVINSI"
+const val ALAMAT_KABUPATEN_KOTA = "com.example.serviceaja.DaftarAlamat.ALAMAT_KABUPATEN_KOTA"
+const val ALAMAT_KECAMATAN = "com.example.serviceaja.DaftarAlamat.ALAMAT_KECAMATAN"
+const val ALAMAT_DETAIL_ALAMAT = "com.example.serviceaja.DaftarAlamat.ALAMAT_DETAIL_ALAMAT"
+
+const val KENDARAAN_TIPE = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_TIPE"
+const val KENDARAAN_NO_PLAT = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_NO_PLAT"
+const val KENDARAAN_MERK = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_MERK"
+const val KENDARAAN_NAMA = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_NAMA"
+const val KENDARAAN_TAHUN = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_TAHUN"
+const val KENDARAAN_WARNA = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_WARNA"
+const val KENDARAAN_BAHAN_BAKAR = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_BAHAN_BAKAR"
+const val KENDARAAN_NO_RANGKA = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_NO_RANGKA"
+const val KENDARAAN_NO_MESIN = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_NO_MESIN"
+const val KENDARAAN_NO_BPKB = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_NO_BPKB"

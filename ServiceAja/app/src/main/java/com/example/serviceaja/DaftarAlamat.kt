@@ -15,7 +15,7 @@ class DaftarAlamat : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daftar_alamat)
 
-        findViewById<Toolbar>(R.id.daftarAlamat_toolbar).setNavigationOnClickListener {
+        findViewById<androidx.appcompat.widget.Toolbar>(R.id.daftarAlamat_toolbar).setNavigationOnClickListener {
             onBackPressed()
         }
     }
@@ -64,19 +64,26 @@ class DaftarAlamat : AppCompatActivity() {
             kecamatan++
         }
 
+        val bundle = Bundle()
+        bundle.putString(ALAMAT_TIPE, "EDIT")
+        bundle.putString(ALAMAT_NAMA_ALAMAT, namaAlamat)
+        bundle.putString(ALAMAT_NAMA_PENERIMA, namaPenerima)
+        bundle.putString(ALAMAT_NO_TELP, noTelp)
+        bundle.putInt(ALAMAT_PROVINSI, provinsi)
+        bundle.putInt(ALAMAT_KABUPATEN_KOTA, kabupatenKota)
+        bundle.putInt(ALAMAT_KECAMATAN, kecamatan)
+        bundle.putString(ALAMAT_DETAIL_ALAMAT, detailAlamat)
+
         val fragment = DetailAlamat()
-        fragment.show(supportFragmentManager, "TAG")
-        findViewById<EditText>(R.id.detailAlamat_namaAlamat).setText(namaAlamat)
-        findViewById<EditText>(R.id.detailAlamat_namaPenerima).setText(namaPenerima)
-        findViewById<EditText>(R.id.detailAlamat_noTelp).setText(noTelp)
-        findViewById<EditText>(R.id.detailAlamat_detailAlamat).setText(detailAlamat)
-        findViewById<Spinner>(R.id.detailAlamat_provinsi).setSelection(provinsi)
-        findViewById<Spinner>(R.id.detailAlamat_kabupatenKota).setSelection(kabupatenKota)
-        findViewById<Spinner>(R.id.detailAlamat_kecamatan).setSelection(kecamatan)
+        fragment.arguments = bundle
+        fragment.show(supportFragmentManager, "EDIT ALAMAT")
     }
 
     fun addAddressDialog(view: View) {
         val fragment = DetailAlamat()
+        fragment.arguments = Bundle().apply {
+            putString(ALAMAT_TIPE, "TAMBAH")
+        }
         fragment.show(supportFragmentManager, "TAG")
 
         var namaAlamat = ""
@@ -84,7 +91,7 @@ class DaftarAlamat : AppCompatActivity() {
         var noTelp = ""
         var detailAlamat = ""
         var daerah = ""
-
+        /*
         findViewById<Button>(R.id.detailAlamat_btnTambah).setOnClickListener {
             var change = false
             AlertDialog.Builder(this)
@@ -113,6 +120,6 @@ class DaftarAlamat : AppCompatActivity() {
                 Toast.makeText(this, "Berhasil Menambahkan Alamat Baru", Toast.LENGTH_SHORT).show()
                 // Buat Alamat ke daftar baru
             }
-        }
+        }*/
     }
 }

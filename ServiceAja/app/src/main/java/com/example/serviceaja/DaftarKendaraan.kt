@@ -16,7 +16,7 @@ class DaftarKendaraan : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daftar_kendaraan)
 
-        findViewById<Toolbar>(R.id.daftarKendaraan_toolbar).setNavigationOnClickListener {
+        findViewById<androidx.appcompat.widget.Toolbar>(R.id.daftarKendaraan_toolbar).setNavigationOnClickListener {
             onBackPressed()
         }
     }
@@ -24,7 +24,7 @@ class DaftarKendaraan : AppCompatActivity() {
     fun tambahKendaraan(view: View) {
         val fragment = DetailKendaraan()
         fragment.show(supportFragmentManager, "${fragment} inside ${this}")
-
+        /*
         var noPlat = ""
         var merk = ""
         var nama = ""
@@ -65,7 +65,7 @@ class DaftarKendaraan : AppCompatActivity() {
                 Toast.makeText(this, "Berhasil Menambahkan Kendaraan Baru", Toast.LENGTH_SHORT).show()
                 // Buat Alamat ke daftar baru
             }
-        }
+        }*/
     }
 
     fun editKendaraan(view: View) {
@@ -101,14 +101,7 @@ class DaftarKendaraan : AppCompatActivity() {
 
         val fragment = DetailKendaraan()
         fragment.show(supportFragmentManager, "Detail Kendaraan")
-        findViewById<EditText>(R.id.detailKendaraan_noPlat).setText(noPlat)
-        findViewById<Spinner>(R.id.detailKendaraan_merk).setSelection(merk)
-        findViewById<Spinner>(R.id.detailKendaraan_nama).setSelection(nama)
-        findViewById<NumberPicker>(R.id.detailKendaraan_tahun).setValue(tahun)
-        findViewById<Spinner>(R.id.detailKendaraan_bahanBakar).setSelection(bahanBakar)
-        findViewById<EditText>(R.id.detailKendaraan_noRangka).setText(noRangka)
-        findViewById<EditText>(R.id.detailKendaraan_noMesin).setText(noMesin)
-        findViewById<EditText>(R.id.detailKendaraan_noBPKB).setText(noBPKB)
+
     }
 
     fun hapusKendaraan(view: View) {

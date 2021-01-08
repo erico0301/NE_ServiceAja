@@ -9,14 +9,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
-import com.example.serviceaja.recyclerview.RecyclerViewTransactionDetails
+import com.example.serviceaja.recyclerview.RVTransactionPreview
 import com.example.serviceaja.transaction.OnGoingTransactionActivity
 import kotlinx.android.synthetic.main.fragment_on_going_transaction.*
 
 class OnGoingTransactionFragment : Fragment() {
 
     private var layoutManager : RecyclerView.LayoutManager? = null
-    private var adapter : RecyclerView.Adapter<RecyclerViewTransactionDetails.ViewHolder>? = null
+    private var adapter : RecyclerView.Adapter<RVTransactionPreview.ViewHolder>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +35,8 @@ class OnGoingTransactionFragment : Fragment() {
         layoutManager = LinearLayoutManager (activity)
         recyclerViewOnGoingTransaction.layoutManager = layoutManager
 
-        adapter = RecyclerViewTransactionDetails()
+        adapter = RVTransactionPreview()
         recyclerViewOnGoingTransaction.adapter = adapter
-
-        details.setOnClickListener {
-            var transactionDetailIntent = Intent(activity, OnGoingTransactionActivity::class.java)
-            startActivity(transactionDetailIntent)
-        }
     }
 
     companion object {

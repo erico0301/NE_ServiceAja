@@ -35,19 +35,19 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        layoutManager = GridLayoutManager (activity, 2, LinearLayoutManager.VERTICAL, false)
+        layoutManager = LinearLayoutManager(activity)
         recyclerViewBengkelDetails.layoutManager = layoutManager
 
         adapter = RecyclerViewBengkelDetails()
         recyclerViewBengkelDetails.adapter = adapter
 
-       searchEditText.setOnClickListener {
-            var searchIntent = Intent(context, SearchActivity::class.java)
+        home_inputSearch.setOnClickListener {
+            var searchIntent = Intent(activity, SearchActivity::class.java)
             startActivity(searchIntent)
         }
 
         wishlistIcon.setOnClickListener {
-            var wishlistIntent = Intent(context, WishlistActivity::class.java)
+            var wishlistIntent = Intent(activity, WishlistActivity::class.java)
             startActivity(wishlistIntent)
         }
     }

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
+import kotlinx.android.synthetic.main.layout_mitra_wide_pic.view.*
 
 class RecyclerViewBengkelDetails : RecyclerView.Adapter<RecyclerViewBengkelDetails.ViewHolder>() {
 
@@ -19,37 +20,21 @@ class RecyclerViewBengkelDetails : RecyclerView.Adapter<RecyclerViewBengkelDetai
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var imgBengkel: ImageView
-        var namaBengkel: TextView
-        var alamatBengkel: TextView
-        var kotaBengkel: TextView
-        var imgRating: ImageView
-        var ratingTxt: TextView
-
-        init {
-            imgBengkel = itemView.findViewById(R.id.bengkelImg)
-            namaBengkel = itemView.findViewById(R.id.namaBengkel)
-            alamatBengkel = itemView.findViewById(R.id.alamatBengkel)
-            kotaBengkel = itemView.findViewById(R.id.kotaBengkel)
-            imgRating = itemView.findViewById(R.id.ratingIcon)
-            ratingTxt = itemView.findViewById(R.id.ratingTxt)
-        }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recyclerview_bengkel_details, parent, false)
+            .inflate(R.layout.layout_mitra_wide_pic, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imgBengkel.setImageResource(itemImgBengkel[position])
-        holder.namaBengkel.text = itemNamaBengkel[position]
-        holder.alamatBengkel.text = itemAlamatBengkel[position]
-        holder.kotaBengkel.text = itemKotaBengkel[position]
-        holder.imgRating.setImageResource(itemImgRating[position])
-        holder.ratingTxt.text = itemRatingTxt[position]
+        holder.itemView.apply {
+            layoutMitra_fotoBengkel.setImageResource(itemImgBengkel[position])
+            layoutMitra_namaBengkel.text = itemNamaBengkel[position]
+            layoutMitra_alamatMitra.text = itemAlamatBengkel[position]
+            layoutMitra_kotaMitra.text = itemKotaBengkel[position]
+        }
     }
 
     override fun getItemCount(): Int {

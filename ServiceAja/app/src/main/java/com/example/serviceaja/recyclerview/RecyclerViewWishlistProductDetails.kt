@@ -1,5 +1,6 @@
 package com.example.serviceaja.recyclerview
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
+import kotlinx.android.synthetic.main.layout_service_product_wide_pic.view.*
+import kotlinx.android.synthetic.main.recyclerview_wishlist_product_details.view.*
 
 class RecyclerViewWishlistProductDetails : RecyclerView.Adapter<RecyclerViewWishlistProductDetails.ViewHolder>() {
 
@@ -21,42 +24,23 @@ class RecyclerViewWishlistProductDetails : RecyclerView.Adapter<RecyclerViewWish
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var imgProduct: ImageView
-        var namaProduct: TextView
-        var hargaProduct: TextView
-        var imgBengkel: ImageView
-        var namaBengkel: TextView
-        var kotaBengkel: TextView
-        var imgRating: ImageView
-        var ratingTxt: TextView
-
-        init {
-            imgProduct = itemView.findViewById(R.id.productImg)
-            namaProduct = itemView.findViewById(R.id.productName)
-            hargaProduct = itemView.findViewById(R.id.productPrice)
-            imgBengkel = itemView.findViewById(R.id.bengkelImg)
-            namaBengkel = itemView.findViewById(R.id.namaBengkel)
-            kotaBengkel = itemView.findViewById(R.id.kotaBengkel)
-            imgRating = itemView.findViewById(R.id.ratingIcon)
-            ratingTxt = itemView.findViewById(R.id.ratingTxt)
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recyclerview_wishlist_product_details, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.layout_service_product_wide_pic, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imgProduct.setImageResource(itemImgProduct[position])
-        holder.namaProduct.text = itemNamaProduct[position]
-        holder.hargaProduct.text = itemHargaProduct[position]
-        holder.imgBengkel.setImageResource(itemImgBengkel[position])
-        holder.namaBengkel.text = itemNamaBengkel[position]
-        holder.kotaBengkel.text = itemKotaBengkel[position]
-        holder.imgRating.setImageResource(itemImgRating[position])
-        holder.ratingTxt.text = itemRatingTxt[position]
+        holder.itemView.apply {
+            layoutWide_fotoItem.setImageResource(itemImgProduct[position])
+            layoutWide_namaItem.text = itemNamaProduct[position]
+            layoutWide_hargaItem.text = itemHargaProduct[position]
+            layoutWide_fotoMitra.setImageResource(itemImgBengkel[position])
+            layoutWide_namaMitra.text = itemNamaBengkel[position]
+            layoutWide_kotaMitra.text = itemKotaBengkel[position]
+        }
     }
 
     override fun getItemCount(): Int {

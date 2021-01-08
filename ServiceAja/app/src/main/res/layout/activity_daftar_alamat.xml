@@ -13,7 +13,10 @@
             android:id="@+id/daftarAlamat_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_close" />
+            app:navigationIcon="@drawable/ic_close"
+            android:background="@color/gold"
+            app:title="Daftar Alamat"
+            app:titleTextAppearance="@font/poppins_bold"/>
     </com.google.android.material.appbar.AppBarLayout>
     <ScrollView
         android:layout_width="match_parent"

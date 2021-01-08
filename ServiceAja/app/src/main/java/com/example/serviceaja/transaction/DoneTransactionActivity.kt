@@ -5,14 +5,14 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
-import com.example.serviceaja.recyclerview.RecyclerViewProductServiceTransactionDoneDetail
+import com.example.serviceaja.recyclerview.RVTransactionDoneServiceProductPreview
 import kotlinx.android.synthetic.main.activity_done_transaction.*
 import kotlinx.android.synthetic.main.activity_done_transaction.backBtn
 
 class DoneTransactionActivity : AppCompatActivity() {
 
     private var layoutManager : RecyclerView.LayoutManager? = null
-    private var adapter : RecyclerView.Adapter<RecyclerViewProductServiceTransactionDoneDetail.ViewHolder>? = null
+    private var adapter : RecyclerView.Adapter<RVTransactionDoneServiceProductPreview.ViewHolder>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class DoneTransactionActivity : AppCompatActivity() {
 
         layoutManager = LinearLayoutManager (this)
         recyclerViewDoneTransactionDetails.layoutManager = layoutManager
-        adapter = RecyclerViewProductServiceTransactionDoneDetail()
+        adapter = RVTransactionDoneServiceProductPreview()
         recyclerViewDoneTransactionDetails.adapter = adapter
     }
 }
