@@ -142,5 +142,10 @@
         <item>Solar</item>
         <item>Listrik</item>
     </string-array>
+    <string-array name="metodePembayaran">
+        <item>Kartu Kredit</item>
+        <item>Transfer Bank</item>
+        <item>M-Banking</item>
+    </string-array>
 
 </resources>

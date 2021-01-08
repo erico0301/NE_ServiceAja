@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.HomeActivity
 import com.example.serviceaja.R
 import com.example.serviceaja.recyclerview.RecyclerViewCheckoutProductServiceDetails
-import kotlinx.android.synthetic.main.activity_checkout.backBtn
 import kotlinx.android.synthetic.main.activity_checkout.recyclerViewServiceProductDetails
 import kotlinx.android.synthetic.main.activity_confirm_payment.*
 
@@ -31,7 +30,7 @@ class ConfirmPaymentActivity : AppCompatActivity() {
         adapter = RecyclerViewCheckoutProductServiceDetails()
         recyclerViewServiceProductDetails.adapter = adapter
 
-        val adapter = ArrayAdapter.createFromResource(this, R.array.paymentMethodSpinner,
+        val adapter = ArrayAdapter.createFromResource(this, R.array.metodePembayaran,
             android.R.layout.simple_spinner_dropdown_item)
         paymentMethodSpinner.adapter = adapter
 
