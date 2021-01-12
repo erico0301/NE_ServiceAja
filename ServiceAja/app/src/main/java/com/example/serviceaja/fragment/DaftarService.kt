@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.serviceaja.ItemAdapter
+import com.example.serviceaja.classes.ItemAdapter
 import com.example.serviceaja.R
 import com.example.serviceaja.ServiceItem
-import kotlinx.android.synthetic.main.fragment_daftar_service.*
-import kotlinx.android.synthetic.main.fragment_profil_mitra.*
 
 class DaftarService : Fragment() {
 

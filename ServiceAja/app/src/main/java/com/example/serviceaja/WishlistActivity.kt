@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.serviceaja.recyclerview.RecyclerViewWishlistProductDetails
+import com.example.serviceaja.recyclerview.RVWishList
 import kotlinx.android.synthetic.main.activity_wishlist.*
 
 class WishlistActivity : AppCompatActivity() {
 
     private var layoutManager : RecyclerView.LayoutManager? = null
-    private var adapter : RecyclerView.Adapter<RecyclerViewWishlistProductDetails.ViewHolder>? = null
+    private var adapter : RecyclerView.Adapter<RVWishList.ViewHolder>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class WishlistActivity : AppCompatActivity() {
         layoutManager = LinearLayoutManager (this)
         recyclerViewDetailsWishlist.layoutManager = layoutManager
 
-        adapter = RecyclerViewWishlistProductDetails()
+        adapter = RVWishList()
         recyclerViewDetailsWishlist.adapter = adapter
 
         wishTxt.setOnClickListener {

@@ -8,7 +8,7 @@
     android:layout_marginVertical="5dp"
     app:cardCornerRadius="8dp"
     app:strokeColor="@color/darkGray"
-    app:strokeWidth="2dp"
+    app:strokeWidth="1dp"
     android:background="@drawable/picture_background" >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,12 +39,25 @@
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/layoutWide_hargaItem"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/layoutWide_hargaItem"
+                app:layout_constraintTop_toTopOf="@id/layoutWide_hargaItem"
+                android:layout_marginEnd="5dp"
+                android:text="Rp"
+                android:textSize="10sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light" />
+
+            <TextView
+                android:id="@+id/layoutWide_hargaItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layoutWide_namaItem"
-                android:text="Rp XXX.XXX,-"
-                android:textSize="20sp"
+                android:layout_marginStart="18dp"
+                android:text="XXX.XXX,-"
+                android:textSize="18sp"
                 android:fontFamily="@font/poppins_bold" />
 
             <RelativeLayout

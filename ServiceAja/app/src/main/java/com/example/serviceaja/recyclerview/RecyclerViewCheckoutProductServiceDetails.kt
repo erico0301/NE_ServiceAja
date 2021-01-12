@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
+import kotlinx.android.synthetic.main.layout_service_product_preview.view.*
 
 class RecyclerViewCheckoutProductServiceDetails : RecyclerView.Adapter<RecyclerViewCheckoutProductServiceDetails.ViewHolder>() {
 
@@ -17,18 +18,6 @@ class RecyclerViewCheckoutProductServiceDetails : RecyclerView.Adapter<RecyclerV
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var imgProduct: ImageView
-        var namaProduct: TextView
-        var hargaProduct: TextView
-        var quantityProduct: TextView
-
-        init {
-            imgProduct = itemView.findViewById(R.id.serviceImg)
-            namaProduct = itemView.findViewById(R.id.namaService)
-            hargaProduct = itemView.findViewById(R.id.servicePrice)
-            quantityProduct = itemView.findViewById(R.id.quantityService)
-        }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,10 +27,12 @@ class RecyclerViewCheckoutProductServiceDetails : RecyclerView.Adapter<RecyclerV
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imgProduct.setImageResource(itemImgProduct[position])
-        holder.namaProduct.text = itemNamaProduct[position]
-        holder.hargaProduct.text = itemHargaProduct[position]
-        holder.quantityProduct.text = itemQtyProduct[position]
+        holder.itemView.apply {
+            layoutItemPreview_fotoItem.setImageResource(itemImgProduct[position])
+            layoutItemPreview_namaItem.text = itemNamaProduct[position]
+            layoutItemPreview_hargaItem.text = itemHargaProduct[position]
+            layoutItemPreview_jumlahItem.text = itemQtyProduct[position]
+        }
     }
 
     override fun getItemCount(): Int {

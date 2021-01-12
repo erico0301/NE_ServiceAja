@@ -1,9 +1,11 @@
-package com.example.serviceaja
+package com.example.serviceaja.classes
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceaja.R
+import com.example.serviceaja.ServiceItem
 import kotlinx.android.synthetic.main.layout_service_product_small_pic.view.*
 
 class ItemAdapter(

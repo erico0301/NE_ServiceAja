@@ -1,17 +1,13 @@
 package com.example.serviceaja.recyclerview
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
 import kotlinx.android.synthetic.main.layout_service_product_wide_pic.view.*
-import kotlinx.android.synthetic.main.recyclerview_wishlist_product_details.view.*
 
-class RecyclerViewWishlistProductDetails : RecyclerView.Adapter<RecyclerViewWishlistProductDetails.ViewHolder>() {
+class RVWishList : RecyclerView.Adapter<RVWishList.ViewHolder>() {
 
     private val itemImgProduct = intArrayOf(R.drawable.dashcam, R.drawable.bodykit_x5)
     private val itemNamaProduct = arrayOf("Dashcam BlackVue 60fps FHD (Front)", "BodyKit BMW X5")

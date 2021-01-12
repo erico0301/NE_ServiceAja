@@ -12,7 +12,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:scaleType="fitXY"
-        app:shapeAppearanceOverlay="@drawable/picture_background" />
+        app:shapeAppearanceOverlay="@drawable/picture_background_dark" />
     <TextView
         android:id="@+id/layoutItemPreview_namaItem"
         android:layout_width="wrap_content"
@@ -20,10 +20,10 @@
         app:layout_constraintStart_toEndOf="@id/layoutItemPreview_fotoItem"
         app:layout_constraintTop_toTopOf="@id/layoutItemPreview_fotoItem"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:text="Car Wash"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:fontFamily="@font/dmsans_bold"/>
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_bold"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,8 +32,7 @@
         android:text="Rp"
         android:textColor="@color/black"
         android:textSize="10sp"
-        android:fontFamily="@font/dm_sans"
-        android:textStyle="bold"/>
+        android:fontFamily="@font/poppins_light"/>
     <TextView
         android:id="@+id/layoutItemPreview_hargaItem"
         android:layout_width="wrap_content"
@@ -42,9 +41,8 @@
         app:layout_constraintStart_toEndOf="@id/layoutItemPreview_fotoItem"
         android:layout_marginStart="25dp"
         android:text="50.000"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:fontFamily="@font/dmsans_bold" />
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_bold" />
     <TextView
         android:id="@+id/layoutItemPreview_jumlahItem"
         android:layout_width="30dp"
@@ -52,6 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="10dp"
         android:gravity="center"
         android:fontFamily="@font/dm_sans"
         android:text="1"

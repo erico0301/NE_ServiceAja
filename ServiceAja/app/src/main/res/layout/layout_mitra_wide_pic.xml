@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/picture_background" >
+        android:background="@drawable/picture_background_dark" >
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/layoutMitra_fotoBengkel"
@@ -20,12 +20,12 @@
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@drawable/picture_background" />
+            app:shapeAppearanceOverlay="@drawable/picture_background_dark" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/picture_background" >
+            android:background="@drawable/picture_background_dark" >
 
             <TextView
                 android:id="@+id/layoutMitra_namaBengkel"

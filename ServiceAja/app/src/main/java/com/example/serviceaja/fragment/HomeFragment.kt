@@ -15,7 +15,6 @@ import com.example.serviceaja.WishlistActivity
 import com.example.serviceaja.recyclerview.RecyclerViewBengkelDetails
 import com.example.serviceaja.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.recyclerview_wishlist_product_details.*
 
 class HomeFragment : Fragment() {
     private var layoutManager :RecyclerView.LayoutManager? = null

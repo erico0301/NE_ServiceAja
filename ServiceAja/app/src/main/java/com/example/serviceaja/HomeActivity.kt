@@ -18,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        replaceFragment(profileFragment)
+        replaceFragment(homeFragment)
 
         bottomNavBarMenu.setOnNavigationItemSelectedListener {
             when(it.itemId) {
