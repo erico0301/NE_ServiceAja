@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeFragment">
 
-    <View
-        android:layout_width="657dp"
-        android:layout_height="323dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="-100dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="-123dp"
-        android:background="@drawable/home_background_top" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/home_topbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/transparent" >
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/gold" >
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,35 +54,43 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/hello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="75dp"
-        android:text="@string/greetings"
-        android:textColor="@color/darkestBlue"
-        android:textSize="28sp"/>
-
-    <TextView
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/hello"
-        android:text="@string/welcomeslogan"
-        android:textColor="@color/darkBlue"
-        android:textSize="18sp"/>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp">
+        app:layout_constraintTop_toBottomOf="@id/home_topbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="120dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/home_topbar"
+                android:paddingVertical="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_pages" >
+                <TextView
+                    android:id="@+id/hello"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/greetings"
+                    android:textColor="@color/darkestBlue"
+                    android:textSize="28sp"/>
+
+                <TextView
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/hello"
+                    android:text="@string/welcomeslogan"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="18sp"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -89,7 +98,8 @@
                 android:text="@string/cekinfo"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:fontFamily="@font/poppins_bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_vehicle_info"
@@ -241,9 +251,8 @@
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/home_btnSparepart"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="40dp"
-                    android:layout_marginEnd="25dp"
                     android:padding="10dp"
                     android:background="@drawable/layout_category_menu"
                     android:src="@drawable/ic_car_service"
@@ -254,9 +263,9 @@
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/home_btnService"
                     app:layout_constraintEnd_toStartOf="@id/home_btnCuciMobil"
                     android:layout_marginTop="40dp"
-                    android:layout_marginEnd="25dp"
                     android:padding="10dp"
                     android:background="@drawable/layout_category_menu"
                     android:src="@drawable/ic_sparepart"
@@ -281,8 +290,8 @@
                     android:layout_height="55dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/home_btnCuciMobil"
+                    app:layout_constraintEnd_toStartOf="@id/home_btnLainLain"
                     android:layout_marginTop="40dp"
-                    android:layout_marginStart="25dp"
                     android:padding="10dp"
                     android:background="@drawable/layout_category_menu"
                     android:src="@drawable/ic_tow_truck"
@@ -293,9 +302,8 @@
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/home_btnDerekMobil"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="40dp"
-                    android:layout_marginStart="25dp"
                     android:padding="10dp"
                     android:background="@drawable/layout_category_menu"
                     android:src="@drawable/ic_more"
@@ -306,6 +314,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/home_btnService"
                     app:layout_constraintStart_toStartOf="@id/home_btnService"
+                    android:layout_marginTop="5dp"
                     android:textSize="10sp"
                     android:text="@string/service"
                     android:gravity="center"
@@ -317,6 +326,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/home_btnSparepart"
                     app:layout_constraintStart_toStartOf="@id/home_btnSparepart"
+                    android:layout_marginTop="5dp"
                     android:textSize="10sp"
                     android:text="@string/sparepart"
                     android:gravity="center"
@@ -328,6 +338,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/home_btnCuciMobil"
                     app:layout_constraintStart_toStartOf="@id/home_btnCuciMobil"
+                    android:layout_marginTop="5dp"
                     android:textSize="10sp"
                     android:text="@string/cuci_mobil"
                     android:gravity="center"
@@ -340,6 +351,7 @@
                     app:layout_constraintTop_toBottomOf="@id/home_btnDerekMobil"
                     app:layout_constraintStart_toEndOf="@id/home_btnCuciMobil"
                     app:layout_constraintEnd_toStartOf="@id/home_btnLainLain"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:textSize="10sp"
                     android:text="@string/mobil_derek"
@@ -351,6 +363,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/home_btnLainLain"
                     app:layout_constraintStart_toStartOf="@id/home_btnLainLain"
+                    android:layout_marginTop="5dp"
                     android:textSize="10sp"
                     android:text="@string/more"
                     android:gravity="center"
@@ -362,7 +375,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -370,7 +383,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/bengkeltersedia"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_bold" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="match_parent"
@@ -394,4 +408,4 @@
 
     </ScrollView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
