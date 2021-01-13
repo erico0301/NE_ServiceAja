@@ -10,7 +10,6 @@ import com.example.serviceaja.R
 
 class RecyclerViewBengkelDetailsPreview : RecyclerView.Adapter<RecyclerViewBengkelDetailsPreview.ViewHolder>() {
 
-    private val itemImgBengkel = intArrayOf(R.drawable.rolls_royce_logo, R.drawable.bmw_logo)
     private val itemImgBengkel = intArrayOf(R.drawable.rolls_royce_logo, R.drawable.bmw_logo_1)
     private val itemNamaBengkel = arrayOf("Rolls Royce", "BMW")
     private val itemKotaBengkel = arrayOf("Medan", "Medan")
