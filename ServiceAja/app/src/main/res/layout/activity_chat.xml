@@ -8,55 +8,21 @@
     tools:context=".chatreview.ChatActivity"
     android:background="@color/lightestBlue">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gold">
+        app:layout_constraintTop_toTopOf="parent" >
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_action_back"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_marginTop="12dp"/>
-
-        <ImageView
-            android:id="@+id/bengkelImg"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/bmw_logo"
-            android:scaleType="fitXY"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_toRightOf="@+id/backBtn"
-            android:padding="5dp"
-            android:background="@drawable/profile_round_corner"/>
-        <TextView
-            android:id="@+id/namaBengkel"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/detailTransaksi_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BMW"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_toRightOf="@+id/bengkelImg"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:id="@+id/edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Online"
-            android:fontFamily="@font/dm_sans"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_toRightOf="@+id/bengkelImg"
-            android:layout_below="@+id/namaBengkel"
-            android:layout_marginLeft="10dp"/>
-    </RelativeLayout>
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/gold"
+            app:logo="@drawable/bmw_logo_1"
+            app:navigationIcon="@drawable/ic_close"
+            app:title="BMW"
+            app:subtitle="Online"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:id="@+id/bottomMenu"
@@ -139,7 +105,7 @@
         android:id="@+id/bengkelImgChat"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/bmw_logo"
+        android:src="@drawable/bmw_logo_1"
         android:scaleType="fitXY"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="10dp"
