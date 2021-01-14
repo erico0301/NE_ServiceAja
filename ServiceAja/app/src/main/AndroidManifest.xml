@@ -15,6 +15,7 @@
         <activity android:name=".EditProfilUser" />
         <activity android:name=".DaftarAlamat" />
         <activity android:name=".chatreview.ChatActivity" />
+        <activity android:name=".chatreview.ReviewActivity" />
         <activity android:name=".checkout.CheckoutActivity"
             android:theme="@style/GoldStatusBar" />
         <activity

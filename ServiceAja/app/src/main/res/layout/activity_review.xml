@@ -7,40 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".chatreview.ReviewActivity">
 
-    <View
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topBg"
-        android:layout_width="657dp"
-        android:layout_height="323dp"
-        android:layout_marginLeft="-80dp"
-        android:layout_marginRight="-80dp"
-        android:layout_marginTop="-250dp"
-        android:background="@drawable/home_background_top" />
-    <LinearLayout
-        android:id="@+id/topMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        app:layout_constraintTop_toTopOf="parent" >
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_action_back"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
-        <TextView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/review_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Review"
-            android:fontFamily="@font/dm_sans"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
-
-    </LinearLayout>
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/gold"
+            app:navigationIcon="@drawable/ic_close"
+            app:title="Review"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/productImg"
