@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
-import kotlinx.android.synthetic.main.layout_service_product_preview.view.*
+import kotlinx.android.synthetic.main.layout_transaction_product_preview.view.*
 
 class RVTransactionDoneServiceProductPreview : RecyclerView.Adapter<RVTransactionDoneServiceProductPreview.ViewHolder>() {
 
@@ -20,7 +20,7 @@ class RVTransactionDoneServiceProductPreview : RecyclerView.Adapter<RVTransactio
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_service_product_preview, parent, false)
+            .inflate(R.layout.layout_transaction_product_preview, parent, false)
         return ViewHolder(view)
     }
 

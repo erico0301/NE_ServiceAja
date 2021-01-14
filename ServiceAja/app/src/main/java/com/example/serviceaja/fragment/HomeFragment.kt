@@ -6,19 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.serviceaja.HomeActivity
 import com.example.serviceaja.R
 import com.example.serviceaja.WishlistActivity
-import com.example.serviceaja.recyclerview.RecyclerViewBengkelDetails
+import com.example.serviceaja.recyclerview.RVBengkelPreview
 import com.example.serviceaja.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
     private var layoutManager :RecyclerView.LayoutManager? = null
-    private var adapter : RecyclerView.Adapter<RecyclerViewBengkelDetails.ViewHolder>? = null
+    private var adapter : RecyclerView.Adapter<RVBengkelPreview.ViewHolder>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +35,12 @@ class HomeFragment : Fragment() {
         layoutManager = LinearLayoutManager(activity)
         recyclerViewBengkelDetails.layoutManager = layoutManager
 
-        adapter = RecyclerViewBengkelDetails()
+        adapter = RVBengkelPreview()
         recyclerViewBengkelDetails.adapter = adapter
+
+        home_inputSearch.setOnFocusChangeListener { v, hasFocus ->
+            if (v == home_inputSearch && hasFocus) startActivity(Intent(activity, SearchActivity::class.java))
+        }
 
         home_inputSearch.setOnClickListener {
             var searchIntent = Intent(activity, SearchActivity::class.java)

@@ -3,13 +3,11 @@ package com.example.serviceaja.recyclerview
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
 import kotlinx.android.synthetic.main.layout_mitra_wide_pic.view.*
 
-class RecyclerViewBengkelDetails : RecyclerView.Adapter<RecyclerViewBengkelDetails.ViewHolder>() {
+class RVBengkelPreview : RecyclerView.Adapter<RVBengkelPreview.ViewHolder>() {
 
     private val itemImgBengkel = intArrayOf(R.drawable.service_xpander, R.drawable.service_bmw)
     private val itemNamaBengkel = arrayOf("Mitsubishi", "BMW")

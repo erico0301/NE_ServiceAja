@@ -9,14 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
 import com.example.serviceaja.recyclerview.RVTransactionServiceProductPreview
 import com.example.serviceaja.recyclerview.RecyclerViewBengkelDetailsPreview
+import com.example.serviceaja.recyclerview.RecyclerViewServiceDetailsSearchResult
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : AppCompatActivity() {
-
-    private var layoutManagerProduct : RecyclerView.LayoutManager? = null
-    private var layoutManagerBengkel : RecyclerView.LayoutManager? = null
-    private var adapterProduct : RecyclerView.Adapter<RVTransactionServiceProductPreview.ViewHolder>? = null
-    private var adapterBengkel : RecyclerView.Adapter<RecyclerViewBengkelDetailsPreview.ViewHolder>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +35,10 @@ class SearchActivity : AppCompatActivity() {
             startActivity(searchResultIntent)
         }
 
-        layoutManagerProduct = LinearLayoutManager (this)
-        recyclerViewServiceProductDetails.layoutManager = layoutManagerProduct
-        layoutManagerBengkel = LinearLayoutManager (this)
-        recyclerViewBengkelDetailsPeview.layoutManager = layoutManagerBengkel
+        recyclerViewServiceProductDetails.layoutManager = LinearLayoutManager (this)
+        recyclerViewBengkelDetailsPeview.layoutManager = LinearLayoutManager (this)
 
-        adapterProduct = RVTransactionServiceProductPreview()
-        recyclerViewServiceProductDetails.adapter = adapterProduct
-        adapterBengkel = RecyclerViewBengkelDetailsPreview()
-        recyclerViewBengkelDetailsPeview.adapter = adapterBengkel
+        recyclerViewServiceProductDetails.adapter = RecyclerViewServiceDetailsSearchResult()
+        recyclerViewBengkelDetailsPeview.adapter = RecyclerViewBengkelDetailsPreview()
     }
 }

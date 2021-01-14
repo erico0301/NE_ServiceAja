@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
-import kotlinx.android.synthetic.main.layout_service_product_preview.view.*
+import kotlinx.android.synthetic.main.layout_transaction_product_preview.view.*
 
 class RecyclerViewCheckoutProductServiceDetails : RecyclerView.Adapter<RecyclerViewCheckoutProductServiceDetails.ViewHolder>() {
 
@@ -22,7 +22,7 @@ class RecyclerViewCheckoutProductServiceDetails : RecyclerView.Adapter<RecyclerV
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_service_product_preview, parent, false)
+            .inflate(R.layout.layout_transaction_product_preview, parent, false)
         return ViewHolder(view)
     }
 

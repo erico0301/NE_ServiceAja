@@ -77,9 +77,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="4D Balancing and Spooring"
-                android:fontFamily="@font/dm_sans"
-                android:textSize="20sp"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/black"
+                android:textSize="18sp"
                 android:layout_below="@+id/productImg"
                 android:layout_toLeftOf="@+id/loveIcon"
                 android:layout_marginLeft="10dp"/>
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="Rp"
                 android:fontFamily="@font/dm_sans"
-                android:textSize="32sp"
+                android:textSize="10sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_below="@+id/namaProduk"
@@ -100,18 +100,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1.230.500"
-                android:fontFamily="@font/dm_sans"
-                android:textSize="32sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold"
                 android:layout_below="@+id/namaProduk"
                 android:layout_toRightOf="@+id/rpTxt"
                 android:layout_marginLeft="10dp"/>
 
             <ImageView
                 android:id="@+id/bengkelImg"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/bmw_logo"
                 android:scaleType="fitXY"
                 android:layout_below="@+id/rpTxt"
@@ -124,22 +122,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="BMW"
-                android:fontFamily="@font/dm_sans"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"
                 android:layout_toRightOf="@+id/bengkelImg"
                 android:layout_below="@+id/rpTxt"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"/>
             <TextView
                 android:id="@+id/kotaBengkel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Medan"
-                android:fontFamily="@font/dm_sans"
-                android:textColor="@color/black"
-                android:textSize="16sp"
+                android:fontFamily="@font/poppins_medium"
                 android:layout_toRightOf="@+id/bengkelImg"
                 android:layout_below="@+id/namaBengkel"
                 android:layout_marginLeft="10dp"/>
@@ -149,11 +142,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/detailproduk"
-                android:textSize="16sp"
                 android:fontFamily="@font/poppins_medium"
-                android:lines="5"
+                android:maxLines="5"
                 android:layout_below="@+id/bengkelImg"
-                android:layout_margin="10dp"/>
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:id="@+id/reviewTxt"
@@ -164,7 +156,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_below="@+id/detailProduk"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"/>
 
             <TextView
@@ -179,14 +171,14 @@
                 android:layout_below="@+id/detailProduk"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="10dp" />
             <ImageView
                 android:id="@+id/totalRatingIcon"
                 android:layout_width="80dp"
                 android:layout_height="20dp"
                 android:layout_toLeftOf="@+id/totalRatingTxt"
                 android:layout_below="@+id/detailProduk"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_rating_5"
                 android:scaleType="fitXY"/>
 
@@ -195,20 +187,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/reviewTxt" />
-            <TextView
-                android:id="@+id/reviewLain"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lainnya"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:gravity="right"
-                android:background="@color/lightestBlue"
-                android:fontFamily="@font/dm_sans"
-                android:layout_below="@+id/recyclerViewReviewDetails"
-                android:paddingRight="20dp"
-                android:layout_marginBottom="10dp"/>
 
         </RelativeLayout>
     </ScrollView>
@@ -223,32 +201,32 @@
 
         <ImageButton
             android:id="@+id/chatSellerIcon"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
+            android:padding="10dp"
             android:src="@drawable/ic_chat_message"
             android:scaleType="fitXY"
-            android:layout_weight="2"
-            android:layout_marginRight="10dp"
             style="@style/Widget.AppCompat.Button.Borderless" />
         <ImageButton
             android:id="@+id/addToCartIcon"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
+            android:padding="10dp"
             android:src="@drawable/ic_add_shopping_cart"
-            android:layout_weight="2"
             android:scaleType="fitXY"
             style="@style/Widget.AppCompat.Button.Borderless"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:text="Beli Sekarang"
+            android:layout_weight="5"
+            android:text="Pesan Langsung"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:gravity="center"
-            android:layout_weight="23"
             android:fontFamily="@font/poppins_medium"
-            android:background="@color/darkestBlue"
-            android:layout_marginLeft="20dp"/>
+            android:background="@color/darkestBlue" />
 
     </LinearLayout>
 

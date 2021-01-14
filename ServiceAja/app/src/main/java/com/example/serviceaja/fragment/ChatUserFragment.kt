@@ -1,5 +1,6 @@
 package com.example.serviceaja.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
+import com.example.serviceaja.chatreview.ChatActivity
 import com.example.serviceaja.recyclerview.RecyclerViewChatDetails
 import kotlinx.android.synthetic.main.fragment_chat_user.*
 
@@ -19,7 +21,9 @@ class ChatUserFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.fragment_chat_user, container, false)
+        val view =  inflater.inflate(R.layout.fragment_chat_user, container, false)
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -30,6 +34,7 @@ class ChatUserFragment : Fragment() {
 
         adapter = RecyclerViewChatDetails()
         recyclerViewUserChat.adapter = adapter
+
     }
 
     companion object {

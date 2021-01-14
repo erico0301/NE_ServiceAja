@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
 import com.example.serviceaja.chatreview.ChatActivity
+import com.example.serviceaja.transaction.OnGoingTransactionActivity
 
 class RecyclerViewChatDetails : RecyclerView.Adapter<RecyclerViewChatDetails.ViewHolder>() {
 
@@ -32,19 +33,17 @@ class RecyclerViewChatDetails : RecyclerView.Adapter<RecyclerViewChatDetails.Vie
             lastMessage = itemView.findViewById(R.id.lastMessage)
             lastHour = itemView.findViewById(R.id.lastMessageHour)
             totalUnreadMessage = itemView.findViewById(R.id.totalUnreadMessage)
-
-            itemView.setOnClickListener {
-                if (adapterPosition == 1) {
-                    val chatIntent = Intent(itemView.context, ChatActivity::class.java)
-                    itemView.context.startActivity(chatIntent)
-                }
-            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context)
             .inflate(R.layout.recyclerview_chat_details, parent, false)
+
+        view.setOnClickListener {
+            parent.context.startActivity(Intent(parent.context, ChatActivity::class.java))
+        }
+
         return ViewHolder(view)
     }
 
