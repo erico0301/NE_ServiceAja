@@ -8,7 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.R
+import com.example.serviceaja.chatreview.ChatActivity
 import com.example.serviceaja.chatreview.ReviewActivity
+import kotlinx.android.synthetic.main.recyclerview_unreviewed_details.view.*
 
 class RecyclerViewUnreviewedDetails : RecyclerView.Adapter<RecyclerViewUnreviewedDetails.ViewHolder>() {
 
@@ -17,32 +19,24 @@ class RecyclerViewUnreviewedDetails : RecyclerView.Adapter<RecyclerViewUnreviewe
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var imgService: ImageView
-        var namaService: TextView
-
-        init {
-            imgService = itemView.findViewById(R.id.serviceImg)
-            namaService = itemView.findViewById(R.id.namaService)
-
-            itemView.setOnClickListener {
-                if (adapterPosition == 1) {
-                    val reviewIntent = Intent(itemView.context, ReviewActivity::class.java)
-                    itemView.context.startActivity(reviewIntent)
-                }
-            }
-        }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context)
             .inflate(R.layout.recyclerview_unreviewed_details, parent, false)
+        view.setOnClickListener {
+            parent.context.startActivity(Intent(parent.context, ReviewActivity::class.java))
+        }
+
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imgService.setImageResource(itemImgService[position])
-        holder.namaService.text = itemNamaService[position]
+        holder.itemView.apply {
+            serviceImg.setImageResource(itemImgService[position])
+            namaService.text = itemNamaService[position]
+        }
+
     }
 
     override fun getItemCount(): Int {

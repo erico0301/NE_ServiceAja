@@ -10,7 +10,7 @@ class ReviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review)
 
-        backBtn.setOnClickListener {
+        review_toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
 
