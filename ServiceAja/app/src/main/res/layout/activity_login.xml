@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,28 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".LoginRegister.LoginActivity">
 
-    <View
-        android:layout_width="427dp"
-        android:layout_height="382dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="-79dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="-193dp"
-        android:background="@drawable/top_rounc_background_lightblue"/>
-    <TextView
-        android:layout_width="217dp"
-        android:layout_height="75dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="37dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="23dp"
-        android:text="@string/serviceaja"
-        android:textAppearance="@style/serviceaja"
-        android:gravity="top" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="427dp"
+            android:layout_height="382dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="-79dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-193dp"
+            android:background="@drawable/top_rounc_background_lightblue"/>
+        <TextView
+            android:layout_width="217dp"
+            android:layout_height="75dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="37dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="23dp"
+            android:text="@string/serviceaja"
+            style="@style/serviceaja"
+            android:gravity="top" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="202dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -38,49 +47,58 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:text="Masuk ke Akun Anda"
             android:textSize="25sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="15dp"/>
+            android:fontFamily="@font/poppins_medium" />
 
-        <EditText
-            android:id="@+id/inputEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/input_border"/>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
+            app:startIconDrawable="@drawable/ic_email"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"
+            style="@style/editTextBaseStyle" >
 
-            <EditText
-                android:id="@+id/inputPass"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/halamanLogin_inputEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:padding="10dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/input_border"/>
+                android:fontFamily="@font/poppins_medium" />
+
         </com.google.android.material.textfield.TextInputLayout>
-        <TextView
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Forget?"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            app:startIconDrawable="@drawable/ic_password"
+            style="@style/editTextBaseStyle"
+            app:passwordToggleEnabled="true" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/halamanLogin_inputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/halamanLogin_btnLupaPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/lupa_password"
             android:textColor="@color/lightBlue"
-            android:textSize="18sp"
+            android:fontFamily="@font/poppins_medium"
             android:onClick="forget"/>
         <Button
-            android:id="@+id/masukBtn"
+            android:id="@+id/halamanLogin_btnMasuk"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:text="Masuk"
+            android:text="@string/masuk"
             android:fontFamily="@font/poppins_medium"
             android:background="@drawable/round_button"
             android:textSize="20sp"/>
@@ -90,8 +108,8 @@
             android:layout_height="wrap_content"
             android:text="@string/instantregister"
             android:layout_marginTop="30dp"
-            android:textSize="18sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:fontFamily="@font/poppins_medium" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,7 +125,9 @@
                 android:scaleType="fitCenter"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:src="@drawable/google_logo"
-                android:onClick="loginGmail"/>
+                android:contentDescription="Masuk dengan Google"
+                android:onClick="loginGmail"
+                tools:ignore="HardcodedText" />
             <ImageButton
                 android:layout_width="45dp"
                 android:layout_height="45dp"
@@ -115,7 +135,9 @@
                 android:scaleType="fitCenter"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:src="@drawable/facebook_logo"
-                android:onClick="loginFB"/>
+                android:contentDescription="Masuk dengan Facebook"
+                android:onClick="loginFB"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
@@ -129,19 +151,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:layout_marginEnd="10dp"
-                android:text="Belum Punya Akun?" />
+                android:text="Belum Punya Akun?"
+                android:fontFamily="@font/poppins_medium"
+                tools:ignore="HardcodedText" />
             <TextView
+                android:id="@+id/halamanLogin_btnDaftar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:textColor="@color/lightBlue"
-                android:text="Daftar Sekarang"
-                android:onClick="daftarSekarang"/>
+                android:text="@string/daftar_sekarang"
+                android:fontFamily="@font/poppins_medium" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

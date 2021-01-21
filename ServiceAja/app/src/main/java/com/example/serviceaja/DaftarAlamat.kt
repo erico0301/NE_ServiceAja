@@ -8,30 +8,50 @@ import android.view.ViewGroup
 import android.view.ViewManager
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.serviceaja.classes.Alamat
 import com.example.serviceaja.fragment.DetailAlamat
+import com.example.serviceaja.recyclerview.RVDetailAlamat
+import kotlinx.android.synthetic.main.activity_daftar_alamat.*
 
 class DaftarAlamat : AppCompatActivity() {
+    private lateinit var daftarAlamat: ArrayList<Alamat>
+    private lateinit var adapter: RVDetailAlamat
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daftar_alamat)
 
+        daftarAlamat = intent.getSerializableExtra(DAFTAR_ALAMAT) as ArrayList<Alamat>
+
         findViewById<androidx.appcompat.widget.Toolbar>(R.id.daftarAlamat_toolbar).setNavigationOnClickListener {
             onBackPressed()
         }
+
+        daftarAlamat_fab.setOnClickListener {
+            val fragment = DetailAlamat()
+            fragment.arguments = Bundle().apply {
+                putString(ALAMAT_TIPE, "TAMBAH")
+            }
+            fragment.show(supportFragmentManager, "TAG")
+        }
+
+        adapter = RVDetailAlamat(daftarAlamat)
+        daftarAlamat_rvInstanceAlamat.adapter = adapter
+        daftarAlamat_rvInstanceAlamat.layoutManager = LinearLayoutManager(this)
     }
 
-    fun deleteAddressDialog(view: View) {
-        val root: ViewManager = this.windowManager as ViewManager
-        val parent = view.parent as View
+    fun hapusAlamat(pos: Int) {
         val dialog = AlertDialog.Builder(this)
-            .setTitle("Hapus Alamat ini?")
-            .setMessage("Apakah Anda yakin ingin menghapus alamat ini? Alamat yang terhapus akan hilang dari daftar alamat Anda.")
-            .setPositiveButton("YA", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
-                root.removeView(parent)
-            })
-            .setNegativeButton("BATAL", DialogInterface.OnClickListener { dialog, which ->
+                .setTitle("Hapus Alamat ini?")
+                .setMessage("Apakah Anda yakin ingin menghapus alamat ini? Alamat yang terhapus akan hilang dari daftar alamat Anda.")
+                .setPositiveButton("HAPUS", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
+                    daftarAlamat.removeAt(pos)
+                    adapter.notifyItemRemoved(pos)
+                })
+                .setNegativeButton("BATAL", DialogInterface.OnClickListener { dialog, which ->
 
-            })
+                })
         dialog.show()
     }
     fun editAddressDialog(view: View) {

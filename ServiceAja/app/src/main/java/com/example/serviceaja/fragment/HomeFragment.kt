@@ -8,11 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceaja.EXTRA_USER
+import com.example.serviceaja.HomeActivity
 import com.example.serviceaja.R
 import com.example.serviceaja.WishlistActivity
+import com.example.serviceaja.classes.User
 import com.example.serviceaja.recyclerview.RVBengkelPreview
 import com.example.serviceaja.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.recyclerview_review_details.*
 
 class HomeFragment : Fragment() {
     private var layoutManager :RecyclerView.LayoutManager? = null
@@ -20,13 +25,18 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val user = arguments?.getParcelable<User>(EXTRA_USER)!!
+
+        view.hello.text = "Halo, ${user.nama}"
+        
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

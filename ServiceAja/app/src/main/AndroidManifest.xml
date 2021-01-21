@@ -39,18 +39,18 @@
             android:name=".HomeActivity"
             android:theme="@style/GoldStatusBar" />
         <activity android:name=".LoginRegister.ResetPasswordActivity" />
-        <activity android:name=".LoginRegister.ForgetPasswordActivity" />
+        <activity android:name=".LoginRegister.ForgetPasswordActivity"
+            android:parentActivityName=".LoginRegister.LoginActivity"/>
         <activity android:name=".LoginRegister.KodePemulihanActivity" />
         <activity android:name=".LoginRegister.LoginActivity" />
         <activity
-            android:name=".LoginRegister.WelcomeActivity"
-            android:theme="@style/RedStatusBar" />
+            android:name=".LoginRegister.WelcomeActivity" />
         <activity
             android:name=".LoginRegister.VerificationCodeActivity"
             android:theme="@style/RedStatusBar" />
         <activity
             android:name=".LoginRegister.RegisterActivity"
-            android:theme="@style/RedStatusBar" />
+            android:parentActivityName=".LoginRegister.MainActivity" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashScreenTheme">

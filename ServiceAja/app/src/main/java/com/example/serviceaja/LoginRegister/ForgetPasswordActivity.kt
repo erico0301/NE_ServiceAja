@@ -12,7 +12,7 @@ class ForgetPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forget_password)
 
-        backBtn.setOnClickListener {
+        halamanLupaPassword_btnBack.setOnClickListener {
             onBackPressed()
         }
 

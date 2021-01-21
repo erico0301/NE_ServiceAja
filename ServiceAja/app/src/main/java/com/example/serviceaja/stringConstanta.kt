@@ -1,5 +1,9 @@
 package com.example.serviceaja
 
+const val EXTRA_USERS = "com.example.serviceaja.EXTRA_USERS"
+const val EXTRA_USER = "com.example.serviceaja.EXTRA_USER"
+
+const val DAFTAR_ALAMAT = "com.example.serviceaja.DAFTAR_ALAMAT"
 const val ALAMAT_TIPE = "com.example.serviceaja.DaftarAlamat.ALAMAT_TIPE"
 const val ALAMAT_NAMA_ALAMAT = "com.example.serviceaja.DaftarAlamat.ALAMAT_NAMA_ALAMAT"
 const val ALAMAT_NAMA_PENERIMA = "com.example.serviceaja.DaftarAlamat.ALAMAT_NAMA_PENERIMA"

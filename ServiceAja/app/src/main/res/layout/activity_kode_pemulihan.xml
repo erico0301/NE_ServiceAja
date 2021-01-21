@@ -38,7 +38,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="32dp"
         android:text="@string/serviceaja"
-        android:textAppearance="@style/serviceaja"
+        style="@style/serviceaja"
         android:gravity="top" />
 
     <LinearLayout
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/masukkankode"
-            android:textSize="28sp"
+            android:textSize="20sp"
             android:layout_marginBottom="20dp"
             android:textColor="@color/black"/>
 

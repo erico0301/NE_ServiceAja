@@ -21,111 +21,25 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:padding="10dp" >
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/daftarAlamat_rvInstanceAlamat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:padding="10dp"
-            android:background="@drawable/info_item_background" >
-            <TextView
-                android:id="@+id/daftarAlamat_namaAlamat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="Nama Alamat"
-                android:textSize="20dp"
-                android:fontFamily="@font/poppins_bold"/>
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/daftarAlamat_namaAlamat"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="30dp">
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_marginEnd="20dp"
-                        android:text="Nama Penerima" />
-
-                    <TextView
-                        android:id="@+id/daftarAlamat_namaPenerima"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:text="Contoh Nama Penerima" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_column="1"
-                        android:text="@string/tel_number" />
-                    <TextView
-                        android:id="@+id/daftarAlamat_noTelp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:text="(+62)812-3456-7890" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_column="1"
-                        android:text="Alamat Lengkap" />
-
-                    <TextView
-                        android:id="@+id/daftarAlamat_detailAlamat"
-                        android:layout_width="234dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:text="Alamat Lengkap penerima meliputi nama jalan secara lengkap, (RT/RW bila ada), desa/dusun, dan kelurahan." />
-
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_column="1"/>
-                    <TextView
-                        android:id="@+id/daftarAlamat_daerah"
-                        android:layout_width="234dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:text="Kecamatan, kabupaten/kota, provinsi, Indonesia, Kode Pos" />
-                </TableRow>
-            </TableLayout>
-
-            <ImageButton
-                android:id="@+id/btn_edit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_edit"
-                android:background="@color/transparent"
-                android:onClick="editAddressDialog"/>
-            <ImageButton
-                android:id="@+id/btn_delete"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_edit"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_delete"
-                android:contentDescription="@string/delete"
-                android:background="@color/transparent"
-                android:onClick="deleteAddressDialog" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content" />
     </ScrollView>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/daftarAlamat_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="20dp"
-        app:srcCompat="@drawable/ic_add"
+        app:icon="@drawable/ic_add"
+        android:text="@string/add"
+        android:textAppearance="@style/textBaseStyle"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:contentDescription="@string/add"
-        android:tooltipText="Tambah Alamat"
-        android:onClick="addAddressDialog" />
+        android:tooltipText="Tambah Alamat" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
