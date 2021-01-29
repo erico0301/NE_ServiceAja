@@ -33,17 +33,6 @@
             android:fontFamily="@font/poppins_medium" />
 
         <ImageButton
-            android:id="@+id/btn_settings"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_settings"
-            android:contentDescription="@string/settings"
-            app:layout_constraintEnd_toStartOf="@id/btn_logout"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/transparent" />
-        <ImageButton
             android:id="@+id/btn_logout"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -181,7 +170,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/layout_profile_info"
-        app:layout_constraintStart_toStartOf="parent"
         android:padding="10dp"
         android:layout_marginTop="60dp"
         android:layout_marginHorizontal="10dp"
@@ -284,29 +272,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/contohTanggal"
             android:fontFamily="@font/poppins_light" />
-        <LinearLayout
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/profilUser_btnKendaraanLain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:padding="5dp"
-            android:orientation="horizontal" >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/other_vehicle"
-                android:textColor="@color/darkestBlue"
-                android:fontFamily="@font/poppins_medium" />
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_right"
-                android:contentDescription="@string/other_vehicle"
-                android:background="@color/transparent"
-                android:tint="@color/darkestBlue" />
-        </LinearLayout>
-
+            android:padding="0dp"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:text="Kendaraan Lain"
+            android:textColor="@color/darkBlue"
+            style="@style/Widget.AppCompat.Button.Borderless" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

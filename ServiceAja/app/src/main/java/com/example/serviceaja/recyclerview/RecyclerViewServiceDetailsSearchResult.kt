@@ -45,6 +45,11 @@ class RecyclerViewServiceDetailsSearchResult : RecyclerView.Adapter<RecyclerView
             previewItem_kotaMitra.text = itemKotaBengkel[position]
             previewItem_fotoMitra.setImageResource(itemFotoBengkel[position])
             previewItem_hargaItem.text = itemHargaService[position]
+
+            setOnClickListener {
+                val productDetails = Intent(context, ProductServiceDetailActivity::class.java)
+                context.startActivity(productDetails)
+            }
         }
     }
 

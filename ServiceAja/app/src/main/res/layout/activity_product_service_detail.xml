@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,47 +7,26 @@
     android:layout_height="match_parent"
     tools:context=".search.ProductServiceDetailActivity">
 
-    <View
-        android:id="@+id/topBg"
-        android:layout_width="657dp"
-        android:layout_height="323dp"
-        android:layout_marginLeft="-80dp"
-        android:layout_marginRight="-80dp"
-        android:layout_marginTop="-250dp"
-        android:background="@drawable/home_background_top" />
-    <LinearLayout
-        android:id="@+id/topMenu"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/gold" >
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_action_back"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
-        <TextView
-            android:id="@+id/detailTxt"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/detailProduk_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Detail Product"
-            android:fontFamily="@font/dm_sans"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
+            android:layout_height="match_parent"
+            app:title="Detail Produk"
+            app:navigationIcon="@drawable/ic_back" />
 
-    </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/topBg"
-        android:layout_above="@+id/bottomMenu">
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="?attr/actionBarSize" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -186,7 +165,8 @@
                 android:id="@+id/recyclerViewReviewDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/reviewTxt" />
+                android:layout_below="@+id/reviewTxt"
+                android:paddingHorizontal="10dp" />
 
         </RelativeLayout>
     </ScrollView>
@@ -194,40 +174,37 @@
     <LinearLayout
         android:id="@+id/bottomMenu"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="20dp"
         android:orientation="horizontal"
-        android:background="@color/gold"
-        android:layout_alignParentBottom="true">
+        android:layout_gravity="bottom|start" >
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/chatSellerIcon"
-            android:layout_width="0dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
             android:padding="10dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/ic_chat_message"
             android:scaleType="fitXY"
-            style="@style/Widget.AppCompat.Button.Borderless" />
-        <ImageButton
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/addToCartIcon"
-            android:layout_width="0dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
             android:padding="10dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/ic_add_shopping_cart"
             android:scaleType="fitXY"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
-        <TextView
-            android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/detailProduk_btnPesan"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_weight="5"
             android:text="Pesan Langsung"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:fontFamily="@font/poppins_medium"
-            android:background="@color/darkestBlue" />
-
+            android:layout_gravity="end" />
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

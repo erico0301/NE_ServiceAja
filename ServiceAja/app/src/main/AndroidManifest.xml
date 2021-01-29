@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
+        <activity android:name=".ProfilMitra"></activity>
         <activity android:name=".TambahEditProduk" />
         <activity android:name=".KendaraanActivity" />
         <activity android:name=".DaftardanEditProfilMitra" />
@@ -16,7 +17,11 @@
         <activity android:name=".AlamatActivity" />
         <activity android:name=".chatreview.ChatActivity" />
         <activity android:name=".chatreview.ReviewActivity" />
-        <activity android:name=".checkout.CheckoutActivity"
+        <activity
+            android:name=".checkout.CheckoutActivity"
+            android:theme="@style/GoldStatusBar" />
+        <activity
+            android:name=".checkout.ConfirmPaymentActivity"
             android:theme="@style/GoldStatusBar" />
         <activity
             android:name=".transaction.DoneTransactionActivity"
@@ -39,14 +44,18 @@
         <activity
             android:name=".HomeActivity"
             android:theme="@style/GoldStatusBar" />
-        <activity android:name=".LoginRegister.ResetPasswordActivity"
-            android:theme="@style/BlueStatusBar"/>
-        <activity android:name=".LoginRegister.ForgetPasswordActivity"
-            android:theme="@style/BlueStatusBar"/>
-        <activity android:name=".LoginRegister.KodePemulihanActivity"
+        <activity
+            android:name=".LoginRegister.ResetPasswordActivity"
             android:theme="@style/BlueStatusBar" />
-        <activity android:name=".LoginRegister.LoginActivity"
-            android:theme="@style/BlueStatusBar"/>
+        <activity
+            android:name=".LoginRegister.ForgetPasswordActivity"
+            android:theme="@style/BlueStatusBar" />
+        <activity
+            android:name=".LoginRegister.KodePemulihanActivity"
+            android:theme="@style/BlueStatusBar" />
+        <activity
+            android:name=".LoginRegister.LoginActivity"
+            android:theme="@style/BlueStatusBar" />
         <activity
             android:name=".LoginRegister.WelcomeActivity"
             android:theme="@style/BlueStatusBar" />

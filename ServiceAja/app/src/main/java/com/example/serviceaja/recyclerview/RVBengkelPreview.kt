@@ -1,9 +1,11 @@
 package com.example.serviceaja.recyclerview
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceaja.ProfilMitra
 import com.example.serviceaja.R
 import kotlinx.android.synthetic.main.layout_mitra_wide_pic.view.*
 
@@ -32,6 +34,10 @@ class RVBengkelPreview : RecyclerView.Adapter<RVBengkelPreview.ViewHolder>() {
             layoutMitra_namaBengkel.text = itemNamaBengkel[position]
             layoutMitra_alamatMitra.text = itemAlamatBengkel[position]
             layoutMitra_kotaMitra.text = itemKotaBengkel[position]
+
+            setOnClickListener {
+                context.startActivity(Intent(context, ProfilMitra::class.java))
+            }
         }
     }
 

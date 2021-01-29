@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.classes.ItemAdapter
@@ -22,17 +25,17 @@ class DaftarService : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_daftar_service, container, false)
 
-        val items = mutableListOf<ServiceItem>(
-                ServiceItem(R.drawable.car_wash, "Cuci Mobil Segala Jenis", 50000, getString(R.string.contohID)),
-                ServiceItem(R.drawable.cat_mobil, "Cat Mobil Segala Jenis", 120000, getString(R.string.contohID)),
-                ServiceItem(R.drawable.cek_ban_mobil, "Cek Kesehatan Ban Mobil", 20000, getString(R.string.contohID)),
-                ServiceItem(R.drawable.dempul_mobil, "Dempul Mobil", 100000, getString(R.string.contohID))
+        val items = mutableListOf(
+                ServiceItem(R.drawable.car_wash, "Cuci Mobil Segala Jenis", 50000, "Mitsubishi", "Medan"),
+                ServiceItem(R.drawable.cat_mobil, "Cat Mobil Segala Jenis", 120000, "Mitsubishi", "Medan"),
+                ServiceItem(R.drawable.cek_ban_mobil, "Cek Kesehatan Ban Mobil", 20000, "Mitsubishi", "Medan"),
+                ServiceItem(R.drawable.dempul_mobil, "Dempul Mobil", 100000, "Mitsubishi", "Medan")
         )
 
         val adapter = ItemAdapter(items)
         view.findViewById<RecyclerView>(R.id.daftarService_recyclerView).apply {
             this.adapter = adapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context, 2)
         }
 
         return view

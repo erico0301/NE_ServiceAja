@@ -47,7 +47,7 @@ class ProfilUserFragment : Fragment() {
             startActivity(Intent(activity, AlamatActivity::class.java))
         }
 
-        view.findViewById<LinearLayout>(R.id.profilUser_btnKendaraanLain).setOnClickListener {
+        view.profilUser_btnKendaraanLain.setOnClickListener {
             startActivity(Intent(activity, KendaraanActivity::class.java))
         }
 

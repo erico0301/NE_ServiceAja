@@ -6,5 +6,6 @@ data class ServiceItem(
         var fotoProduk: Int,
         var namaProduk: String,
         var hargaProduk: Int,
-        var idMitra: String
+        var namaMitra: String,
+        var kotaMitra: String
 )

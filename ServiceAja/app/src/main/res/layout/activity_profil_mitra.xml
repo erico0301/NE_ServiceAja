@@ -1,56 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    <ScrollView
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="60dp" >
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="70dp"
+        android:background="@color/gold" >
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/profile_topbar"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@color/gold"
-                android:paddingBottom="20dp" >
-                <Button
-                    android:id="@+id/profilMitra_btnUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/user"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="50dp"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_medium" />
-                <Button
-                    android:id="@+id/profileMitra_btnMitra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/partner"
-                    app:layout_constraintStart_toEndOf="@id/profilMitra_btnUser"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="50dp"
-                    android:fontFamily="@font/poppins_medium" />
+                android:orientation="horizontal"
+                android:background="@color/transparent">
                 <ImageButton
-                    android:id="@+id/btn_logout"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/profilMitra_btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_back"
+                    android:background="@color/transparent"
+                    android:contentDescription="@string/wishlist" />
+                <EditText
+                    android:id="@+id/home_inputSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:contentDescription="@string/logout"
-                    android:src="@drawable/ic_logout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@color/transparent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:drawablePadding="10dp"
+                    android:background="@drawable/search_border"
+                    android:drawableStart="@drawable/ic_search"
+                    android:hint="@string/search"
+                    tools:ignore="RtlSymmetry"
+                    android:inputType="none"
+                    android:importantForAutofill="no" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profilMitra_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
             <ImageView
                 android:id="@+id/profile_background"
@@ -59,7 +63,7 @@
                 android:src="@drawable/profile_bg"
                 android:contentDescription="@string/background_profile_picture"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_topbar"
+                app:layout_constraintTop_toTopOf="parent"
                 android:scaleType="fitXY" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -161,52 +165,21 @@
                     android:fontFamily="@font/dmsans_medium" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
-                android:id="@+id/profilMitra_btndaftarTransaksi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/layout_profile_info"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="10dp"
-                android:text="DAFTAR TRANSAKSI"
-                android:fontFamily="@font/dmsans_regular" />
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/profilMitra_tabServiceProduk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profilMitra_btndaftarTransaksi"
-                android:layout_marginTop="10dp" >
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SERVICE" />
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PRODUK" />
+                app:layout_constraintTop_toBottomOf="@id/layout_profile_info"
+                android:layout_marginTop="10dp" />
 
-            </com.google.android.material.tabs.TabLayout>
-
-            <FrameLayout
-                android:id="@+id/profilMitra_fragmentContainer"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/profilMitra_viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 app:layout_constraintTop_toBottomOf="@id/profilMitra_tabServiceProduk" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <!--<androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/profilMitra_viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/profilMitra_tabServiceProduk" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/profilMitra_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/profilMitra_tabServiceProduk" />
-    -->
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

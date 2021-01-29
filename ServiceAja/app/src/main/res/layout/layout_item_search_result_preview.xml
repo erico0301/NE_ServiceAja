@@ -5,7 +5,7 @@
     android:layout_width="150dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginRight="10dp"
+    android:layout_margin="10dp"
     android:background="@drawable/picture_background" >
 
     <com.makeramen.roundedimageview.RoundedImageView
