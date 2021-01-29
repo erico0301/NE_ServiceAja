@@ -31,10 +31,9 @@ class HomeFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        val user = arguments?.getParcelable<User>(EXTRA_USER)!!
+        val user = arguments?.getParcelable<User>(EXTRA_USER)
 
-        view.hello.text = "Halo, ${user.nama}"
-        
+        view.hello.text = "Halo, ${user?.nama}"
 
         return view
     }

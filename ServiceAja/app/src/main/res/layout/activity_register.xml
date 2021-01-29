@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".LoginRegister.RegisterActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +77,8 @@
                         android:id="@+id/halamanDaftar_namaLengkap"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium" />
+                        android:fontFamily="@font/poppins_medium"
+                        android:imeOptions="actionNext" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,13 +87,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_email"
-                    android:hint="@string/email_address">
+                    android:hint="@string/email_address" >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/halamanDaftar_alamatEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium" />
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textEmailAddress"
+                        android:imeOptions="actionNext" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +112,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:imeOptions="actionNext" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,7 +131,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:fontFamily="@font/poppins_medium" />
+                        android:fontFamily="@font/poppins_medium"
+                        android:imeOptions="actionNext" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -136,7 +149,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:fontFamily="@font/poppins_medium" />
+                        android:fontFamily="@font/poppins_medium"
+                        android:imeOptions="actionDone" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

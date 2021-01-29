@@ -19,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/gold" >
+        android:background="@color/gold"
+        app:elevation="0dp" >
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
                     android:drawableStart="@drawable/ic_search"
                     android:hint="@string/search"
                     tools:ignore="RtlSymmetry"
-                    android:inputType="text"
+                    android:inputType="none"
                     android:importantForAutofill="no" />
                 <ImageView
                     android:id="@+id/wishlistIcon"
@@ -69,27 +70,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/home_topbar"
-                android:paddingVertical="20dp"
+                android:padding="20dp"
                 android:orientation="vertical"
                 android:background="@drawable/bg_pages" >
                 <TextView
                     android:id="@+id/hello"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
                     android:text="@string/greetings"
                     android:textColor="@color/darkestBlue"
-                    android:textSize="28sp"/>
+                    android:textSize="28sp"
+                    android:fontFamily="@font/poppins_light" />
 
                 <TextView
-                    android:layout_width="350dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
                     android:layout_below="@+id/hello"
                     android:text="@string/welcomeslogan"
                     android:textColor="@color/darkBlue"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_light" />
             </LinearLayout>
 
             <TextView

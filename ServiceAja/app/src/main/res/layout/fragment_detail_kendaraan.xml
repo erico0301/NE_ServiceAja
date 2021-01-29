@@ -8,12 +8,14 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="?attr/actionBarSize" >
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/detailKendaraan_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_close" />
+            android:layout_height="match_parent"
+            app:title="Tambah Kendaraan"
+            app:navigationIcon="@drawable/ic_close"
+            android:background="@color/gold" />
     </com.google.android.material.appbar.AppBarLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -41,12 +43,14 @@
                     android:gravity="end"
                     android:orientation="horizontal">
                     <RadioButton
+                        android:id="@+id/detailKendaraan_rbMobil"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:text="@string/car"
                         android:fontFamily="@font/poppins_medium"/>
                     <RadioButton
+                        android:id="@+id/detailKendaraan_rbMotor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
@@ -54,176 +58,147 @@
                         android:fontFamily="@font/poppins_medium"/>
                 </RadioGroup>
             </LinearLayout>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="No. Plat Kendaraan"
-                android:fontFamily="@font/poppins_bold"
-                tools:ignore="HardcodedText" />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+                app:startIconDrawable="@drawable/ic_car_licence_plate"
+                android:hint="No. Plat Kendaraan"
+                style="@style/editTextBaseStyle" >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/detailKendaraan_noPlat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </com.google.android.material.textfield.TextInputLayout>
-            <LinearLayout
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/vehicle_brand"
-                    android:fontFamily="@font/poppins_bold"/>
-                <Spinner
+                app:startIconDrawable="@drawable/ic_car_badge"
+                android:hint="Merk Kendaraan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
                     android:id="@+id/detailKendaraan_merk"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/name"
-                    android:fontFamily="@font/poppins_bold"/>
-                <Spinner
+                android:layout_marginTop="10dp"
+                android:hint="Nama Kendaraan"
+                app:startIconDrawable="@drawable/ic_car"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
                     android:id="@+id/detailKendaraan_nama"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/vehicle_year"
-                    android:fontFamily="@font/poppins_bold"/>
-                <NumberPicker
+                android:layout_marginTop="10dp"
+                app:startIconDrawable="@drawable/ic_year_view"
+                android:hint="Tahun"
+                style="@style/editTextBaseStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/detailKendaraan_tahun"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/warna"
-                    android:fontFamily="@font/poppins_bold" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/bahan_bakar"
-                    android:fontFamily="@font/poppins_bold" />
-                <Spinner
-                    android:id="@+id/detailKendaraan_bahanBakar"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/no_rangka"
-                    android:fontFamily="@font/poppins_bold" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:layout_marginEnd="10dp"
+                    android:hint="@string/warna"
+                    app:startIconDrawable="@drawable/ic_color_spray"
+                    style="@style/editTextBaseStyle" >
+
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/detailKendaraan_noRangka"
+                        android:id="@+id/detailKendaraan_warna"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+
                 </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/no_mesin"
-                    android:fontFamily="@font/poppins_bold" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/detailKendaraan_noMesin"
+                    android:layout_weight="2"
+                    android:hint="@string/bahan_bakar"
+                    app:startIconDrawable="@drawable/ic_gas_pump"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/detailKendaraan_bahanBakar"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
+
                 </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
-            <LinearLayout
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/no_bpkb"
-                    android:fontFamily="@font/poppins_bold" />
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
+                android:hint="@string/no_rangka"
+                app:startIconDrawable="@drawable/ic_car_chassis"
+                style="@style/editTextBaseStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/detailKendaraan_noRangka"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/detailKendaraan_noBPKB"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/no_mesin"
+                app:startIconDrawable="@drawable/ic_car_engine"
+                style="@style/editTextBaseStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/detailKendaraan_noMesin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/no_bpkb"
+                app:startIconDrawable="@drawable/ic_car_document"
+                style="@style/editTextBaseStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/detailKendaraan_noBPKB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
@@ -252,7 +227,7 @@
                 android:text="Note: Semua field perlu diisi, termasuk penambahan foto kendaraan."
                 tools:ignore="HardcodedText" />
             <Button
-                android:id="@+id/detailKendaraan_btnTambah"
+                android:id="@+id/detailKendaraan_btnExecute"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

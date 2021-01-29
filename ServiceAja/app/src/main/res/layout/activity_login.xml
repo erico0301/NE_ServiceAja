@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".LoginRegister.LoginActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,14 +65,15 @@
             android:layout_height="wrap_content"
             app:startIconDrawable="@drawable/ic_email"
             android:hint="@string/email_address"
-            android:inputType="textEmailAddress"
             style="@style/editTextBaseStyle" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/halamanLogin_inputEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium" />
+                android:fontFamily="@font/poppins_medium"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionNext" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,7 +81,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:inputType="textPassword"
             app:startIconDrawable="@drawable/ic_password"
             style="@style/editTextBaseStyle"
             app:passwordToggleEnabled="true" >
@@ -81,7 +89,10 @@
                 android:id="@+id/halamanLogin_inputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium" />
+                android:fontFamily="@font/poppins_medium"
+                android:inputType="textPassword"
+                android:imeOptions="actionSend"
+                android:imeActionLabel="Masuk" />
 
         </com.google.android.material.textfield.TextInputLayout>
         <TextView
@@ -93,14 +104,15 @@
             android:textColor="@color/lightBlue"
             android:fontFamily="@font/poppins_medium"
             android:onClick="forget"/>
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/halamanLogin_btnMasuk"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:text="@string/masuk"
+            android:backgroundTint="@color/gray"
+            app:cornerRadius="15dp"
             android:fontFamily="@font/poppins_medium"
-            android:background="@drawable/round_button"
             android:textSize="20sp"/>
 
         <TextView

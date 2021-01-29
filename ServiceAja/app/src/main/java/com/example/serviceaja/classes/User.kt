@@ -15,11 +15,10 @@ class User(
     }
 
     constructor(parcel: Parcel) : this(
-            parcel.readString()!!,
-            parcel.readString()!!,
-            parcel.readString()!!,
-            parcel.readString()!!) {
-    }
+            nama = parcel.readString()!!,
+            email = parcel.readString()!!,
+            noTelp = parcel.readString()!!,
+            password = parcel.readString()!!)
 
     override fun describeContents(): Int {
         return 0
@@ -33,12 +32,10 @@ class User(
     }
 
     companion object CREATOR : Parcelable.Creator<User> {
-        override fun createFromParcel(parcel: Parcel): User {
-            return User(parcel)
-        }
+        override fun createFromParcel(parcel: Parcel) = User(parcel)
 
         override fun newArray(size: Int): Array<User?> {
-            return arrayOfNulls(size)
+            return arrayOfNulls<User>(size)
         }
     }
 

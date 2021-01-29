@@ -1,7 +1,9 @@
 package com.example.serviceaja
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.serviceaja.classes.User
 import com.example.serviceaja.fragment.*
@@ -23,8 +25,6 @@ class HomeActivity : AppCompatActivity() {
 
         val bundle = Bundle()
         bundle.putParcelable(EXTRA_USER, user)
-
-        replaceFragment(homeFragment)
 
         bottomNavBarMenu.setOnNavigationItemSelectedListener {
             when(it.itemId) {
@@ -51,6 +51,9 @@ class HomeActivity : AppCompatActivity() {
             }
             true
         }
+
+        homeFragment.arguments = bundle
+        replaceFragment(homeFragment)
     }
 
     private fun replaceFragment(fragment : Fragment) =

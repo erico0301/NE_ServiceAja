@@ -2,18 +2,18 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="180dp"
+    android:layout_width="150dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginRight="10dp"
-    android:background="@drawable/round_car_details" >
+    android:background="@drawable/picture_background" >
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/previewItem_fotoItem"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        app:riv_corner_radius_top_left="20dp"
-        app:riv_corner_radius_top_right="20dp"
+        app:riv_corner_radius_top_left="5dp"
+        app:riv_corner_radius_top_right="5dp"
         android:padding="1dp"
         android:src="@drawable/service_xpander"
         android:scaleType="fitXY"/>

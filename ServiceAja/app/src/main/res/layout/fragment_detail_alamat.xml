@@ -5,193 +5,142 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp" >
+        android:layout_height="?attr/actionBarSize"
+        app:elevation="0dp"
+        android:background="@color/gold" >
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/detailAlamat_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:paddingEnd="16dp"
-            android:paddingStart="6dp"
-            app:contentInsetStartWithNavigation="0dp"
+            android:layout_height="match_parent"
             app:navigationIcon="@drawable/ic_close"
-            app:titleTextAppearance="@font/poppins_medium" />
+            app:title="Tambah Alamat" />
 
     </com.google.android.material.appbar.AppBarLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="?attr/actionBarSize" >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tambah Alamat Baru"
                 android:textSize="25sp"
                 android:fontFamily="@font/poppins_bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Nama Alamat"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins_bold"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="contoh: Rumah, Kantor, dsb" >
+                app:startIconDrawable="@drawable/ic_building"
+                android:hint="Nama Alamat"
+                app:helperText="contoh: Rumah, Kantor, dsb"
+                style="@style/editTextBaseStyle" >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/detailAlamat_namaAlamat"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="14sp" />
+                    android:layout_height="match_parent" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Nama Penerima"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins_bold"/>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+                app:startIconDrawable="@drawable/ic_person"
+                android:hint="Nama Penerima"
+                app:helperText="contoh: Andi, Ayah"
+                style="@style/editTextBaseStyle" >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/detailAlamat_namaPenerima"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="14sp"
-                    android:hint="penerima di alamat" />
+                    android:layout_height="match_parent" />
             </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="No. Telp"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins_bold"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_call"
+                android:hint="No. Telepon"
                 app:prefixText="(+62) - "
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+                style="@style/editTextBaseStyle" >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/detailAlamat_noTelp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="14sp" />
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Alamat Lengkap"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins_bold"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Provinsi"
-                    android:fontFamily="@font/poppins_bold"/>
-                <Spinner
-                    android:id="@+id/detailAlamat_provinsi"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Kabupaten/Kota"
-                    android:fontFamily="@font/poppins_bold"/>
-                <Spinner
-                    android:id="@+id/detailAlamat_kabupatenKota"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Kecamatan"
-                    android:fontFamily="@font/poppins_bold"/>
-                <Spinner
-                    android:id="@+id/detailAlamat_kecamatan"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Detail Alamat"
-                android:fontFamily="@font/poppins_bold"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:hintEnabled="false" >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/detailAlamat_detailAlamat"
+                app:startIconDrawable="@drawable/ic_province"
+                android:hint="Provinsi"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/detailAlamat_provinsi"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="14sp"
-                    android:hint="Jalan dan nomor rumah" />
+                    android:layout_height="wrap_content" />
+
             </com.google.android.material.textfield.TextInputLayout>
-            <LinearLayout
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal" >
-                <Button
-                    android:id="@+id/detailAlamat_btnBatal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="15dp"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
-                    android:text="BATAL"
-                    android:fontFamily="@font/dmsans_regular" />
-                <Button
-                    android:id="@+id/detailAlamat_btnTambah"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="15dp"
-                    android:text="TAMBAH"
-                    android:fontFamily="@font/dmsans_regular" />
-            </LinearLayout>
+                app:startIconDrawable="@drawable/ic_city"
+                android:hint="Kabupaten/Kota"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/detailAlamat_kabupatenKota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:startIconDrawable="@drawable/ic_district"
+                android:hint="Kecamatan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/detailAlamat_kecamatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:startIconDrawable="@drawable/ic_road"
+                android:hint="Detail Alamat"
+                app:helperText="Jalan dan nomor rumah"
+                style="@style/editTextBaseStyle" >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/detailAlamat_detailAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/detailAlamat_btnExecute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="TAMBAH"
+                android:fontFamily="@font/dmsans_regular" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

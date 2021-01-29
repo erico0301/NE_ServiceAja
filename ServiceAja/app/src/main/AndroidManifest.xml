@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
         <activity android:name=".TambahEditProduk" />
-        <activity android:name=".DaftarKendaraan" />
+        <activity android:name=".KendaraanActivity" />
         <activity android:name=".DaftardanEditProfilMitra" />
         <activity android:name=".EditProfilUser" />
-        <activity android:name=".DaftarAlamat" />
+        <activity android:name=".AlamatActivity" />
         <activity android:name=".chatreview.ChatActivity" />
         <activity android:name=".chatreview.ReviewActivity" />
         <activity android:name=".checkout.CheckoutActivity"
@@ -39,19 +39,23 @@
         <activity
             android:name=".HomeActivity"
             android:theme="@style/GoldStatusBar" />
-        <activity android:name=".LoginRegister.ResetPasswordActivity" />
+        <activity android:name=".LoginRegister.ResetPasswordActivity"
+            android:theme="@style/BlueStatusBar"/>
         <activity android:name=".LoginRegister.ForgetPasswordActivity"
-            android:parentActivityName=".LoginRegister.LoginActivity"/>
-        <activity android:name=".LoginRegister.KodePemulihanActivity" />
-        <activity android:name=".LoginRegister.LoginActivity" />
+            android:theme="@style/BlueStatusBar"/>
+        <activity android:name=".LoginRegister.KodePemulihanActivity"
+            android:theme="@style/BlueStatusBar" />
+        <activity android:name=".LoginRegister.LoginActivity"
+            android:theme="@style/BlueStatusBar"/>
         <activity
-            android:name=".LoginRegister.WelcomeActivity" />
+            android:name=".LoginRegister.WelcomeActivity"
+            android:theme="@style/BlueStatusBar" />
         <activity
             android:name=".LoginRegister.VerificationCodeActivity"
             android:theme="@style/RedStatusBar" />
         <activity
             android:name=".LoginRegister.RegisterActivity"
-            android:parentActivityName=".LoginRegister.MainActivity" />
+            android:theme="@style/RedStatusBar" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashScreenTheme">

@@ -108,7 +108,7 @@
             android:tint="@color/white"
             android:backgroundTint="@color/transparent" />
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/profilUser_namaUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/profile_picture"
@@ -120,21 +120,10 @@
             android:textColor="@color/white"
             android:fontFamily="@font/dmsans_regular" />
         <TextView
-            android:id="@+id/user_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/user_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="5dp"
-            android:text="@string/contohID"
-            android:textColor="@color/white"
-            android:fontFamily="@font/dmsans_medium" />
-        <TextView
             android:id="@+id/label_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/user_id"
+            app:layout_constraintTop_toBottomOf="@id/profilUser_namaUser"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="15dp"
             android:layout_marginStart="40dp"
@@ -142,10 +131,10 @@
             android:textColor="@color/white"
             android:fontFamily="@font/dmsans_regular" />
         <TextView
-            android:id="@+id/email"
+            android:id="@+id/profilUser_emailUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/user_id"
+            app:layout_constraintTop_toBottomOf="@id/profilUser_namaUser"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="40dp"
@@ -164,10 +153,10 @@
             android:textColor="@color/white"
             android:fontFamily="@font/dmsans_regular" />
         <TextView
-            android:id="@+id/no_telp"
+            android:id="@+id/profilUser_noTelpUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/email"
+            app:layout_constraintTop_toBottomOf="@id/profilUser_emailUser"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"

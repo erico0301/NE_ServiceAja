@@ -3,8 +3,7 @@ package com.example.serviceaja
 const val EXTRA_USERS = "com.example.serviceaja.EXTRA_USERS"
 const val EXTRA_USER = "com.example.serviceaja.EXTRA_USER"
 
-const val DAFTAR_ALAMAT = "com.example.serviceaja.DAFTAR_ALAMAT"
-const val ALAMAT_TIPE = "com.example.serviceaja.DaftarAlamat.ALAMAT_TIPE"
+const val ALAMAT_POSITION = "com.example.serviceaja.ALAMAT_POSITION"
 const val ALAMAT_NAMA_ALAMAT = "com.example.serviceaja.DaftarAlamat.ALAMAT_NAMA_ALAMAT"
 const val ALAMAT_NAMA_PENERIMA = "com.example.serviceaja.DaftarAlamat.ALAMAT_NAMA_PENERIMA"
 const val ALAMAT_NO_TELP = "com.example.serviceaja.DaftarAlamat.ALAMAT_NO_TELP"
@@ -13,6 +12,7 @@ const val ALAMAT_KABUPATEN_KOTA = "com.example.serviceaja.DaftarAlamat.ALAMAT_KA
 const val ALAMAT_KECAMATAN = "com.example.serviceaja.DaftarAlamat.ALAMAT_KECAMATAN"
 const val ALAMAT_DETAIL_ALAMAT = "com.example.serviceaja.DaftarAlamat.ALAMAT_DETAIL_ALAMAT"
 
+const val KENDARAAN_POSITION = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_POSITION"
 const val KENDARAAN_TIPE = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_TIPE"
 const val KENDARAAN_NO_PLAT = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_NO_PLAT"
 const val KENDARAAN_MERK = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_MERK"

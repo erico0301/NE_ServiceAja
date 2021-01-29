@@ -35,7 +35,7 @@ class SearchActivity : AppCompatActivity() {
             startActivity(searchResultIntent)
         }
 
-        recyclerViewServiceProductDetails.layoutManager = LinearLayoutManager (this)
+        recyclerViewServiceProductDetails.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewBengkelDetailsPeview.layoutManager = LinearLayoutManager (this)
 
         recyclerViewServiceProductDetails.adapter = RecyclerViewServiceDetailsSearchResult()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,225 +7,193 @@
     tools:context=".EditProfilUser">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" >
+        android:layout_height="?attr/actionBarSize"
+        android:backgroundTint="@color/gold" >
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/editProfil_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_close" />
+            android:layout_height="match_parent"
+            app:title="Edit Profil"
+            app:navigationIcon="@drawable/ic_back" />
     </com.google.android.material.appbar.AppBarLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp" >
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingTop="20dp"
+        android:layout_marginTop="?attr/actionBarSize" >
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-            <ImageView
-                android:id="@+id/profile_picture"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="50dp" >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp" >
+
+                <ImageView
+                    android:id="@+id/editProfil_foto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/ic_profile"
+                    android:contentDescription="@string/profile_picture"
+                    android:background="@drawable/profile_photo_background" />
+                <ImageButton
+                    android:id="@+id/editProfil_btnEditFoto"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintTop_toTopOf="@id/editProfil_foto"
+                    app:layout_constraintEnd_toEndOf="@id/editProfil_foto"
+                    android:layout_marginTop="80dp"
+                    android:src="@drawable/ic_edit"
+                    android:contentDescription="@string/edit"
+                    android:background="@drawable/profile_photo_background" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/editTextBaseStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_person"
+                android:hint="Nama Lengkap">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editProfil_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:imeOptions="actionNext" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/editTextBaseStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_email"
+                android:hint="@string/email_address" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editProfil_alamatEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/editTextBaseStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_call"
+                android:hint="@string/tel_number"
+                app:prefixText="(+62) - " >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editProfil_noTelepon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="number"
+                    android:imeOptions="actionNext" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/editProfil_btnShowEditPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:src="@drawable/ic_profile"
-                android:contentDescription="@string/profile_picture"
-                android:background="@drawable/profile_photo_background" />
-            <ImageButton
-                android:id="@+id/btn_edit_pp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:layout_constraintTop_toTopOf="@id/profile_picture"
-                app:layout_constraintEnd_toEndOf="@id/profile_picture"
-                android:layout_marginTop="80dp"
-                android:src="@drawable/ic_edit"
-                android:contentDescription="@string/edit"
-                android:background="@drawable/profile_photo_background" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="40dp"
-                android:layout_marginStart="30dp"
-                android:text="@string/edit_profile"
-                android:textSize="24sp"
-                android:fontFamily="@font/poppins_bold" />
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:text="Ubah Password"
+                android:textColor="@color/darkBlue"/>
+
             <LinearLayout
+                android:id="@+id/editProfil_ubahPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="80dp"
-                android:layout_marginHorizontal="30dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/name" />
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/picture_background">
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
+                    style="@style/editTextBaseStyle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:hint="@string/name" >
+                    app:startIconDrawable="@drawable/ic_password"
+                    android:hint="Password Lama"
+                    app:passwordToggleEnabled="true" >
+
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editProfil_passwordLama"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:fontFamily="@font/poppins_medium"
+                        android:imeOptions="actionNext" />
+
                 </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="140dp"
-                android:layout_marginHorizontal="30dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/tel_number" />
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
+                    style="@style/editTextBaseStyle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:hint="@string/tel_number" >
+                    app:helperText="Minimal 8 karakter campuran huruf dan angka"
+                    app:startIconDrawable="@drawable/ic_password"
+                    android:hint="Password Baru"
+                    app:passwordToggleEnabled="true" >
+
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editProfil_passwordBaru"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:fontFamily="@font/poppins_medium"
+                        android:imeOptions="actionNext" />
+
                 </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="200dp"
-                android:layout_marginHorizontal="30dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/email" />
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
+                    style="@style/editTextBaseStyle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:hint="@string/email" >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="270dp"
-                android:layout_marginStart="30dp"
-                android:text="@string/change_password"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_bold" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="300dp"
-                android:layout_marginHorizontal="30dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/old_password" />
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:hint="@string/old_password" >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="360dp"
-                android:layout_marginHorizontal="30dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/new_password" />
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:hint="@string/new_password" >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="420dp"
-                android:layout_marginHorizontal="30dp"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/confirm_password" />
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:hint="@string/confirm_password" >
+                    app:startIconDrawable="@drawable/ic_password"
+                    android:hint="@string/confirm_password"
+                    app:passwordToggleEnabled="true" >
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editProfil_konfirmasiPassword"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:fontFamily="@font/poppins_medium"
+                        android:imeOptions="actionDone" />
+
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/editProfil_btnEditPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:text="Ubah"
+                    android:textColor="@color/darkBlue" />
+
             </LinearLayout>
             <Button
+                android:id="@+id/editProfil_btnEditProfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="490dp"
-                android:layout_marginBottom="30dp"
-                android:text="@string/edit" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_gravity="center"
+                android:text="Edit" />
+
+        </LinearLayout>
 
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

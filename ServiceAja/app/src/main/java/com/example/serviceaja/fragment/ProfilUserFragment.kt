@@ -2,7 +2,6 @@ package com.example.serviceaja.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +9,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import com.example.serviceaja.DaftarAlamat
-import com.example.serviceaja.DaftarKendaraan
-import com.example.serviceaja.EditProfilUser
-import com.example.serviceaja.R
-import kotlinx.android.synthetic.main.fragment_profil_user.*
+import com.example.serviceaja.*
+import com.example.serviceaja.classes.User
+import kotlinx.android.synthetic.main.fragment_profil_user.view.*
 
 class ProfilUserFragment : Fragment() {
 
@@ -29,6 +26,12 @@ class ProfilUserFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profil_user, container, false)
 
+        val user = arguments?.getParcelable<User>(EXTRA_USER)
+
+        view.profilUser_namaUser.text = user?.nama
+        view.profilUser_emailUser.text = user?.email
+        view.profilUser_noTelpUser.text = "(+62)-${user?.noTelp!!.substring(1)}"
+
         view.findViewById<Button>(R.id.profilUser_btnMitra).setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()?.apply {
                 replace(R.id.fragment_container, ProfilMitraFragment())
@@ -41,11 +44,11 @@ class ProfilUserFragment : Fragment() {
         }
 
         view.findViewById<ImageButton>(R.id.profilUser_btnEditLocation).setOnClickListener {
-            startActivity(Intent(activity, DaftarAlamat::class.java))
+            startActivity(Intent(activity, AlamatActivity::class.java))
         }
 
         view.findViewById<LinearLayout>(R.id.profilUser_btnKendaraanLain).setOnClickListener {
-            startActivity(Intent(activity, DaftarKendaraan::class.java))
+            startActivity(Intent(activity, KendaraanActivity::class.java))
         }
 
         return view
