@@ -1,17 +1,26 @@
 package com.example.serviceaja.fragment
 
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.example.serviceaja.*
 import com.example.serviceaja.classes.Kendaraan
 import kotlinx.android.synthetic.main.fragment_detail_kendaraan.*
 import kotlinx.android.synthetic.main.fragment_detail_kendaraan.view.*
 import kotlinx.android.synthetic.main.fragment_history.view.*
+import java.io.ByteArrayOutputStream
 import java.time.LocalDate
 
 class DetailKendaraan : Fragment() {
@@ -112,6 +121,43 @@ class DetailKendaraan : Fragment() {
             }
         }
 
+        rootView.detailKendaraan_tambahFoto.setOnClickListener {
+            val menu = PopupMenu(context, detailKendaraan_tambahFoto)
+            menu.menuInflater.inflate(R.menu.menu_choose_image, menu.menu)
+            menu.setOnMenuItemClickListener {
+                when(it.itemId) {
+                    R.id.menuChooseItem_bukaKamera -> {
+                        if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+                            ActivityCompat.requestPermissions(context as KendaraanActivity, arrayOf(android.Manifest.permission.CAMERA), 101)
+                        else {
+                            val openCam = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                            if (openCam.resolveActivity(context!!.packageManager) != null)
+                                startActivityForResult(openCam, 1)
+                        }
+                        true
+                    }
+                    R.id.menuChooseItem_ambilDariGallery -> {
+                        if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                            ActivityCompat.requestPermissions(context as KendaraanActivity, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 102)
+                        else {
+                            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                            startActivityForResult(intent, 2)
+                        }
+                        true
+                    }
+                    else -> false
+                }
+            }
+            menu.show()
+        }
         return rootView
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == AppCompatActivity.RESULT_OK && data != null)
+            detailKendaraan_foto1.setImageBitmap(data.extras?.get("data") as Bitmap)
+        else if (requestCode == 2 && resultCode == AppCompatActivity.RESULT_OK && data != null)
+            detailKendaraan_foto1.setImageURI(data.data)
     }
 }

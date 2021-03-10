@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.CompoundButton
+import com.example.serviceaja.EXTRA_PASSWORD
 import com.example.serviceaja.EXTRA_USER
 import com.example.serviceaja.EXTRA_USERS
 import com.example.serviceaja.R
@@ -89,6 +90,26 @@ class RegisterActivity : AppCompatActivity() {
         }
         halamanDaftar_persetujuan.setOnCheckedChangeListener { compoundButton: CompoundButton, b: Boolean -> cekValiditasForm() }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val user = User(halamanDaftar_namaLengkap.text.toString(), halamanDaftar_alamatEmail.text.toString(),
+        halamanDaftar_noTelepon.text.toString(), halamanDaftar_password.text.toString())
+        val confirm_password = halamanDaftar_konfirmasiPassword.text.toString()
+
+        outState.putParcelable(EXTRA_USER, user)
+        outState.putString(EXTRA_PASSWORD, confirm_password)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val user = savedInstanceState.getParcelable<User>(EXTRA_USER)
+        halamanDaftar_namaLengkap.setText(user?.nama)
+        halamanDaftar_alamatEmail.setText(user?.email)
+        halamanDaftar_noTelepon.setText(user?.noTelp)
+        halamanDaftar_password.setText(user?.password)
+        halamanDaftar_konfirmasiPassword.setText(savedInstanceState.getString(EXTRA_PASSWORD))
     }
 
     fun cekValiditasForm() {

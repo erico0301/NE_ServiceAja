@@ -1,9 +1,12 @@
 package com.example.serviceaja.classes
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
+@Parcelize
 class Kendaraan (
     var jenis: String,
     var plat: String,
@@ -16,5 +19,5 @@ class Kendaraan (
     var noMesin: String,
     var noBPKB: String,
     var serviceTerakhir: LocalDate = LocalDate.parse("2020-01-01")
-) {
+) : Parcelable {
 }

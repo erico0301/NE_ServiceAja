@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuChooseItem_bukaKamera"
+        android:title="Ambil Foto" />
+    <item
+        android:id="@+id/menuChooseItem_ambilDariGallery"
+        android:title="Ambil dari Gallery" />
+</menu>

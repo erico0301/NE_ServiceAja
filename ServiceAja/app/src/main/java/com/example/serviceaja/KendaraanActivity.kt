@@ -13,8 +13,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_daftar_kendaraan.*
 
 class KendaraanActivity : AppCompatActivity() {
-    val daftarMobil = arrayListOf<Kendaraan>()
-    val daftarMotor = arrayListOf<Kendaraan>()
+    var daftarMobil = arrayListOf<Kendaraan>()
+    var daftarMotor = arrayListOf<Kendaraan>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,5 +27,17 @@ class KendaraanActivity : AppCompatActivity() {
             replace(R.id.kendaraan_fragmentContainer, DaftarKendaraan())
             commit()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList(MOBIL_ARRAY, daftarMobil)
+        outState.putParcelableArrayList(MOTOR_ARRAY, daftarMotor)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        daftarMobil = savedInstanceState.getParcelableArrayList<Kendaraan>(MOBIL_ARRAY) ?: arrayListOf()
+        daftarMotor = savedInstanceState.getParcelableArrayList<Kendaraan>(MOTOR_ARRAY) ?: arrayListOf()
     }
 }
