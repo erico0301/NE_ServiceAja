@@ -50,7 +50,7 @@ class ShoppingCartFragment : Fragment() {
 
         var shoppingCartInstances2 = ShoppingCartInstance(
                 "BMW",
-                R.drawable.bmw_logo_1,
+                R.drawable.bmw_logo,
                 "Medan",
                 mutableListOf(),
                 mutableListOf())

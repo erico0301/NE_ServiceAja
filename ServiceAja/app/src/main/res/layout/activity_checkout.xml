@@ -23,8 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:padding="10dp"
-        android:layout_below="@+id/topBg">
+        android:padding="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -34,7 +33,7 @@
                 android:id="@+id/bengkelImg"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/bmw_logo_1"
+                android:src="@drawable/bmw_logo"
                 android:scaleType="fitXY"
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"

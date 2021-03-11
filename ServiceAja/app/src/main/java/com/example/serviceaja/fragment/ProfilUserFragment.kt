@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import com.example.serviceaja.*
+import com.example.serviceaja.LoginRegister.MainActivity
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.fragment_profil_user.view.*
 
@@ -49,6 +50,11 @@ class ProfilUserFragment : Fragment() {
 
         view.profilUser_btnKendaraanLain.setOnClickListener {
             startActivity(Intent(activity, KendaraanActivity::class.java))
+        }
+
+        view.findViewById<ImageButton>(R.id.btn_logout).setOnClickListener {
+            startActivity(Intent(activity, MainActivity::class.java))
+            activity?.finishAffinity()
         }
 
         return view

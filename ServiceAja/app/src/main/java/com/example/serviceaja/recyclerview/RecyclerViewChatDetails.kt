@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.recyclerview_chat_details.view.*
 
 class RecyclerViewChatDetails : RecyclerView.Adapter<RecyclerViewChatDetails.ViewHolder>() {
 
-    private val itemImgBengkel = intArrayOf(R.drawable.mitsubishi_logo, R.drawable.bmw_logo_1, R.drawable.peugeot_logo)
+    private val itemImgBengkel = intArrayOf(R.drawable.mitsubishi_logo, R.drawable.bmw_logo, R.drawable.peugeot_logo)
     private val itemNamaBengkel = arrayOf("Mitsubishi", "BMW", "Peugeot")
     private val itemLastMessage = arrayOf("Terima kasih!", "Oke", "Harga OTR Medan")
     private val itemLastHour = arrayOf("10:32 pm", "10:23 am", "23 Des 20")
