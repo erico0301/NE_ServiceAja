@@ -11,10 +11,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
-import com.example.serviceaja.EXTRA_USER
-import com.example.serviceaja.EXTRA_USERS
-import com.example.serviceaja.HomeActivity
-import com.example.serviceaja.R
+import com.example.serviceaja.*
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -64,6 +61,21 @@ class LoginActivity : AppCompatActivity() {
             startActivity(register)
             finish()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val email = halamanLogin_inputEmail.text.toString()
+        val password = halamanLogin_inputPassword.text.toString()
+
+        outState.putString(EXTRA_EMAIL, email)
+        outState.putString(EXTRA_PASSWORD, password)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        halamanLogin_inputEmail.setText(savedInstanceState.getString(EXTRA_EMAIL))
+        halamanLogin_inputPassword.setText(savedInstanceState.getString(EXTRA_PASSWORD))
     }
 
     fun cekValiditasForm() {

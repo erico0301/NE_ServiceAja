@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.serviceaja.KendaraanActivity
+import com.example.serviceaja.MOBIL_ARRAY
+import com.example.serviceaja.MOTOR_ARRAY
 import com.example.serviceaja.R
 import com.example.serviceaja.classes.Kendaraan
 import com.example.serviceaja.recyclerview.RVDetailKendaraan
@@ -38,4 +40,10 @@ class DaftarMobil : Fragment() {
 
         return view
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+    }
+
+
 }

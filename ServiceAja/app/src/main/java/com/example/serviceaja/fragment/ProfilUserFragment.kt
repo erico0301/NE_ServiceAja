@@ -1,5 +1,6 @@
 package com.example.serviceaja.fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +10,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import com.example.serviceaja.*
 import com.example.serviceaja.LoginRegister.MainActivity
 import com.example.serviceaja.classes.User
+import kotlinx.android.synthetic.main.fragment_profil_user.*
 import kotlinx.android.synthetic.main.fragment_profil_user.view.*
 
 class ProfilUserFragment : Fragment() {
@@ -41,7 +44,9 @@ class ProfilUserFragment : Fragment() {
         }
 
         view.findViewById<ImageButton>(R.id.profilUser_btnEdit).setOnClickListener {
-            startActivity(Intent(activity, EditProfilUser::class.java))
+            val intent = Intent(activity, EditProfilUser::class.java)
+            intent.putExtra(EXTRA_USER, user)
+            startActivityForResult(intent, 101)
         }
 
         view.findViewById<ImageButton>(R.id.profilUser_btnEditLocation).setOnClickListener {
@@ -60,4 +65,15 @@ class ProfilUserFragment : Fragment() {
         return view
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 101) {
+            if (resultCode == AppCompatActivity.RESULT_OK && data != null) {
+                (activity as HomeActivity).apply {
+                    user = data.getParcelableExtra<User>(EXTRA_USER)!!
+                    activateFragment("Profile")
+                }
+            }
+        }
+    }
 }
