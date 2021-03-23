@@ -12,7 +12,7 @@ class RVWishList : RecyclerView.Adapter<RVWishList.ViewHolder>() {
     private val itemImgProduct = intArrayOf(R.drawable.dashcam, R.drawable.bodykit_x5)
     private val itemNamaProduct = arrayOf("Dashcam BlackVue 60fps FHD (Front)", "BodyKit BMW X5")
     private val itemHargaProduct = arrayOf("3.200.000", "23.500.000")
-    private val itemImgBengkel = intArrayOf(R.drawable.mitsubishi_logo, R.drawable.bmw_logo_1)
+    private val itemImgBengkel = intArrayOf(R.drawable.mitsubishi_logo, R.drawable.bmw_logo)
     private val itemNamaBengkel = arrayOf("Mitsubishi", "BMW")
     private val itemKotaBengkel = arrayOf("Medan", "Medan")
     private val itemImgRating = intArrayOf(R.drawable.ic_rating_5, R.drawable.ic_rating_5)

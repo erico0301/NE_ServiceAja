@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.layout_transaction_preview.view.*
 
 class RVTransactionPreview : RecyclerView.Adapter<RVTransactionPreview.ViewHolder>() {
 
-    private val itemImgBengkel = intArrayOf(R.drawable.mitsubishi_logo, R.drawable.bmw_logo_1)
+    private val itemImgBengkel = intArrayOf(R.drawable.mitsubishi_logo, R.drawable.bmw_logo)
     private val itemNamaBengkel = arrayOf("Mitsubishi", "BMW")
     private val itemImgItem = intArrayOf(R.drawable.service_xpander, R.drawable.bodykit_x5)
     private val itemNamaService = arrayOf("Service 1 tahun", "Bodykit X5 M Performance")

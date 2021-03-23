@@ -57,7 +57,7 @@
                 android:id="@+id/bengkelImg"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/bmw_logo_1"
+                android:src="@drawable/bmw_logo"
                 android:scaleType="fitXY"
                 android:padding="10dp"
                 android:background="@drawable/profile_round_corner"/>

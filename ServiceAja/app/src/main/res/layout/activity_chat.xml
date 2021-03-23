@@ -8,21 +8,15 @@
     tools:context=".chatreview.ChatActivity"
     android:background="@color/lightestBlue">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/chat_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" >
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/chat_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/gold"
-            app:logo="@drawable/bmw_logo_1"
-            app:navigationIcon="@drawable/ic_close"
-            app:title="BMW"
-            app:subtitle="Online"/>
-    </com.google.android.material.appbar.AppBarLayout>
+        android:background="@color/gold"
+        app:logo="@drawable/bmw_logo_small"
+        app:navigationIcon="@drawable/ic_close"
+        app:title="BMW"
+        app:subtitle="Online" />
 
     <LinearLayout
         android:id="@+id/bottomMenu"
@@ -105,7 +99,7 @@
         android:id="@+id/bengkelImgChat"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/bmw_logo_1"
+        android:src="@drawable/bmw_logo"
         android:scaleType="fitXY"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="10dp"
