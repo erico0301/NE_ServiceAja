@@ -30,3 +30,8 @@ const val KENDARAAN_BAHAN_BAKAR = "com.example.serviceaja.DaftarKendaraan.KENDAR
 const val KENDARAAN_NO_RANGKA = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_NO_RANGKA"
 const val KENDARAAN_NO_MESIN = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_NO_MESIN"
 const val KENDARAAN_NO_BPKB = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_NO_BPKB"
+
+const val ACTION_UPLOAD_IMAGE = "com.example.serviceaja.ACTION_UPLOAD_IMAGE"
+const val UPLOAD_IMAGE_JOB_ID = 123
+const val EXTRA_IMAGE = "com.example.serviceaja.EXTRA_IMAGE"
+const val EXTRA_UPLOAD_PROGRESS = "com.example.serviceaja.EXTRA_UPLOAD_PROGRESS"

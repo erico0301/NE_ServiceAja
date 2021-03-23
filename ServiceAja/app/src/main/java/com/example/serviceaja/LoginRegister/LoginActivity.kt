@@ -5,6 +5,9 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -26,11 +29,38 @@ class LoginActivity : AppCompatActivity() {
 
         users = intent.getSerializableExtra(EXTRA_USERS) as ArrayList<User>
 
+        // Object Handler yang digunakan untuk menerima pesan yang akan ditampilkan ketika terjadi kesalahan input field Login (ada field yang kosong)
+        val handlerThread = object : Handler(Looper.getMainLooper()) {
+            override fun handleMessage(msg: Message) {
+                // Pesan diterima melalui parameter msg (yang merupakan objek dari class Message) yang memiliki atribut obj dan juga arg1 dan arg2
+                val errorMessage = msg.obj as String  // Pesan yang diterima
+                // arg1 = 1 berarti msg dikirimkan untuk memberikan pesan error pada field input email/no.telepon, seperti yang ditetapkan di code bawah
+                if (msg.arg1 == 1)
+                    halamanLogin_inputEmail.error = errorMessage
+                // arg1 = 2 untuk msg yang dikirimkan untuk memberikan pesan error pada field input password (nilai arg tergantung pada programmer)
+                else
+                    halamanLogin_inputPassword.error = errorMessage
+            }
+        }
+
         halamanLogin_inputEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                cekValiditasForm()
+                // Menjalankan thread ketika terjadi perubahan isi pada field email/no.telepon
+                Thread(Runnable {
+                    // Thread akan mengecek isi dari field terlebih dahulu, jika kosong, maka akan mengirimkan pesan error tentang field email yang belum diisi
+                    // ke handler yang telah disediakan
+                    if (halamanLogin_inputEmail.text.toString() == "") {
+                        val msg = Message.obtain(handlerThread)
+                        msg.obj = "Isi dengan E-mail atau No. Telepon Terdaftar"
+                        msg.arg1 = 1
+                        msg.sendToTarget()
+                    }
+                    // Jika telah terisi dan tidak menimbulkan error, thread akan menjalankan fungsi cekValiditasForm() untuk mengecek kembali apakah seluruh field
+                    // termasuk field e-mail/no.telepon dan field password telah terisi dengan benar. Action yang akan dijalankan dijelaskan dibagian fungsi.
+                    cekValiditasForm()
+                }).start()
             }
 
             override fun afterTextChanged(s: Editable?) {}
@@ -40,20 +70,24 @@ class LoginActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                cekValiditasForm()
+                // Menjalankan thread ketika terjadi perubahan isi pada field input password
+                Thread(Runnable {
+                    // Thread akan mengecek isi dari field terlebih dahulu, jika kosong, maka akan mengirimkan pesan error tentang field password yang belum diisi
+                    // ke handler yang telah disediakan
+                    if (halamanLogin_inputPassword.text.toString() == "") {
+                        val msg = Message.obtain(handlerThread)
+                        msg.obj = "Harap isi Password Anda"
+                        msg.arg1 = 2
+                        msg.sendToTarget()
+                    }
+                    // Jika telah terisi dan tidak menimbulkan error, thread akan menjalankan fungsi cekValiditasForm() untuk mengecek kembali apakah seluruh field
+                    // termasuk field e-mail/no.telepon dan field password telah terisi dengan benar. Action yang akan dijalankan dijelaskan dibagian fungsi.
+                    cekValiditasForm()
+                }).start()
             }
 
             override fun afterTextChanged(s: Editable?) {}
-
         })
-
-        halamanLogin_inputEmail.setOnFocusChangeListener { view: View, b: Boolean ->
-            cekValiditasForm()
-        }
-
-        halamanLogin_inputPassword.setOnFocusChangeListener { v, hasFocus ->
-            cekValiditasForm()
-        }
 
         halamanLogin_btnDaftar.setOnClickListener {
             val register = Intent(this, RegisterActivity::class.java)
@@ -63,71 +97,57 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        val email = halamanLogin_inputEmail.text.toString()
-        val password = halamanLogin_inputPassword.text.toString()
-
-        outState.putString(EXTRA_EMAIL, email)
-        outState.putString(EXTRA_PASSWORD, password)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        halamanLogin_inputEmail.setText(savedInstanceState.getString(EXTRA_EMAIL))
-        halamanLogin_inputPassword.setText(savedInstanceState.getString(EXTRA_PASSWORD))
-    }
-
     fun cekValiditasForm() {
-        var user: User? = null
+        // 2 baris kode dibawah untuk mengambil isi dari edit text input email dan input password
         val emailOrPhoneNumber = halamanLogin_inputEmail.text.toString()
         val password = halamanLogin_inputPassword.text.toString()
 
-        var invalid = false
+        // Jika salah satu dari kedua field tersebut kosong, maka button masih disable, dan login tidak dapat dilakukan, ditandai dengan latar button yang berwarna
+        // abu-abu dan belum di set event OnClickListener pada button login, seperti yang dilakukan pada baris kode dalam if dibawah ini
+        if (emailOrPhoneNumber == "" || password == "") {
+            halamanLogin_btnMasuk.setBackgroundColor(getColor(R.color.gray))
+            halamanLogin_btnMasuk.setOnClickListener {  }
+            return
+        }
 
-        fun processInvalid(invalid: Boolean) {
-            if (!invalid) {
-                halamanLogin_btnMasuk.setBackgroundColor(getColor(R.color.darkestBlue))
-                halamanLogin_btnMasuk.setOnClickListener{
-                    if (user?.password == password) {
-                        val home = Intent(this, HomeActivity::class.java)
-                        home.putExtra(EXTRA_USER, user)
-                        startActivity(home)
-                        finishAffinity()
-                    }
-                    else {
-                        val alertDialog = AlertDialog.Builder(this)
-                            .setMessage("Password yang dimasukkan salah!")
-                            .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-
-                            })
-                            .show()
-                    }
+        // Sampai ke tahapan ini berarti tidak ada field yang kosong, maka sudah dapat dilakukan login, ditandai dengan latar button berwarna biru dan sudah di-set event
+        // OnClickListener pada button
+        halamanLogin_btnMasuk.setBackgroundColor(getColor(R.color.darkestBlue))
+        // Event OnClickListener akan mengecek validasi dari login yang akan dilakukan
+        halamanLogin_btnMasuk.setOnClickListener {
+            var user: User? = null
+            // Perulangan dilakukan pada daftar user untuk mencari apakah ada user yang terdaftar dengan email ataupun no. telepon yang diinput
+            for (i in users) {
+                if (emailOrPhoneNumber == i.email || emailOrPhoneNumber == i.noTelp) {
+                    user = i
+                    break
                 }
             }
+            // Jika tidak ada, maka akan dipanggil fungsi loginFailed() yang berfungsi untuk menampikan dialog yang menyatakan proses login gagal
+            if (user == null) loginFailed()
+            // Jika ditemukan user tersebut, maka akan dicek apakah password yang dimasukkan sama dengan password yang dimiliki oleh user yang bersangkutan
+            // Jika salah, maka akan memanggil fungsi loginFailed()
+            else if (password != user.password) loginFailed()
             else {
-                halamanLogin_btnMasuk.setBackgroundColor(getColor(R.color.gray))
-                halamanLogin_btnMasuk.setOnClickListener {  }
+                // Jika user ditemukan, dan password  yang dimasukkan benar, maka button akan membawa masuk ke intent baru yaitu intent home, menandakan proses login
+                    // berhasil dilakukan
+                val home = Intent(this, HomeActivity::class.java)
+                home.putExtra(EXTRA_USER, user)
+                startActivity(home)
+                finishAffinity()
             }
         }
+    }
 
-        if (emailOrPhoneNumber == "" || password == "") {
-            invalid = true
-            processInvalid(invalid)
-            return
-        }
+    // Fungsi loginFailed() untuk menampilkan dialog yang menandai proses login gagal dilakukan dikarenakan user yang tidak ditemukan dengan email/password yang diinput
+    // atau password yang tidak cocok dengan password yang dimiliki oleh akun yang bersangkutan
+    private fun loginFailed() {
+        val dialog = AlertDialog.Builder(this)
+                .setTitle("Login Gagal")
+                .setMessage("E-mail/No. Telepon atau Password yang dimasukkan salah")
+                .setPositiveButton("OK", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int -> })
 
-        for (i in users) {
-            if (emailOrPhoneNumber == i.email || emailOrPhoneNumber == i.noTelp)
-                user = i
-        }
-        if (user == null) {
-            halamanLogin_inputEmail.error = "E-mail atau No. Telepon belum terdaftar"
-            invalid = true
-            processInvalid(invalid)
-            return
-        }
-        processInvalid(invalid)
+        dialog.show()
     }
 
     fun forget(view: View) {

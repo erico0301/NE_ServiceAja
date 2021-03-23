@@ -39,8 +39,9 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:src="@drawable/ic_profile"
-                    android:scaleType="centerInside"
+                    android:padding="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/profile_2"
                     android:contentDescription="@string/profile_picture"
                     android:background="@drawable/profile_photo_background" />
                 <ImageButton
@@ -52,6 +53,16 @@
                     android:src="@drawable/ic_edit"
                     android:contentDescription="@string/edit"
                     android:background="@drawable/profile_photo_background" />
+
+                <ProgressBar
+                    android:id="@+id/editProfil_progressUploadFoto"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/editProfil_foto"
+                    android:layout_marginTop="10dp"
+                    android:indeterminate="false" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

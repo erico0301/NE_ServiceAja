@@ -114,6 +114,7 @@
         <item name="helperTextTextAppearance">@font/poppins_medium</item>
         <item name="errorEnabled">true</item>
         <item name="errorTextAppearance">@font/poppins_medium</item>
+        <item name="boxStrokeErrorColor">@color/red</item>
         <item name="prefixTextAppearance">@style/textBaseStyle</item>
         <item name="suffixTextAppearance">@style/textBaseStyle</item>
         <item name="android:fontFamily">@font/poppins_medium</item>

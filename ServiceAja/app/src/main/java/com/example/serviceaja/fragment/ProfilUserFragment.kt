@@ -42,16 +42,22 @@ class ProfilUserFragment : Fragment() {
             }
         }
 
+        /*View ImageButton berikut ditambahkan event OnClickListener sehingga pada saat diklik,
+        akan membuka Activity EditProfilUser.kt.
+        Langkah ini merupakan demonstrasi dari penggunaan Intent Eksplisit
+         */
         view.findViewById<ImageButton>(R.id.profilUser_btnEdit).setOnClickListener {
             val intent = Intent(activity, EditProfilUser::class.java)
             intent.putExtra(EXTRA_USER, user)
             startActivityForResult(intent, 101)
         }
 
+        // Event ini digunakan untuk membuka Intent Eksplisit AlamatActivity.kt
         view.findViewById<ImageButton>(R.id.profilUser_btnEditLocation).setOnClickListener {
             startActivity(Intent(activity, AlamatActivity::class.java))
         }
 
+        // Event ini digunakan untuk membuka Intent Eksplisit KendaraanActivity.kt
         view.profilUser_btnKendaraanLain.setOnClickListener {
             startActivity(Intent(activity, KendaraanActivity::class.java))
         }
