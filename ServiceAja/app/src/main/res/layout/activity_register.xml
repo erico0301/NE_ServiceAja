@@ -71,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_person"
-                    android:hint="Nama Lengkap">
+                    android:hint="Nama Lengkap" >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/halamanDaftar_namaLengkap"

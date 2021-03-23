@@ -3,8 +3,13 @@
     package="com.example.serviceaja">
 
     <uses-feature android:name="android.hardware.camera2" />
+
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +18,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
-        <activity android:name=".ProfilMitra"></activity>
+        <service
+            android:name=".UploadImageService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity android:name=".ProfilMitra" />
         <activity android:name=".TambahEditProduk" />
         <activity android:name=".KendaraanActivity" />
         <activity android:name=".DaftardanEditProfilMitra" />
@@ -60,9 +70,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginRegister.MainActivity"
-            android:theme="@style/lightBlueStatusBar"/>
+        <activity android:name=".LoginRegister.MainActivity" />
+        <provider
+            android:authorities="com.example.android.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
