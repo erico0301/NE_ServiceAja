@@ -1,6 +1,8 @@
 package com.example.serviceaja.fragment
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -58,8 +60,17 @@ class ProfilUserFragment : Fragment() {
         }
 
         view.findViewById<ImageButton>(R.id.btn_logout).setOnClickListener {
-            startActivity(Intent(activity, MainActivity::class.java))
-            activity?.finishAffinity()
+            var dialog = AlertDialog.Builder(activity)
+                    .setTitle("Keluar")
+                    .setMessage("Apakah Anda yakin ingin keluar ?")
+                    .setPositiveButton("Ya", DialogInterface.OnClickListener { dialogInterface, i ->
+                        startActivity(Intent(activity, MainActivity::class.java))
+                        activity?.finishAffinity()
+                    })
+                    .setNegativeButton("Tidak", DialogInterface.OnClickListener {  dialogInterface, i ->
+
+                    })
+            dialog.show()
         }
 
         return view

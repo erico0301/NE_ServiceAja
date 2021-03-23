@@ -24,8 +24,10 @@ class HistoryFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //default fragment
         replaceFragment(onGoingFragment)
 
+        //berpindah fragment
         transactionMenu.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId) {
                 R.id.onProcess -> {
