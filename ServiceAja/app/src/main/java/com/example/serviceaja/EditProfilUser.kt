@@ -32,15 +32,16 @@ class EditProfilUser : AppCompatActivity() {
     private lateinit var photoPath: String
     private var photoFile: File? = null
 
+    // Receiver untuk menangkap progress upload foto pada JobIntentService
     private val uploadReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            val uploadProgress = intent?.getIntExtra(EXTRA_UPLOAD_PROGRESS, 0)
-            editProfil_progressUploadFoto.progress = uploadProgress ?: 0
+            val uploadProgress = intent?.getIntExtra(EXTRA_UPLOAD_PROGRESS, 0) // Mendapatkan nilai progress yang dikirimkan dari JobIntentService
+            // Jika progres upload sudah mencapai 100%, maka receiver akan menerima extra berupa URI untuk foto yang diupload oleh user.
             if (uploadProgress == 100) {
                 Toast.makeText(this@EditProfilUser, "Upload Foto Berhasil Dilakukan!", Toast.LENGTH_LONG).show()
                 val uri = intent?.getParcelableExtra<Uri>(EXTRA_IMAGE)
-                editProfil_foto.setImageURI(uri)
-                editProfil_progressUploadFoto.visibility = View.GONE
+                editProfil_foto.setImageURI(uri)  // Set imageview dengan gambar yang diterima dari JobIntentService hasil dari upload user
+                editProfil_progressUploadFoto.visibility = View.GONE  // Progress bar akan hilang setelah proses upload selesai
             }
         }
     }
@@ -77,13 +78,15 @@ class EditProfilUser : AppCompatActivity() {
                             // Bagian ini menunjukkan implementasi dari Intent Implisit, yaitu membuka kamera
                             val openCam = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                             if (openCam.resolveActivity(packageManager) != null) {
+                                // Saat membuka intent implisit kamera, proses akan sekaligus membuat suatu file baru yang merupakan file foto yang akan disimpan dalam
+                                    // folder khusus untuk aplikasi, ditandai dengan pemanggilan fungsi createImageFile()
                                 photoFile = try {
                                     createImageFile()
                                 } catch (ex: IOException) {
                                     Log.e("Failed to save image", ex.toString())
                                     null
                                 }
-
+                                // Jika file terbentuk, maka akan disimpan dalam direktori untuk app, lalu akan membuka kamera
                                 if (photoFile != null) {
                                     val photoUri = FileProvider.getUriForFile(this, "com.example.android.fileprovider", photoFile!!)
                                     openCam.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
@@ -143,10 +146,12 @@ class EditProfilUser : AppCompatActivity() {
         }
     }
 
+    // Fungsi ini digunakan untuk membuat file baru untuk menampung gambar yang dipotret langsung dari kamera yang dibuka dalam aplikasi
     private fun createImageFile(): File {
         val dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")
         val fileName = "JPEG_" + LocalDateTime.now().format(dateFormat)
         val dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        // Setelah di-generasi nama dan direktori, maka file akan dibentuk, yang kemudian akan diisi dengan foto hasil jepretan.
         return File.createTempFile(fileName, ".jpg", dir).apply {
             photoPath = absolutePath
         }
@@ -161,24 +166,26 @@ class EditProfilUser : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        var image: Bitmap? = null
         var uri: Uri? = null
+        // Jika hasil aktivitas berasal dari intent kamera, maka akan diambil path dari file gambar yang telah dibuat sebelumnya dan mendapatkan nilai URI dari file tersebut
+        // untuk kemudian dikirimkan ke JobIntentService untuk memasuki proses upload
         if (requestCode == 1 && resultCode == AppCompatActivity.RESULT_OK) {
             uri = Uri.parse(photoFile?.absolutePath)
         }
+        // Jika hasil aktivitas berasal dari intent membuka gallery, maka langsung diambil nilai data.data yang merupakan URI dari file gambar yang telah terpilih
         else if (requestCode == 2 && resultCode == AppCompatActivity.RESULT_OK && data != null) {
             uri = data.data
         }
         Log.d("Upload Image", uri.toString())
-        editProfil_progressUploadFoto.visibility = View.VISIBLE
+        editProfil_progressUploadFoto.visibility = View.VISIBLE  // Progress bar akan dibuat visible (terlihat) disini
         Toast.makeText(this, "Sedang di-upload...", Toast.LENGTH_SHORT).show()
-        val service = Intent(this, UploadImageService::class.java)
-        service.putExtra(EXTRA_IMAGE, uri)
+        val service = Intent(this, UploadImageService::class.java)  // Pembentukan intent untuk JobIntentService yang merupakan proses upload gambar
+        service.putExtra(EXTRA_IMAGE, uri)                                         // Memasukkan URI dari gambar ke dalam extra yang disematkan dalam intent yang telah dibuat
 
-        val filter = IntentFilter(ACTION_UPLOAD_IMAGE)
-        registerReceiver(uploadReceiver, filter)
+        val filter = IntentFilter(ACTION_UPLOAD_IMAGE)  // Membuat intentfilter untuk menangkap aksi upload foto yang terjadi pada JobIntentService UploadImageService.kt
+        registerReceiver(uploadReceiver, filter)        // Mendaftarkan receiver
 
-        UploadImageService.enqueueWork(this, service)
+        UploadImageService.enqueueWork(this, service)       // Memanggil JobIntentService
     }
 
     override fun onDestroy() {
