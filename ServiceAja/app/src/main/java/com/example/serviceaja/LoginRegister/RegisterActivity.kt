@@ -27,6 +27,8 @@ import kotlinx.android.synthetic.main.activity_verification_code.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
+
+
 class RegisterActivity : AppCompatActivity() {
     private lateinit var users: ArrayList<User>
 
