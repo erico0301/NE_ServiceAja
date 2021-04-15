@@ -1,8 +1,6 @@
 package com.example.serviceaja.checkout
 
-import android.app.NotificationChannel
-import android.app.NotificationChannelGroup
-import android.app.NotificationManager
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -12,12 +10,16 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceaja.AlarmManager.AlarmReceiver
+import com.example.serviceaja.AlarmManager.EXTRA_PESAN
 import com.example.serviceaja.R
 import com.example.serviceaja.recyclerview.RecyclerViewCheckoutProductServiceDetails
 import kotlinx.android.synthetic.main.activity_checkout.*
+import java.util.*
 
 class CheckoutActivity : AppCompatActivity() {
 
@@ -49,7 +51,31 @@ class CheckoutActivity : AppCompatActivity() {
         var channel_id = ""
         var group_id = ""
 
+
+
+        var mAlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val requestCode = 101
+        var mPendingIntent: PendingIntent? = null
+        var sendIntent: Intent? = null
+
+
         paymentBtn.setOnClickListener {
+            if (mPendingIntent != null) {
+                mAlarmManager.cancel(mPendingIntent)
+                mPendingIntent?.cancel()
+            }
+            var setAlarmTime = Calendar.getInstance()
+            setAlarmTime.add(Calendar.SECOND, 10)
+
+            sendIntent = Intent(this, AlarmReceiver::class.java)
+            sendIntent?.putExtra(EXTRA_PESAN, "Buruan Bayar Belajaan anda ... !!!")
+            mPendingIntent = PendingIntent.getBroadcast(this, requestCode, sendIntent, 0)
+            mAlarmManager.set(AlarmManager.RTC_WAKEUP, setAlarmTime.timeInMillis, mPendingIntent)
+            Toast.makeText(
+                    this,
+                    "Alarm Manger Telah Dibuat",
+                    Toast.LENGTH_SHORT
+            ).show()
 
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O){
                 group_id = "Channel 2"
@@ -63,8 +89,11 @@ class CheckoutActivity : AppCompatActivity() {
                 notificationManager!!.notify(notifyChannel2, notification.build())
             }
 
+
             var confirmPaymentIntent = Intent(this, ConfirmPaymentActivity::class.java)
             startActivity(confirmPaymentIntent)
+
+
         }
     }
     private fun createNotificationGroup(){

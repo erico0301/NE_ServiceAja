@@ -18,6 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
+        <receiver
+            android:name=".AlarmManager.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
         <service
             android:name=".UploadImageService"
             android:exported="true"
@@ -71,9 +76,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginRegister.MainActivity" />
+
         <provider
-            android:authorities="com.example.android.fileprovider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
