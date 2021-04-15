@@ -13,7 +13,7 @@ import com.example.serviceaja.recyclerview.RecyclerViewServiceDetailsSearchResul
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : AppCompatActivity() {
-
+    var p1: MyProgressTask? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -31,8 +31,9 @@ class SearchActivity : AppCompatActivity() {
         }
 
         searchIcon.setOnClickListener {
-            var searchResultIntent = Intent(this, SearchResultActivity::class.java)
-            startActivity(searchResultIntent)
+
+            p1 = MyProgressTask(this)
+            p1!!.execute()
         }
 
         recyclerViewServiceProductDetails.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
