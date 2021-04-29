@@ -35,7 +35,7 @@ class ShoppingCartFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        /*
         var shoppingCartInstances = ShoppingCartInstance(
                 "Mitsubishi",
                 R.drawable.mitsubishi_logo,
@@ -47,7 +47,7 @@ class ShoppingCartFragment : Fragment() {
         shoppingCartInstances.itemServiceInstances[0].platMobil = "BK 9999 XYZ"
         shoppingCartInstances.itemProductInstances.add(ItemProductInstance(R.drawable.fb_aki, "Aki Xpander", "650.000"))
         shoppingCartInstances.itemProductInstances[0].jumlahItem = 2
-
+        */
         var shoppingCartInstances2 = ShoppingCartInstance(
                 "BMW",
                 R.drawable.bmw_logo,
@@ -63,7 +63,7 @@ class ShoppingCartFragment : Fragment() {
         shoppingCart_container.layoutManager = layoutManager
         // shoppingCart_container.addItemDecoration(DividerItemDecoration(this.context, LinearLayoutManager.VERTICAL))
 
-        adapter = RVShoppingCartContainer(arrayListOf(shoppingCartInstances, shoppingCartInstances2))
+        adapter = RVShoppingCartContainer(arrayListOf(/*shoppingCartInstances, */shoppingCartInstances2))
         shoppingCart_container.adapter = adapter
 
         checkoutBtn.setOnClickListener {
