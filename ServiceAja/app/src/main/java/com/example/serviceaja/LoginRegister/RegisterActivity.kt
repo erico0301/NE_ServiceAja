@@ -22,6 +22,7 @@ import com.example.serviceaja.EXTRA_USER
 import com.example.serviceaja.EXTRA_USERS
 import com.example.serviceaja.R
 import com.example.serviceaja.classes.User
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_verification_code.*
 import org.jetbrains.anko.doAsync
@@ -57,6 +58,8 @@ class RegisterActivity : AppCompatActivity() {
 
         users = intent.getSerializableExtra(EXTRA_USERS) as ArrayList<User>
 
+        connectionStatus = (getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetwork != null
+
         halamanDaftar_btnLogin.setOnClickListener {
             val login = Intent(this, LoginActivity::class.java)
             login.putExtra(EXTRA_USERS, users)
@@ -72,6 +75,8 @@ class RegisterActivity : AppCompatActivity() {
                 // Dilakukan proses asynchronous yaitu memanggil fungsi cekValiditasForm() yang berfungsi untuk mengecek setiap inputan pada seluruh field yang terdapat pada
                 // halaman register ini. Jika seluruh inputan benar dan valid, maka proses register akan dapat dilanjutkan ke tahap berikutnya.
                 doAsync {
+                    if (halamanDaftar_namaLengkap.text.toString() == "")
+                        uiThread { halamanDaftar_namaLengkap.error = "Nama Lengkap tidak boleh kosong" }
                     val validation = cekValiditasForm()
                     // UI Thread ini untuk mengubah tampilan pada button register, yang dimana button pertama kali di-set disable (tidak memiliki event onClickListener), dan
                     // ditandai dengan latar berwarna abu-abu. Button yang telah berfungsi dan telah disematkan event OnClickListener akan memiliki warna dasar biru tua
@@ -92,6 +97,10 @@ class RegisterActivity : AppCompatActivity() {
                 doAsync {
                     // Proses asynchronous yang dilakukan dengan memanggil fungsi cekEmail() terlebih dahulu untuk memastikan email yang dimasukkan valid dan tidak pernah
                     // terdaftar sebelumnya
+                    if (halamanDaftar_alamatEmail.text.toString() == "")
+                        uiThread {
+                            halamanDaftar_alamatEmail.error = "Alamat E-mail tidak boleh kosong"
+                        }
                     if (!cekEmail(halamanDaftar_alamatEmail.text.toString()))
                         // Jika e-mail tidak valid, maka akan menampilkan UI berupa pesan error pada field e-mail
                         uiThread {
@@ -137,6 +146,8 @@ class RegisterActivity : AppCompatActivity() {
                 // Proses asynchronous yang dilakukan dengan memanggil fungsi cekNoTelp() terlebih dahulu untuk memastikan no. telepon yang dimasukkan valid dan
                 // tidak pernah terdaftar sebelumnya
                 doAsync {
+                    if (halamanDaftar_noTelepon.text.toString() == "")
+                        uiThread { halamanDaftar_noTelepon.error = "No. Telepon tidak boleh kosong" }
                     if (!cekNoTelp(halamanDaftar_noTelepon.text.toString()))
                         // Jika no. telepon tidak valid, maka akan menampilkan UI berupa pesan error pada field no. telepon
                         uiThread { halamanDaftar_noTelepon.error = "No. Telepon telah terdaftar" }
@@ -182,7 +193,7 @@ class RegisterActivity : AppCompatActivity() {
                     if (!cekPassword(halamanDaftar_password.text.toString()))
                         // Jika password tidak valid, maka akan menampilkan UI berupa pesan error pada field password
                         uiThread {
-                            halamanDaftar_password.error = "Password wajib minimal 8 karakter campuran huruf dan angka!"
+                            halamanDaftar_password.error = "Password wajib minimal 8 karakter campuran huruf dan angka"
                         }
                     // Jika password valid, maka akan dijalankan fungsi cekValiditasForm() yang berfungsi untuk mengecek validitas input dari seluruh field yang nantinya akan
                     // digunakan untuk mengubah tampilan pada button register agar dapat ditekan atau tidak sama sekali
@@ -204,7 +215,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (!cekPassword(halamanDaftar_password.text.toString()))
                 // Jika password tidak valid, maka akan menampilkan UI berupa pesan error pada field password
                     uiThread {
-                        halamanDaftar_password.error = "Password wajib minimal 8 karakter campuran huruf dan angka!"
+                        halamanDaftar_password.error = "Password wajib minimal 8 karakter campuran huruf dan angka"
                     }
                 // Jika password valid, maka akan dijalankan fungsi cekValiditasForm() yang berfungsi untuk mengecek validitas input dari seluruh field yang nantinya akan
                 // digunakan untuk mengubah tampilan pada button register agar dapat ditekan atau tidak sama sekali
@@ -225,11 +236,16 @@ class RegisterActivity : AppCompatActivity() {
                 // Proses asynchronous yang dilakukan dengan memanggil fungsi cekKonfirmasiPassword() terlebih dahulu untuk memastikan password yang dimasukkan sama
                 // dengan password yang telah ditetapkan di field password
                 doAsync {
+                    if (halamanDaftar_konfirmasiPassword.text.toString() == "") {
+                        uiThread { halamanDaftar_konfirmasiPassword.error = "Konfirmasi Password tidak boleh kosong" }
+                        return@doAsync
+                    }
+
                     if (!cekKonfirmasiPassword(halamanDaftar_password.text.toString(), halamanDaftar_konfirmasiPassword.text.toString()))
                         // Jika password pada konfirmasi password berbeda dengan password yang dimasukkan dalam field password, maka akan menampilkan UI
                             // berupa pesan error yang menyatakan password yang diinput berbeda.
                         uiThread {
-                            halamanDaftar_konfirmasiPassword.error = "Password yang Anda masukkan berbeda!"
+                            halamanDaftar_konfirmasiPassword.error = "Password yang Anda masukkan berbeda"
                         }
                     // Jika input pada field konfirmasi password valid (sama dengan password pada field password), maka akan maka akan dijalankan fungsi cekValiditasForm()
                     // yang berfungsi untuk mengecek validitas input dari seluruh field yang nantinya akan digunakan untuk mengubah tampilan pada button register agar dapat
@@ -253,7 +269,7 @@ class RegisterActivity : AppCompatActivity() {
                 // Jika password pada konfirmasi password berbeda dengan password yang dimasukkan dalam field password, maka akan menampilkan UI
                 // berupa pesan error yang menyatakan password yang diinput berbeda.
                     uiThread {
-                        halamanDaftar_konfirmasiPassword.error = "Password yang Anda masukkan berbeda!"
+                        halamanDaftar_konfirmasiPassword.error = "Password yang Anda masukkan berbeda"
                     }
                 // Jika input pada field konfirmasi password valid (sama dengan password pada field password), maka akan maka akan dijalankan fungsi cekValiditasForm() yang
                 // berfungsi untuk mengecek validitas input dari seluruh field yang nantinya akan  digunakan untuk mengubah tampilan pada button register agar dapat ditekan
@@ -387,7 +403,7 @@ class RegisterActivity : AppCompatActivity() {
     // Fungsi untuk mengecek password yang dimasukkan oleh pengguna saat mendaftar
     private fun cekPassword(password: String): Boolean {
         // Mengecek apakah password sudah memiliki sebanyak 8 karakter
-        if (password.length < 8 && !password.contains(Regex("^[a-zA-Z0-9_.-]*\$")))
+        if (password.length < 8 || !password.matches(Regex(".*[0-9]+.*")) || !password.matches(Regex(".*[a-zA-Z]+.*")))
             return false
         // Jika password yang dipakai sudah memenuhi syarat, maka akan dikembalikan "true"
         return true

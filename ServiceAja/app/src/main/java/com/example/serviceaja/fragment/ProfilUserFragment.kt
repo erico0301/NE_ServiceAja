@@ -3,6 +3,7 @@ package com.example.serviceaja.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,9 +19,13 @@ import kotlinx.android.synthetic.main.fragment_profil_user.*
 import kotlinx.android.synthetic.main.fragment_profil_user.view.*
 
 class ProfilUserFragment : Fragment() {
+    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        user = arguments?.getParcelable<User>(EXTRA_USER) ?: User("admin", "admin@gmail" ,"01812135484", "asdfghjkl")
+        Log.e("profilUserFragment", "${user.nama}, ${user.email}, ${user.noTelp}")
     }
 
     override fun onCreateView(
@@ -29,16 +34,18 @@ class ProfilUserFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profil_user, container, false)
-
-        val user = arguments?.getParcelable<User>(EXTRA_USER)
-
-        view.profilUser_namaUser.text = user?.nama
-        view.profilUser_emailUser.text = user?.email
-        view.profilUser_noTelpUser.text = "(+62)-${user?.noTelp!!.substring(1)}"
+        Log.e("profilUserFragment onCreateVIew", "${user.nama}, ${user.email}, ${user.noTelp}")
+        view.profilUser_namaUser.text = user.nama
+        view.profilUser_emailUser.text = user.email
+        view.profilUser_noTelpUser.text = "(+62)-${user.noTelp!!.substring(1)}"
 
         view.findViewById<Button>(R.id.profilUser_btnMitra).setOnClickListener {
+            val profilMitraFragment = ProfilMitraFragment()
+            val bundle = Bundle()
+            bundle.putParcelable(EXTRA_USER, user)
+            profilMitraFragment.arguments = bundle
             activity?.supportFragmentManager?.beginTransaction()?.apply {
-                replace(R.id.fragment_container, ProfilMitraFragment())
+                replace(R.id.fragment_container, profilMitraFragment)
                 commit()
             }
         }
@@ -49,18 +56,26 @@ class ProfilUserFragment : Fragment() {
          */
         view.findViewById<ImageButton>(R.id.profilUser_btnEdit).setOnClickListener {
             val intent = Intent(activity, EditProfilUser::class.java)
+
             intent.putExtra(EXTRA_USER, user)
-            startActivityForResult(intent, 101)
+            intent.putExtra(EXTRA_USERS, (activity as HomeActivity).users)
+            activity?.startActivityForResult(intent, REQ_CODE_EDIT_PROFILE)
+            activity?.supportFragmentManager?.beginTransaction()
+                    ?.remove(this)?.commit()
         }
 
         // Event ini digunakan untuk membuka Intent Eksplisit AlamatActivity.kt
         view.findViewById<ImageButton>(R.id.profilUser_btnEditLocation).setOnClickListener {
-            startActivity(Intent(activity, AlamatActivity::class.java))
+            val intent = Intent(activity, AlamatActivity::class.java)
+            intent.putExtra(EXTRA_USER, user)
+            activity?.startActivityForResult(intent, REQ_CODE_EDIT_LOCATION)
         }
 
         // Event ini digunakan untuk membuka Intent Eksplisit KendaraanActivity.kt
         view.profilUser_btnKendaraanLain.setOnClickListener {
-            startActivity(Intent(activity, KendaraanActivity::class.java))
+            val intent = Intent(activity, KendaraanActivity::class.java)
+            intent.putExtra(EXTRA_USER, user)
+            startActivity(intent)
         }
 
         view.findViewById<ImageButton>(R.id.btn_logout).setOnClickListener {
@@ -69,17 +84,5 @@ class ProfilUserFragment : Fragment() {
         }
 
         return view
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 101) {
-            if (resultCode == AppCompatActivity.RESULT_OK && data != null) {
-                (activity as HomeActivity).apply {
-                    user = data.getParcelableExtra<User>(EXTRA_USER)!!
-                    activateFragment("Profile")
-                }
-            }
-        }
     }
 }

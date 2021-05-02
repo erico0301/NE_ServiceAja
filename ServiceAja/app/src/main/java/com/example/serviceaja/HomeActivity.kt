@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.serviceaja.classes.User
@@ -19,15 +20,26 @@ class HomeActivity : AppCompatActivity() {
     private val shoppingCartFragment = ShoppingCartFragment()
     private val chatFragment = ChatFragment()
     private val profileFragment = ProfilUserFragment()
-
-    private lateinit var activeFragment: String
     lateinit var user: User
+    lateinit var users: ArrayList<User>
+    private lateinit var activeFragment: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        Log.e("onCreate", "Dijalakan!")
+        users = arrayListOf(
+            User("admin", "admin@gmail.com", "081234567890", "admin"),
+            User("testing", "testing@gmail.com", "082345678910", "testing")
+        )
 
-        user = intent.getParcelableExtra<User>(EXTRA_USER)!!
+        if (savedInstanceState != null) {
+            Log.e("savedInstanceState", "Dijalankan!")
+            user = savedInstanceState.getParcelable(EXTRA_USER)!!
+        }
+
+        else
+            user = intent.extras?.getParcelable(EXTRA_USER)!!
 
         activeFragment = "Home"
         activateFragment(activeFragment)
@@ -93,13 +105,29 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQ_CODE_EDIT_PROFILE) {
+            if (resultCode == RESULT_OK && data != null) {
+                this.apply {
+                    user = data.extras?.getParcelable(EXTRA_USER_RETURN)!!
+                    activateFragment("Profile")
+                }
+            }
+        }
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+        Log.e("onSaveInstanceState", "Dijalankan!")
         outState.putString(ACTIVE_FRAGMENT, activeFragment)
+        outState.putParcelable(EXTRA_USER, user)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+        Log.e("onRestoreInstanceState", "Dijalankan!")
         activateFragment(savedInstanceState.getString(ACTIVE_FRAGMENT)!!)
+        user = savedInstanceState.getParcelable(EXTRA_USER)!!
     }
 }

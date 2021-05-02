@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.serviceaja">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature android:name="android.hardware.camera2" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -10,6 +17,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -18,13 +27,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
-        <receiver
-            android:name=".AlarmManager.AlarmReceiver"
+        <service android:name=".classes.GetPrakiraanCuaca"
+            android:exported="true"
             android:enabled="true"
-            android:exported="true"></receiver>
-
+            android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".UploadImageService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".classes.GetDaftarProvinsi"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".classes.GetDaftarKabupatenKota"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".classes.GetDaftarKecamatan"
+            android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
@@ -32,8 +55,10 @@
         <activity android:name=".TambahEditProduk" />
         <activity android:name=".KendaraanActivity" />
         <activity android:name=".DaftardanEditProfilMitra" />
-        <activity android:name=".EditProfilUser" />
-        <activity android:name=".AlamatActivity" />
+        <activity android:name=".EditProfilUser"
+            android:parentActivityName=".HomeActivity" />
+        <activity android:name=".AlamatActivity"
+            android:parentActivityName=".HomeActivity" />
         <activity android:name=".chatreview.ChatActivity" />
         <activity android:name=".chatreview.ReviewActivity" />
         <activity android:name=".checkout.CheckoutActivity" />

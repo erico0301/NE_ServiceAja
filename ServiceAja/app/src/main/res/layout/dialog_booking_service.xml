@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_calendar" />
+                <TextView
+                    android:id="@+id/dialogPesanService_tanggalService"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:text="Tanggal Service" />
+                <Button
+                    android:id="@+id/dialogPesanService_btnPilihTanggal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="0dp"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:text="Pilih Tanggal"
+                    android:textColor="@color/darkBlue"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp" >
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_time" />
+                <TextView
+                    android:id="@+id/dialogPesanService_waktuService"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:text="Waktu Service" />
+                <Button
+                    android:id="@+id/dialogPesanService_btnPilihWaktu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="0dp"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:text="Pilih Waktu"
+                    android:textColor="@color/darkBlue"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:text="Kendaraan"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_medium"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/info_item_background" >
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/dialogPesanService_frameFotoKendaraan"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:cardCornerRadius="20dp"
+                    android:background="@drawable/picture_background" >
+                    <ImageView
+                        android:id="@+id/dialogPesanService_fotoKendaraan"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:src="@drawable/fortuner"
+                        android:contentDescription="@string/vehicle_photo"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/picture_background"/>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/dialogPesanService_noPlatKendaraan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/dialogPesanService_frameFotoKendaraan"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/contohPlat"
+                    android:textSize="28sp"
+                    android:fontFamily="@font/poppins_medium" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/dialogPesanService_noPlatKendaraan"
+                    app:layout_constraintBottom_toTopOf="@id/dialogPesanService_merkKendaraan"
+                    app:layout_constraintStart_toEndOf="@id/dialogPesanService_frameFotoKendaraan"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/vehicle_brand"
+                    android:fontFamily="@font/poppins_bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/dialogPesanService_noPlatKendaraan"
+                    app:layout_constraintBottom_toTopOf="@id/dialogPesanService_namaKendaraan"
+                    app:layout_constraintStart_toStartOf="@id/dialogPesanService_namaKendaraan"
+                    android:text="@string/name"
+                    android:fontFamily="@font/poppins_bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/dialogPesanService_noPlatKendaraan"
+                    app:layout_constraintBottom_toTopOf="@id/dialogPesanService_tahunKendaraan"
+                    app:layout_constraintStart_toStartOf="@id/dialogPesanService_tahunKendaraan"
+                    android:text="@string/vehicle_year"
+                    android:fontFamily="@font/poppins_bold" />
+                <TextView
+                    android:id="@+id/dialogPesanService_merkKendaraan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/dialogPesanService_serviceTerakhir"
+                    app:layout_constraintStart_toEndOf="@id/dialogPesanService_frameFotoKendaraan"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/toyota"
+                    android:fontFamily="@font/poppins_light" />
+                <TextView
+                    android:id="@+id/dialogPesanService_namaKendaraan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/dialogPesanService_serviceTerakhir"
+                    app:layout_constraintStart_toEndOf="@id/dialogPesanService_merkKendaraan"
+                    app:layout_constraintEnd_toStartOf="@id/dialogPesanService_tahunKendaraan"
+                    android:text="@string/fortuner"
+                    android:fontFamily="@font/poppins_light" />
+                <TextView
+                    android:id="@+id/dialogPesanService_tahunKendaraan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/dialogPesanService_serviceTerakhir"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/contohTahun"
+                    android:fontFamily="@font/poppins_light" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/dialogPesanService_merkKendaraan"
+                    app:layout_constraintBottom_toTopOf="@id/profilUser_btnKendaraanLain"
+                    app:layout_constraintStart_toEndOf="@id/dialogPesanService_frameFotoKendaraan"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/last_service"
+                    android:fontFamily="@font/poppins_bold" />
+                <TextView
+                    android:id="@+id/dialogPesanService_serviceTerakhir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/profilUser_btnKendaraanLain"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/contohTanggal"
+                    android:fontFamily="@font/poppins_light" />
+                <Button
+                    android:id="@+id/profilUser_btnKendaraanLain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:padding="0dp"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:drawableRight="@drawable/ic_arrow_right"
+                    android:text="Kendaraan Lain"
+                    android:textColor="@color/darkBlue" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp" >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Service"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="2" >
+                    <RadioButton
+                        android:id="@+id/dialogPesanService_rbOnSite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="On-Site"
+                        android:fontFamily="@font/dm_sans"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/dialogPesanService_rbOffSite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Off-Site"
+                        android:fontFamily="@font/dm_sans"
+                        android:layout_weight="1"/>
+                </RadioGroup>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:text="@string/servicenote"
+                android:textSize="15sp"
+                android:layout_marginBottom="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:text="Alamat"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_medium" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dialogPesanService_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/info_item_background">
+                <TextView
+                    android:id="@+id/dialogPesanService_namaAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Nama Alamat"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/poppins_bold"/>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/dialogPesanService_namaAlamat"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="30dp">
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_marginEnd="20dp"
+                            android:text="Nama Penerima" />
+
+                        <TextView
+                            android:id="@+id/dialogPesanService_namaPenerima"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:text="Contoh Nama Penerima" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:layout_column="1"
+                            android:text="@string/tel_number" />
+                        <TextView
+                            android:id="@+id/dialogPesanService_noTelepon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:text="(+62)812-3456-7890" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:layout_column="1"
+                            android:text="Alamat Lengkap" />
+
+                        <TextView
+                            android:id="@+id/dialogPesanService_detailAlamat"
+                            android:layout_width="234dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:text="Alamat Lengkap penerima meliputi nama jalan secara lengkap, (RT/RW bila ada), desa/dusun, dan kelurahan." />
+
+                    </TableRow>
+                    <TableRow>
+                        <TextView android:layout_column="1"/>
+                        <TextView
+                            android:id="@+id/dialogPesanService_daerahAlamat"
+                            android:layout_width="234dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:text="Kecamatan, kabupaten/kota, provinsi, Indonesia, Kode Pos" />
+                    </TableRow>
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/dialogPesanService_btnAlamatLain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:paddingHorizontal="0dp"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="20dp"
+                    android:drawableRight="@drawable/ic_arrow_right"
+                    android:text="Alamat Lain"
+                    android:textColor="@color/darkBlue" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:text="Pesan Langsung" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
