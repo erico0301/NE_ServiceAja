@@ -5,22 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EditProfilUser">
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/editProfil_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:backgroundTint="@color/gold" >
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/editProfil_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:title="Edit Profil"
-            app:navigationIcon="@drawable/ic_back" />
-    </com.google.android.material.appbar.AppBarLayout>
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="Edit Profil"
+        android:elevation="8dp" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:layout_marginTop="?attr/actionBarSize" >
+        android:layout_marginTop="?attr/actionBarSize"
+        android:paddingTop="20dp" >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -11,5 +11,6 @@ class User(
         var noTelp: String,
         var password: String
 ): Parcelable {
-
+    var kendaraan: ArrayList<Kendaraan> = arrayListOf()
+    var alamat: ArrayList<Alamat> = arrayListOf()
 }
