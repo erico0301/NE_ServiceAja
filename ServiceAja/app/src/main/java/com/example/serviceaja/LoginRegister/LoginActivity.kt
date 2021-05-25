@@ -1,17 +1,18 @@
 package com.example.serviceaja.LoginRegister
 
+import android.annotation.TargetApi
 import android.app.Notification
 import android.content.DialogInterface
 import android.content.Intent
+import android.media.AudioManager
+import android.media.SoundPool
+import android.os.*
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import com.example.serviceaja.*
@@ -21,6 +22,9 @@ import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_search.*
+
+var sp : SoundPool? = null
+var soundID : Int = 0
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var users: ArrayList<User>
@@ -100,6 +104,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
+
     fun cekValiditasForm() {
         // 2 baris kode dibawah untuk mengambil isi dari edit text input email dan input password
         val emailOrPhoneNumber = halamanLogin_inputEmail.text.toString()
@@ -109,7 +115,11 @@ class LoginActivity : AppCompatActivity() {
         // abu-abu dan belum di set event OnClickListener pada button login, seperti yang dilakukan pada baris kode dalam if dibawah ini
         if (emailOrPhoneNumber == "" || password == "") {
             halamanLogin_btnMasuk.setBackgroundColor(getColor(R.color.gray))
-            halamanLogin_btnMasuk.setOnClickListener {  }
+            halamanLogin_btnMasuk.setOnClickListener {
+                if(soundID!=0) {
+                    sp?.play(soundID,.99f,.99f,1,0,.99f)
+                }
+            }
             return
         }
 
@@ -153,7 +163,9 @@ class LoginActivity : AppCompatActivity() {
                 .setTitle("Login Gagal")
                 .setMessage("E-mail/No. Telepon atau Password yang dimasukkan salah")
                 .setPositiveButton("OK", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int -> })
-
+        if(soundID!=0) {
+            sp?.play(soundID,.99f,.99f,1,0,.99f)
+        }
         dialog.show()
     }
 
@@ -163,4 +175,30 @@ class LoginActivity : AppCompatActivity() {
 
     fun loginGmail(view: View) {}
     fun loginFB(view: View) {}
+
+    override fun onStart() {
+        super.onStart()
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            createNewSoundPool()
+        else
+            createOldSoundPool()
+        soundID = sp?.load(this, R.raw.error,1) ?: 0
+    }
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private fun createNewSoundPool() {
+        sp = SoundPool.Builder()
+                .setMaxStreams(15)
+                .build()
+    }
+    @Suppress("DEPRECATION")
+    private fun createOldSoundPool() {
+        sp = SoundPool(15, AudioManager.STREAM_MUSIC,0)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        sp?.release()
+        sp = null
+    }
 }
+
