@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.serviceaja.EXTRA_USERS
 import com.example.serviceaja.R
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val db = DBHelper(this)
 
         halamanAwal_btnMasuk.setOnClickListener {
             var login = Intent(this, LoginActivity::class.java)

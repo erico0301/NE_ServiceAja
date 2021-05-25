@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.serviceaja">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -27,9 +26,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
-        <service android:name=".classes.GetPrakiraanCuaca"
-            android:exported="true"
+        <activity android:name=".SettingsActivity"></activity>
+
+        <service
+            android:name=".classes.GetPrakiraanCuaca"
             android:enabled="true"
+            android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".UploadImageService"
@@ -55,9 +57,11 @@
         <activity android:name=".TambahEditProduk" />
         <activity android:name=".KendaraanActivity" />
         <activity android:name=".DaftardanEditProfilMitra" />
-        <activity android:name=".EditProfilUser"
+        <activity
+            android:name=".EditProfilUser"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".AlamatActivity"
+        <activity
+            android:name=".AlamatActivity"
             android:parentActivityName=".HomeActivity" />
         <activity android:name=".chatreview.ChatActivity" />
         <activity android:name=".chatreview.ReviewActivity" />

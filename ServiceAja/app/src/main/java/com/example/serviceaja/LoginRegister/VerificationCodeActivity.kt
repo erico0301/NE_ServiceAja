@@ -103,7 +103,7 @@ class VerificationCodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verification_code)
 
-        user = intent.getParcelableExtra<User>(EXTRA_USER)!!
+        user = intent.getParcelableExtra(EXTRA_USER)!!
 
         // Notification Manager yang digunakan untuk membuat notification channel dan menciptakan notifikasi yang akan dikirimkan ke user setelah user
         // melewati tahap verifikasi pengguna
@@ -188,7 +188,9 @@ class VerificationCodeActivity : AppCompatActivity() {
         konfirmasiKodeBtn.setBackgroundColor(getColor(R.color.darkestBlue))
         konfirmasiKodeBtn.setOnClickListener {
             // Button digunakan untuk masuk ke aktivitas selanjutnya yaitu WelcomeActivity.kt
-            startActivity(Intent(this@VerificationCodeActivity, WelcomeActivity::class.java))
+            val intent = Intent(this@VerificationCodeActivity, WelcomeActivity::class.java)
+            intent.putExtra(EXTRA_USER, user)
+            startActivity(intent)
 
             // Selain untuk masuk ke aktivitas selanjutnya, button juga dipakai untuk mengirimkan notifikasi
             // Baris kode dibawah ini untuk membuat intent masuk ke halaman home (homepage) dari aplikasi ketika notifikasi diklik (dimana saja), dan juga mengirimkan
