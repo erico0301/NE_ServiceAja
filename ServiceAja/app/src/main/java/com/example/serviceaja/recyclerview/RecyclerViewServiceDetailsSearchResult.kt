@@ -11,12 +11,12 @@ import kotlinx.android.synthetic.main.layout_item_search_result_preview.view.*
 
 class RecyclerViewServiceDetailsSearchResult : RecyclerView.Adapter<RecyclerViewServiceDetailsSearchResult.ViewHolder> () {
 
-    private val itemImgService = intArrayOf(R.drawable.wash_xpander, R.drawable.balancing_spooring, R.drawable.service_bmw)
-    private val itemNamaService = arrayOf("Car Wash", "Balancing Spooring 4D", "BMW")
-    private val itemFotoBengkel = intArrayOf(R.drawable.mitsubishi_logo, R.drawable.toyota_logo, R.drawable.bmw_logo)
-    private val itemNamaBengkel = arrayOf("Mitsubishi", "Toyota", "BMW")
+    private val itemImgService = intArrayOf(R.drawable.wash_xpander, R.drawable.xpander_sound_system, R.drawable.service_bmw)
+    private val itemNamaService = arrayOf("Car Wash", "Xpander Sound System Package", "BMW")
+    private val itemFotoBengkel = intArrayOf(R.drawable.mitsubishi_logo, R.drawable.mitsubishi_logo, R.drawable.bmw_logo)
+    private val itemNamaBengkel = arrayOf("Mitsubishi", "Mitsubishi", "BMW")
     private val itemKotaBengkel = arrayOf("Medan", "Medan", "Medan")
-    private val itemHargaService = arrayOf("75.000", "2.000.000", "300.000")
+    private val itemHargaService = arrayOf("75.000", "5.230.000", "300.000")
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

@@ -35,3 +35,7 @@ const val ACTION_UPLOAD_IMAGE = "com.example.serviceaja.ACTION_UPLOAD_IMAGE"
 const val UPLOAD_IMAGE_JOB_ID = 123
 const val EXTRA_IMAGE = "com.example.serviceaja.EXTRA_IMAGE"
 const val EXTRA_UPLOAD_PROGRESS = "com.example.serviceaja.EXTRA_UPLOAD_PROGRESS"
+
+const val ACTION_PLAY = "PLAY"
+const val ACTION_STOP = "STOP"
+const val ACTION_CREATE = "CREATE"

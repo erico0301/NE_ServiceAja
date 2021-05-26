@@ -36,7 +36,7 @@
                 android:id="@+id/productImg"
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
-                android:src="@drawable/balancing_spooring"
+                android:src="@drawable/xpander_sound_system"
                 android:scaleType="fitXY"
                 app:riv_border_color="@color/black"
                 app:riv_border_width="0.5dp"
@@ -55,7 +55,7 @@
                 android:id="@+id/namaProduk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="4D Balancing and Spooring"
+                android:text="Xpander Sound System Package"
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -78,7 +78,7 @@
                 android:id="@+id/hargaProduk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1.230.500"
+                android:text="5.230.000"
                 android:textSize="18sp"
                 android:fontFamily="@font/poppins_bold"
                 android:layout_below="@+id/namaProduk"
@@ -89,7 +89,7 @@
                 android:id="@+id/bengkelImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/bmw_logo"
+                android:src="@drawable/mitsubishi_logo"
                 android:scaleType="fitXY"
                 android:layout_below="@+id/rpTxt"
                 android:layout_marginBottom="20dp"
@@ -100,7 +100,7 @@
                 android:id="@+id/namaBengkel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="BMW"
+                android:text="Mitsubishi"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_toRightOf="@+id/bengkelImg"
                 android:layout_below="@+id/rpTxt"
@@ -120,11 +120,18 @@
                 android:id="@+id/detailProduk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/detailproduk"
+                android:text="- Twitter MappleTech Ref.1.TW \n- Speaker Mapletech Ref.6.MB\n- DSP Amp PDA\n- Amplifier PA-4.70D\n\n\nBerikut tester sound system yang terpasang"
                 android:fontFamily="@font/poppins_medium"
-                android:maxLines="5"
                 android:layout_below="@+id/bengkelImg"
                 android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/testSoundBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/detailProduk"/>
 
             <TextView
                 android:id="@+id/reviewTxt"
@@ -134,7 +141,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@+id/detailProduk"
+                android:layout_below="@+id/testSoundBtn"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"/>
 
@@ -147,7 +154,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/dm_sans"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/detailProduk"
+                android:layout_below="@+id/testSoundBtn"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp" />
@@ -156,7 +163,7 @@
                 android:layout_width="80dp"
                 android:layout_height="20dp"
                 android:layout_toLeftOf="@+id/totalRatingTxt"
-                android:layout_below="@+id/detailProduk"
+                android:layout_below="@+id/testSoundBtn"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/ic_rating_5"
                 android:scaleType="fitXY"/>

@@ -294,6 +294,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -422,6 +423,7 @@
                 app:layout_constraintTop_toTopOf="@id/detailTransaksi_total" />
 
             <TextView
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
@@ -460,6 +462,7 @@
                 app:layout_constraintTop_toBottomOf="@id/detailTransaksi_metodePembayaran" />
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
@@ -477,6 +480,17 @@
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detailTransaksi_statusPembayaran" />
+
+            <Button
+                android:id="@+id/doneBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Selesai"
+                app:layout_constraintEnd_toEndOf="@+id/detailTransaksi_tanggalPembayaran"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/detailTransaksi_tanggalPembayaran" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
