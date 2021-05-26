@@ -16,7 +16,6 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.serviceaja.*
 import com.example.serviceaja.LoginRegister.MainActivity
-import com.example.serviceaja.classes.AccountSharedPref
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.fragment_profil_user.*
 import kotlinx.android.synthetic.main.fragment_profil_user.view.*
@@ -81,10 +80,6 @@ class ProfilUserFragment : Fragment() {
             startActivity(intent)
         }
 
-        view.profilUser_btnSettings.setOnClickListener {
-            startActivity(Intent(activity, SettingsActivity::class.java))
-        }
-
         view.findViewById<ImageButton>(R.id.btn_logout).setOnClickListener {
 <<<<<<< HEAD
             var dialog = AlertDialog.Builder(activity)
@@ -100,7 +95,6 @@ class ProfilUserFragment : Fragment() {
             dialog.show()
 =======
             startActivity(Intent(activity, MainActivity::class.java))
-            AccountSharedPref(activity!!).clearValues()
             activity?.finishAffinity()
 >>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19
         }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.serviceaja">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -26,6 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name=".ProductImageActivity"></activity>
 
         <service
@@ -38,7 +40,11 @@
         <service
             android:name=".classes.GetPrakiraanCuaca"
             android:enabled="true"
+=======
+        <service android:name=".classes.GetPrakiraanCuaca"
+>>>>>>> parent of 1c19caa (Commit untuk Database yang dipersiapkan untuk tugas Pertemuan 10 SQLite.)
             android:exported="true"
+            android:enabled="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 >>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19
         <service
@@ -65,11 +71,9 @@
         <activity android:name=".TambahEditProduk" />
         <activity android:name=".KendaraanActivity" />
         <activity android:name=".DaftardanEditProfilMitra" />
-        <activity
-            android:name=".EditProfilUser"
+        <activity android:name=".EditProfilUser"
             android:parentActivityName=".HomeActivity" />
-        <activity
-            android:name=".AlamatActivity"
+        <activity android:name=".AlamatActivity"
             android:parentActivityName=".HomeActivity" />
         <activity android:name=".chatreview.ChatActivity" />
         <activity android:name=".chatreview.ReviewActivity" />

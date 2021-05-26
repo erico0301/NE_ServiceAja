@@ -1,6 +1,5 @@
 package com.example.serviceaja
 
-const val LOGIN_INFO_FILE = "login_info"
 const val ACTIVE_FRAGMENT = "com.example.serviceaja.ACTIVE_FRAGMENT"
 const val REQ_CODE_EDIT_PROFILE = 101
 const val REQ_CODE_EDIT_LOCATION = 102

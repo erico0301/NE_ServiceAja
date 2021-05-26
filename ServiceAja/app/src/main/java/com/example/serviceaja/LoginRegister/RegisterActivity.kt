@@ -1,6 +1,5 @@
 package com.example.serviceaja.LoginRegister
 
-import DBClass.DBUser
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -11,7 +10,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import android.provider.BaseColumns
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
@@ -23,7 +21,6 @@ import com.example.serviceaja.EXTRA_PASSWORD
 import com.example.serviceaja.EXTRA_USER
 import com.example.serviceaja.EXTRA_USERS
 import com.example.serviceaja.R
-import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -31,9 +28,11 @@ import kotlinx.android.synthetic.main.activity_verification_code.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
+
+
 class RegisterActivity : AppCompatActivity() {
     private lateinit var users: ArrayList<User>
-    private lateinit var db: DBHelper
+
     // Variabel untuk mengecek koneksi
     private var connectionStatus = false
 
@@ -57,8 +56,7 @@ class RegisterActivity : AppCompatActivity() {
         // Menambahkan aksi filter pada IntentFilter
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
 
-        db = DBHelper(this)
-        users = db.getAllUsers()
+        users = intent.getSerializableExtra(EXTRA_USERS) as ArrayList<User>
 
         connectionStatus = (getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetwork != null
 

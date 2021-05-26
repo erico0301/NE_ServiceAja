@@ -16,8 +16,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import com.example.serviceaja.*
-import com.example.serviceaja.classes.AccountSharedPref
-import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -33,8 +31,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val db = DBHelper(this)
-        users = db.getAllUsers()
+        users = intent.getSerializableExtra(EXTRA_USERS) as ArrayList<User>
 
         // Object Handler yang digunakan untuk menerima pesan yang akan ditampilkan ketika terjadi kesalahan input field Login (ada field yang kosong)
         val handlerThread = object : Handler(Looper.getMainLooper()) {
@@ -146,10 +143,6 @@ class LoginActivity : AppCompatActivity() {
                     // berhasil dilakukan
                 val home = Intent(this, HomeActivity::class.java)
                 home.putExtra(EXTRA_USER, user)
-
-                val sharedPref = AccountSharedPref(this)
-                sharedPref.email = user.email
-
                 startActivity(home)
                 finishAffinity()
             }

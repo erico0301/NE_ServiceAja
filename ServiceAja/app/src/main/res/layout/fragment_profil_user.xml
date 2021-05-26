@@ -88,6 +88,7 @@
                     app:layout_constraintVertical_bias="0.227" />
 =======
                     android:background="@color/transparent" />
+<<<<<<< HEAD
                 <ImageButton
                     android:id="@+id/profilUser_btnSettings"
                     android:layout_width="30dp"
@@ -100,6 +101,8 @@
                     android:src="@drawable/ic_settings"
                     android:background="@color/transparent" />
 >>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19
+=======
+>>>>>>> parent of 1c19caa (Commit untuk Database yang dipersiapkan untuk tugas Pertemuan 10 SQLite.)
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView

@@ -27,9 +27,16 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        Log.e("onCreate", "Dijalakan!")
+        users = arrayListOf(
+            User("admin", "admin@gmail.com", "081234567890", "admin"),
+            User("testing", "testing@gmail.com", "082345678910", "testing")
+        )
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
+            Log.e("savedInstanceState", "Dijalankan!")
             user = savedInstanceState.getParcelable(EXTRA_USER)!!
+        }
 
         else
             user = intent.extras?.getParcelable(EXTRA_USER)!!
@@ -112,12 +119,14 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+        Log.e("onSaveInstanceState", "Dijalankan!")
         outState.putString(ACTIVE_FRAGMENT, activeFragment)
         outState.putParcelable(EXTRA_USER, user)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+        Log.e("onRestoreInstanceState", "Dijalankan!")
         activateFragment(savedInstanceState.getString(ACTIVE_FRAGMENT)!!)
         user = savedInstanceState.getParcelable(EXTRA_USER)!!
     }
