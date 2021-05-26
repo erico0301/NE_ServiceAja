@@ -4,21 +4,27 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+<<<<<<< HEAD
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.*
 import com.example.serviceaja.recyclerview.RecyclerViewReviewDetails
+=======
+import com.example.serviceaja.R
+>>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19
 import kotlinx.android.synthetic.main.activity_product_service_detail.*
-import kotlinx.android.synthetic.main.dialog_service_booking.view.*
 import java.time.LocalDate
 import java.util.*
 
 class ProductServiceDetailActivity : AppCompatActivity() {
 
+<<<<<<< HEAD
     private var layoutManager : RecyclerView.LayoutManager? = null
     private var adapter : RecyclerView.Adapter<RecyclerViewReviewDetails.ViewHolder>? = null
     var testerIntentService : Intent? = null
 
+=======
+>>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_service_detail)
@@ -27,6 +33,7 @@ class ProductServiceDetailActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+<<<<<<< HEAD
         layoutManager = LinearLayoutManager (this)
         recyclerViewReviewDetails.layoutManager = layoutManager
         adapter = RecyclerViewReviewDetails()
@@ -63,5 +70,14 @@ class ProductServiceDetailActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         stopService(testerIntentService)
+=======
+        detailProduk_btnPesan.setOnClickListener {
+            val inflater = layoutInflater.inflate(R.layout.dialog_booking_service, null, false)
+
+
+            val dialog = AlertDialog.Builder(this)
+                    .setView(inflater)
+        }
+>>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19
     }
 }

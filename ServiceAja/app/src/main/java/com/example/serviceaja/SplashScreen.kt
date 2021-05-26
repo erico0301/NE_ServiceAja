@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.serviceaja.LoginRegister.MainActivity
+import com.example.serviceaja.classes.AccountSharedPref
+import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreen : AppCompatActivity() {
@@ -11,9 +13,26 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        splashScreenLayout.animate().setDuration(2300).alpha(1f).withEndAction {
-            val i = Intent(this, MainActivity::class.java)
-            startActivity(i)
+        var users = arrayListOf(
+                User("admin", "admin@gmail.com", "081234567890", "admin"),
+                User("Budi Doremifasol", "budidoremi123@gmail.com", "082345678910", "budiDoremi123"),
+                User("Anto Supriadi", "antosupriadi123@gmail.com", "081245678910", "antoSupriadi123")
+        )
+
+        splashScreenLayout.animate().setDuration(200).alpha(1f).withEndAction {
+            val email = AccountSharedPref(this).email
+            var user: User? = null
+            val intent: Intent
+            if (email != "Kosong") {
+                intent = Intent(this, HomeActivity::class.java)
+                for (i in users)
+                    if (i.email.equals(email))
+                        user = i
+                intent.putExtra(EXTRA_USER, user)
+            }
+            else
+                intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }

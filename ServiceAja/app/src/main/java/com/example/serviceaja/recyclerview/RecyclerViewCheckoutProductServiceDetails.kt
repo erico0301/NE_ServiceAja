@@ -13,8 +13,8 @@ class RecyclerViewCheckoutProductServiceDetails : RecyclerView.Adapter<RecyclerV
 
     private val itemImgProduct = intArrayOf(R.drawable.ban_rft, R.drawable.wiper_bmw)
     private val itemNamaProduct = arrayOf("Ban X5 RFT", "Wiper X5")
-    private val itemHargaProduct = arrayOf("0", "750.000")
-    private val itemQtyProduct = arrayOf("2", "1")
+    private val itemHargaProduct = arrayOf("2.000.000", "630.000")
+    private val itemQtyProduct = arrayOf("2", "2")
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

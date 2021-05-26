@@ -66,53 +66,102 @@
             android:layout_marginBottom="10dp"
             android:text="mail@gmail.com"/>
 
-        <LinearLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center">
+            <ProgressBar
+                android:id="@+id/verifikasi_progressBar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="top|center"
+                android:layout_marginTop="70dp" />
+            <LinearLayout
+                android:id="@+id/verifikasi_kodeOtomatis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="top|center">
+                <TextView
+                    android:id="@+id/verifikasi_kodeOtomatis1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:text="1"
+                    android:fontFamily="@font/poppins_bold"/>
+                <TextView
+                    android:id="@+id/verifikasi_kodeOtomatis2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:text="1"
+                    android:fontFamily="@font/poppins_bold"/>
+                <TextView
+                    android:id="@+id/verifikasi_kodeOtomatis3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:text="1"
+                    android:fontFamily="@font/poppins_bold"/>
+                <TextView
+                    android:id="@+id/verifikasi_kodeOtomatis4"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:text="1"
+                    android:fontFamily="@font/poppins_bold"/>
+            </LinearLayout>
 
-            <EditText
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:maxLength="1"
-                android:textSize="25sp"
-                android:inputType="numberPassword"
-                android:gravity="center"
-                android:layout_marginEnd="10dp"
-                android:imeOptions="actionDone" />
-            <EditText
-                android:id="@+id/codeSecond"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:maxLength="1"
-                android:textSize="25sp"
-                android:inputType="numberPassword"
-                android:gravity="center"
-                android:layout_marginEnd="10dp"
-                android:imeOptions="actionDone" />
-            <EditText
-                android:id="@+id/codeThird"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:maxLength="1"
-                android:textSize="25sp"
-                android:inputType="numberPassword"
-                android:gravity="center"
-                android:layout_marginEnd="10dp"
-                android:imeOptions="actionDone" />
-            <EditText
-                android:id="@+id/forthCode"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:maxLength="1"
-                android:textSize="25sp"
-                android:inputType="numberPassword"
-                android:gravity="center"
-                android:layout_marginEnd="10dp"
-                android:imeOptions="actionDone"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="top|center" >
+                <EditText
+                    android:id="@+id/verifikasi_kode1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:maxLength="1"
+                    android:textSize="25sp"
+                    android:inputType="number"
+                    android:imeOptions="actionDone" />
+                <EditText
+                    android:id="@+id/verifikasi_kode2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:maxLength="1"
+                    android:textSize="25sp"
+                    android:inputType="number"
+                    android:imeOptions="actionDone" />
+                <EditText
+                    android:id="@+id/verifikasi_kode3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:maxLength="1"
+                    android:textSize="25sp"
+                    android:inputType="number"
+                    android:imeOptions="actionDone" />
+                <EditText
+                    android:id="@+id/verifikasi_kode4"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:maxLength="1"
+                    android:textSize="25sp"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
+            </LinearLayout>
 
-        </LinearLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <Button
             android:id="@+id/konfirmasiKodeBtn"

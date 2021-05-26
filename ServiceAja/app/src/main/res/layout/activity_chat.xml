@@ -41,6 +41,7 @@
             android:padding="5dp"/>
 
         <ImageButton
+            android:id="@+id/btnSend"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/ic_send"

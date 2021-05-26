@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="Download Additional Data"
+            android:textSize="22sp"
+            android:fontFamily="@font/poppins_bold"/>
+        <TextView
+            android:id="@+id/settings_sisaSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="Sisa Space Penyimpanan: " />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settings_btnDownload2GB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            app:cornerRadius="10dp"
+            android:text="Download (2 GB)" />
+        <TextView
+            android:id="@+id/settings_btnDelete2GB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="Delete Additional 2GB" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settings_btnDownload4GB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            app:cornerRadius="10dp"
+            android:text="Download (4 GB)" />
+        <TextView
+            android:id="@+id/settings_btnDelete4GB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="Delete Additional 4GB" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settings_btnDownload6GB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            app:cornerRadius="10dp"
+            android:text="Download (6 GB)" />
+        <TextView
+            android:id="@+id/settings_btnDelete6GB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="Delete Additional 6GB" />
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
