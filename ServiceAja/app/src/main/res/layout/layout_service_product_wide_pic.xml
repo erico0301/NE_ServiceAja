@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginVertical="5dp"
+    app:cardCornerRadius="8dp"
+    app:strokeColor="@color/darkGray"
+    app:strokeWidth="1dp"
+    android:background="@drawable/picture_background" >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/layoutWide_fotoItem"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layoutWide_fotoItem"
+            android:paddingHorizontal="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp" >
+            <TextView
+                android:id="@+id/layoutWide_namaItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="Nama Mitra, Service, atau Produk"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/layoutWide_hargaItem"
+                app:layout_constraintTop_toTopOf="@id/layoutWide_hargaItem"
+                android:layout_marginEnd="5dp"
+                android:text="Rp"
+                android:textSize="10sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light" />
+
+            <TextView
+                android:id="@+id/layoutWide_hargaItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutWide_namaItem"
+                android:layout_marginStart="18dp"
+                android:text="XXX.XXX,-"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/layoutWide_hargaItem"
+                app:layout_constraintStart_toStartOf="parent" >
+                <ImageView
+                    android:id="@+id/layoutWide_fotoMitra"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_profile"
+                    android:background="@drawable/profile_round_corner" />
+                <TextView
+                    android:id="@+id/layoutWide_namaMitra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/layoutWide_fotoMitra"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Nama Mitra"
+                    android:fontFamily="@font/poppins_medium"/>
+                <TextView
+                    android:id="@+id/layoutWide_kotaMitra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layoutWide_namaMitra"
+                    android:layout_toRightOf="@id/layoutWide_fotoMitra"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="Kota Mitra"
+                    android:fontFamily="@font/poppins_bold"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/layoutWide_btnLike"
+                app:layout_constraintEnd_toStartOf="@id/layoutWide_ratingItem">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/gold"
+                    android:backgroundTint="@color/white"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/gold"
+                    android:backgroundTint="@color/white" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/gold"
+                    android:backgroundTint="@color/white" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/gold"
+                    android:backgroundTint="@color/white" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/gold"
+                    android:backgroundTint="@color/white" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/layoutWide_ratingItem"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/layoutWide_btnLike"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:text="5.0"
+                android:fontFamily="@font/dmsans_regular"/>
+
+            <ImageView
+                android:id="@+id/layoutWide_btnLike"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_love_filled" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

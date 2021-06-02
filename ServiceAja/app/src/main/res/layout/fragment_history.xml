@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HistoryFragment">
+
+    <View
+        android:layout_width="657dp"
+        android:layout_height="323dp"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginRight="-30dp"
+        android:layout_marginTop="-123dp"
+        android:background="@drawable/home_background_top" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/search_border"
+            android:layout_weight="8"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:padding="11dp"
+            android:hint="Cari Pesanan" />
+
+        <ImageView
+            android:layout_toRightOf="@+id/searchEditText"
+            android:layout_width="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_search"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/transaksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="65dp"
+        android:text="Daftar Transaksi"
+        android:textStyle="bold"
+        android:textColor="@color/darkestBlue"
+        android:textSize="28sp"
+        android:fontFamily="@font/poppins_bold"/>
+
+    <RadioGroup
+        android:id="@+id/transactionMenu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/transaksi"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/onProcess"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Dalam Proses"
+            android:layout_weight="1"
+            android:checked="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="bold"
+            android:background="@drawable/top_menu_selector"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/done"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Selesai"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:gravity="center_vertical|center_horizontal"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="bold"
+            android:background="@drawable/top_menu_selector"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/transaction_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_marginTop="200dp" />
+
+</RelativeLayout>

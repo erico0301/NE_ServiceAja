@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:background="@drawable/picture_background" >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/previewItem_fotoItem"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:riv_corner_radius_top_left="5dp"
+        app:riv_corner_radius_top_right="5dp"
+        android:padding="1dp"
+        android:src="@drawable/service_xpander"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/previewItem_namaItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mitsubishi Motors"
+        android:fontFamily="@font/dm_sans"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:maxLines="2"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="5dp">
+
+        <ImageView
+            android:id="@+id/previewItem_fotoMitra"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:src="@drawable/mitsubishi_logo"
+            android:background="@drawable/profile_round_corner" />
+
+        <TextView
+            android:id="@+id/previewItem_namaMitra"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_toEndOf="@id/previewItem_fotoMitra"
+            android:text="Nama Mitra"
+            android:fontFamily="@font/poppins_light"
+            android:layout_marginHorizontal="5dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/previewItem_kotaMitra"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_toEndOf="@id/previewItem_fotoMitra"
+            android:layout_below="@id/previewItem_namaMitra"
+            android:text="Medan"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginHorizontal="5dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_marginEnd="5dp"
+            android:text="Rp"
+            android:textSize="10sp"
+            android:fontFamily="@font/poppins_light" />
+
+        <TextView
+            android:id="@+id/previewItem_hargaItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXX.XXX,-"
+            android:fontFamily="@font/poppins_bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:gravity="right">
+
+        <ImageView
+            android:id="@+id/ratingIcon"
+            android:layout_width="60dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_rating_5"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/ratingTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="12sp"
+            android:text="5.0"/>
+
+    </LinearLayout>
+
+</LinearLayout>

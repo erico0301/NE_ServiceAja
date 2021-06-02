@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginRegister.MainActivity">
+
+    <View
+        android:layout_width="427dp"
+        android:layout_height="382dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-79dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-193dp"
+        android:background="@drawable/top_rounc_background_lightblue"/>
+    <TextView
+        android:id="@+id/serviceaja"
+        android:layout_width="217dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="23dp"
+        android:text="@string/serviceaja"
+        style="@style/serviceaja"
+        android:gravity="top" />
+    <TextView
+        android:id="@+id/slogan"
+        android:layout_width="250dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="37dp"
+        android:text="@string/slogan"
+        android:textAppearance="@style/slogan"
+        android:layout_below="@+id/serviceaja"/>
+
+    <View
+        android:layout_width="494dp"
+        android:layout_height="138dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-136dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="284dp"
+        android:background="@drawable/middle_rectangular_background_pink"/>
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="240dp"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="311dp"
+        android:text="@string/selamat_datang"
+        android:textSize="28sp"
+        android:textColor="@color/darkestBlue"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="top" />
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="37dp"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/welcome"
+        android:text="@string/welcomeslogan"
+        android:textSize="15sp"
+        android:textColor="@color/darkBlue"
+        android:gravity="center_vertical"
+        android:fontFamily="@font/poppins_light"/>
+
+    <Button
+        android:id="@+id/halamanAwal_btnMasuk"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="448dp"
+        android:text="@string/masuk"
+        android:fontFamily="@font/poppins_medium"
+        android:background="@drawable/round_button"
+        android:textSize="20sp"/>
+
+    <View
+        android:layout_width="413dp"
+        android:layout_height="392dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="-70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-255dp"
+        android:background="@drawable/bottom_round_background_gold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="Belum Punya Akun?"
+        android:fontFamily="@font/poppins_light"
+        android:gravity="bottom"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/halamanAwal_btnDaftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/daftar_sekarang"
+        android:textAppearance="@style/slogan" />
+
+</RelativeLayout>

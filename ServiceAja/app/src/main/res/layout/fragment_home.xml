@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/home_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/gold"
+        app:elevation="0dp" >
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/transparent">
+                <EditText
+                    android:id="@+id/home_inputSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="8"
+                    android:paddingStart="10dp"
+                    android:drawablePadding="10dp"
+                    android:background="@drawable/search_border"
+                    android:drawableStart="@drawable/ic_search"
+                    android:hint="@string/search"
+                    tools:ignore="RtlSymmetry"
+                    android:inputType="none"
+                    android:importantForAutofill="no" />
+                <ImageView
+                    android:id="@+id/wishlistIcon"
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_love_like"
+                    android:contentDescription="@string/wishlist" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/home_topbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="120dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/home_topbar"
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_pages" >
+                <TextView
+                    android:id="@+id/hello"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/greetings"
+                    android:textColor="@color/darkestBlue"
+                    android:textSize="28sp"
+                    android:fontFamily="@font/poppins_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/hello"
+                    android:text="@string/welcomeslogan"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_light" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cekinfo"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/poppins_bold" />
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <LinearLayout
+                    android:id="@+id/homePage_kendaraanKosong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp"
+                        android:src="@mipmap/ic_garage" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Anda belum memasukkan motor ke dalam Daftar Kendaraan Anda." />
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_vehicle_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/info_item_background" >
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/vehicle_photo_card"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:cardCornerRadius="20dp"
+                        android:background="@drawable/picture_background" >
+                        <ImageView
+                            android:id="@+id/vehicle_photo"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:src="@drawable/fortuner"
+                            android:contentDescription="@string/vehicle_photo"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/picture_background"/>
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/no_plat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/vehicle_photo_card"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/contohPlat"
+                        android:textSize="28sp"
+                        android:fontFamily="@font/poppins_medium" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/no_plat"
+                        app:layout_constraintBottom_toTopOf="@id/vehicle_brand"
+                        app:layout_constraintStart_toEndOf="@id/vehicle_photo_card"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/vehicle_brand"
+                        android:fontFamily="@font/poppins_bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/no_plat"
+                        app:layout_constraintBottom_toTopOf="@id/vehicle_name"
+                        app:layout_constraintStart_toStartOf="@id/vehicle_name"
+                        android:text="@string/name"
+                        android:fontFamily="@font/poppins_bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/no_plat"
+                        app:layout_constraintBottom_toTopOf="@id/vehicle_year"
+                        app:layout_constraintStart_toStartOf="@id/vehicle_year"
+                        android:text="@string/vehicle_year"
+                        android:fontFamily="@font/poppins_bold" />
+                    <TextView
+                        android:id="@+id/vehicle_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/last_service"
+                        app:layout_constraintStart_toEndOf="@id/vehicle_photo_card"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/toyota"
+                        android:fontFamily="@font/poppins_light" />
+                    <TextView
+                        android:id="@+id/vehicle_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/last_service"
+                        app:layout_constraintStart_toEndOf="@id/vehicle_brand"
+                        app:layout_constraintEnd_toStartOf="@id/vehicle_year"
+                        android:text="@string/fortuner"
+                        android:fontFamily="@font/poppins_light" />
+                    <TextView
+                        android:id="@+id/vehicle_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/last_service"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="30dp"
+                        android:text="@string/contohTahun"
+                        android:fontFamily="@font/poppins_light" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/vehicle_brand"
+                        app:layout_constraintBottom_toTopOf="@id/profilUser_btnKendaraanLain"
+                        app:layout_constraintStart_toEndOf="@id/vehicle_photo_card"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/last_service"
+                        android:fontFamily="@font/poppins_bold" />
+                    <TextView
+                        android:id="@+id/last_service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/profilUser_btnKendaraanLain"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:text="@string/contohTanggal"
+                        android:fontFamily="@font/poppins_light" />
+                    <LinearLayout
+                        android:id="@+id/profilUser_btnKendaraanLain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:orientation="horizontal" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/other_vehicle"
+                            android:fontFamily="@font/poppins_medium" />
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_right"
+                            android:contentDescription="@string/other_vehicle"
+                            android:background="@color/transparent" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:background="@color/darkestBlue" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/kategori"
+                    android:textSize="18sp"
+                    android:textColor="@color/gold"
+                    android:fontFamily="@font/poppins_bold" />
+                <ImageView
+                    android:id="@+id/home_btnService"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="40dp"
+                    android:padding="10dp"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_car_service"
+                    android:contentDescription="@string/service" />
+
+                <ImageView
+                    android:id="@+id/home_btnSparepart"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/home_btnService"
+                    app:layout_constraintEnd_toStartOf="@id/home_btnCuciMobil"
+                    android:layout_marginTop="40dp"
+                    android:padding="10dp"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_sparepart"
+                    android:contentDescription="@string/sparepart" />
+
+                <ImageView
+                    android:id="@+id/home_btnCuciMobil"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="40dp"
+                    android:padding="10dp"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_car_wash"
+                    android:contentDescription="@string/cuci_mobil" />
+
+                <ImageView
+                    android:id="@+id/home_btnDerekMobil"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/home_btnCuciMobil"
+                    app:layout_constraintEnd_toStartOf="@id/home_btnLainLain"
+                    android:layout_marginTop="40dp"
+                    android:padding="10dp"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_tow_truck"
+                    android:contentDescription="@string/mobil_derek" />
+
+                <ImageView
+                    android:id="@+id/home_btnLainLain"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="40dp"
+                    android:padding="10dp"
+                    android:background="@drawable/layout_category_menu"
+                    android:src="@drawable/ic_more"
+                    android:contentDescription="@string/more" />
+
+                <TextView
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/home_btnService"
+                    app:layout_constraintStart_toStartOf="@id/home_btnService"
+                    android:layout_marginTop="5dp"
+                    android:textSize="10sp"
+                    android:text="@string/service"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium" />
+
+                <TextView
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/home_btnSparepart"
+                    app:layout_constraintStart_toStartOf="@id/home_btnSparepart"
+                    android:layout_marginTop="5dp"
+                    android:textSize="10sp"
+                    android:text="@string/sparepart"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium" />
+
+                <TextView
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/home_btnCuciMobil"
+                    app:layout_constraintStart_toStartOf="@id/home_btnCuciMobil"
+                    android:layout_marginTop="5dp"
+                    android:textSize="10sp"
+                    android:text="@string/cuci_mobil"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium" />
+
+                <TextView
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/home_btnDerekMobil"
+                    app:layout_constraintStart_toEndOf="@id/home_btnCuciMobil"
+                    app:layout_constraintEnd_toStartOf="@id/home_btnLainLain"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:text="@string/mobil_derek"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium" />
+
+                <TextView
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/home_btnLainLain"
+                    app:layout_constraintStart_toStartOf="@id/home_btnLainLain"
+                    android:layout_marginTop="5dp"
+                    android:textSize="10sp"
+                    android:text="@string/more"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ProgressBar
+                android:id="@+id/home_progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="50dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/home_informasiCuaca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/info_item_background">
+                <TextView
+                    android:id="@+id/home_pesanRekomendasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/black"
+                    android:text="Informasi tentang perkiraan cuaca dan rekomendasi untuk cuci mobil" />
+                <TextView
+                    android:id="@+id/home_suhu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_pesanRekomendasi"
+                    android:text="31"
+                    android:textSize="50sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/home_suhu"
+                    app:layout_constraintTop_toTopOf="@id/home_suhu"
+                    android:text="O"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toEndOf="@id/home_suhu"
+                    app:layout_constraintTop_toTopOf="@id/home_suhu"
+                    android:textSize="40sp"
+                    android:text="C" />
+                <TextView
+                    android:id="@+id/home_cuacaSaatIni"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_suhu"
+                    android:text="Scattered Cloud" />
+                <TextView
+                    android:id="@+id/home_lokasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_cuacaSaatIni"
+                    android:text="Medan, ID" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_pesanRekomendasi"
+                    android:layout_marginTop="10dp"
+                    android:text="Kelembaban Udara :" />
+                <TextView
+                    android:id="@+id/home_kelembabanUdara"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_pesanRekomendasi"
+                    android:layout_marginTop="30dp"
+                    android:text="50%" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_kelembabanUdara"
+                    android:text="Persentase Hujan :" />
+                <TextView
+                    android:id="@+id/home_persentaseHujan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_kelembabanUdara"
+                    android:layout_marginTop="20dp"
+                    android:text="42%" />
+                <ImageButton
+                    android:id="@+id/home_refreshCuaca"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_persentaseHujan"
+                    android:src="@drawable/ic_refresh"
+                    android:backgroundTint="@color/light_blue"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bengkeltersedia"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_bold" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    app:shapeAppearanceOverlay="@style/mapsRoundCorner"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/maps" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewBengkelDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
