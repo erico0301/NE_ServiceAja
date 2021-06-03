@@ -58,6 +58,7 @@ class RegisterActivity : AppCompatActivity() {
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
 
         db = DBHelper(this)
+
         var userDataTmp = User("Never End", "neverend@gmail.com", "082323233322", "neverfail")
         db.addUser(userDataTmp)
 

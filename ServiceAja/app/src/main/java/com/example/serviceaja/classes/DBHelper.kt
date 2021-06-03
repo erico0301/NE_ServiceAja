@@ -83,5 +83,12 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
         val selectionArgs = arrayOf(user.noTelp)
 
         dbWriter.update(DBUser.tableUser.TABLE_USER, contentValues, selection, selectionArgs)
+
+        fun deleteData(email: String) {
+            val db = this.writableDatabase
+            val selection = "${DBUser.tableUser.COLUMN_EMAIL} = ?"
+            val selectionArgs = arrayOf(email)
+            db.delete(DBUser.tableUser.TABLE_USER, selection, selectionArgs)
+        }
     }
 }

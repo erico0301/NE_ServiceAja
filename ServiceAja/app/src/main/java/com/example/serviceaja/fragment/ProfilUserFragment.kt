@@ -86,6 +86,7 @@ class ProfilUserFragment : Fragment() {
 
         view.profilUser_btnSettings.setOnClickListener {
             startActivity(Intent(activity, SettingsActivity::class.java))
+            startActivity(Intent(activity, setting::class.java))
         }
 
         view.findViewById<ImageButton>(R.id.btn_logout).setOnClickListener {

@@ -60,6 +60,7 @@ class EditProfilUser : AppCompatActivity() {
             onBackPressed()
         }
 
+
         var db = DBHelper(this)
         user = intent.extras?.getParcelable(EXTRA_USER)!!
         users = db!!.getAllUsers()
@@ -323,7 +324,6 @@ class EditProfilUser : AppCompatActivity() {
             else
                 Toast.makeText(this, "Tidak dapat membuka Gallery karena tidak diberi izin akses", Toast.LENGTH_SHORT).show()
         }
-
 
     }
 
