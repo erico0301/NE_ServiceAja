@@ -1,5 +1,6 @@
 package com.example.serviceaja
 
+const val LOGIN_INFO_FILE = "login_info"
 const val ACTIVE_FRAGMENT = "com.example.serviceaja.ACTIVE_FRAGMENT"
 const val REQ_CODE_EDIT_PROFILE = 101
 const val REQ_CODE_EDIT_LOCATION = 102
@@ -43,12 +44,6 @@ const val UPLOAD_IMAGE_JOB_ID = 123
 const val EXTRA_IMAGE = "com.example.serviceaja.EXTRA_IMAGE"
 const val EXTRA_UPLOAD_PROGRESS = "com.example.serviceaja.EXTRA_UPLOAD_PROGRESS"
 
-<<<<<<< HEAD
-const val ACTION_PLAY = "PLAY"
-const val ACTION_STOP = "STOP"
-const val ACTION_CREATE = "CREATE"
-=======
 const val DAFTAR_PROVINSI = "com.example.serviceaja.DAFTAR_PROVINSI"
 const val DAFTAR_KAB_KOTA = "com.example.serviceaja.DAFTAR_KAB_KOTA"
 const val DAFTAR_KECAMATAN = "com.example.serviceaja.DAFTAR_KECAMATAN"
->>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19

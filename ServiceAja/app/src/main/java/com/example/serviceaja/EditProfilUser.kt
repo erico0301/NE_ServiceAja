@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_edit_profil_user.*
 import kotlinx.android.synthetic.main.fragment_detail_kendaraan.*
@@ -58,15 +59,27 @@ class EditProfilUser : AppCompatActivity() {
         editProfil_toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+
+        var db = DBHelper(this)
         user = intent.extras?.getParcelable(EXTRA_USER)!!
-
-        users = intent.extras?.getSerializable(EXTRA_USERS) as ArrayList<User>
-
-        Log.e("Users", "${users.size}, ${users[0].email}, ${users[1].email}")
+        users = db!!.getAllUsers()
 
         editProfil_nama.setText(user.nama)
         editProfil_alamatEmail.setText(user.email)
         editProfil_noTelepon.setText(user.noTelp)
+
+        editProfil_btnEditProfil.setOnClickListener {
+            //Mengambil data yang ingin diubah
+            var userDataTemp = User()
+            userDataTemp.nama = editProfil_nama.text.toString()
+            userDataTemp.noTelp = editProfil_noTelepon.text.toString()
+            userDataTemp.email = editProfil_alamatEmail.text.toString()
+
+            //Update database
+            db?.update(userDataTemp)
+
+            finish()
+        }
 
         editProfil_ubahPassword.visibility = View.GONE
         editProfil_progressUploadFoto.visibility = View.GONE
@@ -130,36 +143,15 @@ class EditProfilUser : AppCompatActivity() {
                         // atau belum
                         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
                             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), 101)
-                        else {
-                            // Bagian ini menunjukkan implementasi dari Intent Implisit, yaitu membuka kamera
-                            val openCam = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                            if (openCam.resolveActivity(packageManager) != null) {
-                                // Saat membuka intent implisit kamera, proses akan sekaligus membuat suatu file baru yang merupakan file foto yang akan disimpan dalam
-                                    // folder khusus untuk aplikasi, ditandai dengan pemanggilan fungsi createImageFile()
-                                photoFile = try {
-                                    createImageFile()
-                                } catch (ex: IOException) {
-                                    Log.e("Failed to save image", ex.toString())
-                                    null
-                                }
-                                // Jika file terbentuk, maka akan disimpan dalam direktori untuk app, lalu akan membuka kamera
-                                if (photoFile != null) {
-                                    val photoUri = FileProvider.getUriForFile(this, "com.example.android.fileprovider", photoFile!!)
-                                    openCam.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
-                                    startActivityForResult(openCam, 1)
-                                }
-                            }
-                        }
+                        // Bagian ini menunjukkan implementasi dari Intent Implisit, yaitu membuka kamera
+                        openCamera()
                         true
                     }
                     R.id.menuChooseItem_ambilDariGallery -> {
                         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
                             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 102)
-                        else {
-                            // Bagian ini menunjukkan implementasi dari Intent Implisit, yaitu membuka Gallery dan memilih foto
-                            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                            startActivityForResult(intent, 2)
-                        }
+                        // Bagian ini menunjukkan implementasi dari Intent Implisit, yaitu membuka Gallery dan memilih foto
+                        openGallery()
                         true
                     }
                     else -> false
@@ -213,8 +205,35 @@ class EditProfilUser : AppCompatActivity() {
                 dialog.show()
             }
         }
+    }
 
-        editProfil_btnEditProfil.setOnClickListener { finishActivity() }
+    private fun openCamera() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+            return
+        val openCam = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if (openCam.resolveActivity(packageManager) != null) {
+            // Saat membuka intent implisit kamera, proses akan sekaligus membuat suatu file baru yang merupakan file foto yang akan disimpan dalam
+            // folder khusus untuk aplikasi, ditandai dengan pemanggilan fungsi createImageFile()
+            photoFile = try {
+                createImageFile()
+            } catch (ex: IOException) {
+                Log.e("Failed to save image", ex.toString())
+                null
+            }
+            // Jika file terbentuk, maka akan disimpan dalam direktori untuk app, lalu akan membuka kamera
+            if (photoFile != null) {
+                val photoUri = FileProvider.getUriForFile(this, "com.example.android.fileprovider", photoFile!!)
+                openCam.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
+                startActivityForResult(openCam, 1)
+            }
+        }
+    }
+
+    private fun openGallery() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+            return
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, 2)
     }
 
     private fun cekEmail(email: String): Boolean {
@@ -246,7 +265,7 @@ class EditProfilUser : AppCompatActivity() {
             val email = editProfil_alamatEmail.text.toString()
             val noTelp = "0" + editProfil_noTelepon.text.toString()
             if (user.nama == nama && user.email == email && user.noTelp == noTelp)
-                finishActivity()
+                finish()
             if (editProfil_nama.error != null || editProfil_alamatEmail.error != null || editProfil_noTelepon.error != null)
                 error = true
             if (!error) {
@@ -257,7 +276,7 @@ class EditProfilUser : AppCompatActivity() {
                         user.nama = editProfil_nama.text.toString()
                         user.email = editProfil_alamatEmail.text.toString()
                         user.noTelp = "0" + editProfil_noTelepon.text.toString()
-                        finishActivity()
+                        finish()
                     }
                     .setNegativeButton("BATAL") { dialogInterface: DialogInterface, i: Int -> }
                 dialog.show()
@@ -268,7 +287,7 @@ class EditProfilUser : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finishActivity()
+        finish()
     }
 
     // Fungsi ini digunakan untuk membuat file baru untuk menampung gambar yang dipotret langsung dari kamera yang dibuka dalam aplikasi
@@ -282,12 +301,30 @@ class EditProfilUser : AppCompatActivity() {
         }
     }
 
-    fun finishActivity() {
+   /* fun finishActivity() {
         Log.e("Finish Activity", "${user.nama}, ${user.email}, ${user.noTelp}")
         val intent = Intent()
         intent.putExtra(EXTRA_USER_RETURN, user)
         setResult(RESULT_OK, intent)
         finish()
+    }*/
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 101) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                openCamera()
+            else
+                Toast.makeText(this, "Tidak dapat membuka kamera karena tidak diberi izin akses", Toast.LENGTH_SHORT).show()
+        }
+        else if (requestCode == 102) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                openGallery()
+            else
+                Toast.makeText(this, "Tidak dapat membuka Gallery karena tidak diberi izin akses", Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -313,7 +350,7 @@ class EditProfilUser : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        finishActivity()
+        finish()
         unregisterReceiver(uploadReceiver)
     }
 }

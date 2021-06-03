@@ -4,6 +4,9 @@ import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.content.*
 import android.os.Bundle
+import android.os.Environment
+import android.os.StatFs
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.*
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.GetPrakiraanCuaca
 import com.example.serviceaja.classes.User
 import com.example.serviceaja.recyclerview.RVBengkelPreview
@@ -66,6 +70,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        var db = DBHelper(this.requireContext())
+        db?.getAllUsers()
 
         viewCuaca = view.home_informasiCuaca
         progressBar = view.home_progressBar

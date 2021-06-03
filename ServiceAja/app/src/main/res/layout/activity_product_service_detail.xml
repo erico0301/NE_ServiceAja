@@ -68,135 +68,11 @@
                 android:id="@+id/detailService_foto"
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
-                android:src="@drawable/xpander_sound_system"
+                android:src="@drawable/balancing_spooring"
                 android:scaleType="fitXY"
                 android:layout_marginBottom="10dp"/>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-<<<<<<< HEAD
-                android:layout_height="wrap_content"
-                android:text="Xpander Sound System Package"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:layout_below="@+id/productImg"
-                android:layout_toLeftOf="@+id/loveIcon"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/rpTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rp"
-                android:fontFamily="@font/dm_sans"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_below="@+id/namaProduk"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="20dp"/>
-            <TextView
-                android:id="@+id/hargaProduk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5.230.000"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_below="@+id/namaProduk"
-                android:layout_toRightOf="@+id/rpTxt"
-                android:layout_marginLeft="10dp"/>
-
-            <ImageView
-                android:id="@+id/bengkelImg"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/mitsubishi_logo"
-                android:scaleType="fitXY"
-                android:layout_below="@+id/rpTxt"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="10dp"
-                android:padding="10dp"
-                android:background="@drawable/profile_round_corner"/>
-            <TextView
-                android:id="@+id/namaBengkel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mitsubishi"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_toRightOf="@+id/bengkelImg"
-                android:layout_below="@+id/rpTxt"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/kotaBengkel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Medan"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_toRightOf="@+id/bengkelImg"
-                android:layout_below="@+id/namaBengkel"
-                android:layout_marginLeft="10dp"/>
-
-            <TextView
-                android:id="@+id/detailProduk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="- Twitter MappleTech Ref.1.TW \n- Speaker Mapletech Ref.6.MB\n- DSP Amp PDA\n- Amplifier PA-4.70D\n\n\nBerikut tester sound system yang terpasang"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_below="@+id/bengkelImg"
-                android:layout_margin="5dp"/>
-
-            <Button
-                android:id="@+id/testSoundBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Test"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@+id/detailProduk"/>
-
-            <TextView
-                android:id="@+id/reviewTxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Review"
-                android:fontFamily="@font/poppins_bold"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:layout_below="@+id/testSoundBtn"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
-
-            <TextView
-                android:id="@+id/totalRatingTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5.0/5.0"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/dm_sans"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/testSoundBtn"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp" />
-            <ImageView
-                android:id="@+id/totalRatingIcon"
-                android:layout_width="80dp"
-                android:layout_height="20dp"
-                android:layout_toLeftOf="@+id/totalRatingTxt"
-                android:layout_below="@+id/testSoundBtn"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_rating_5"
-                android:scaleType="fitXY"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewReviewDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/reviewTxt"
-                android:paddingHorizontal="10dp" />
-
-        </RelativeLayout>
-=======
                 android:layout_height="wrap_content" >
                 <ImageView
                     android:id="@+id/detailService_btnLike"
@@ -244,7 +120,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
->>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19
     </ScrollView>
 
     <LinearLayout

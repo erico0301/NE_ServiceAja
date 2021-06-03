@@ -1,8 +1,7 @@
 package com.example.serviceaja.fragment
 
 import android.app.Activity
-import android.app.AlertDialog
-import android.content.DialogInterface
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +15,8 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.serviceaja.*
 import com.example.serviceaja.LoginRegister.MainActivity
+import com.example.serviceaja.classes.AccountSharedPref
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.fragment_profil_user.*
 import kotlinx.android.synthetic.main.fragment_profil_user.view.*
@@ -37,6 +38,10 @@ class ProfilUserFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profil_user, container, false)
         Log.e("profilUserFragment onCreateVIew", "${user.nama}, ${user.email}, ${user.noTelp}")
+
+        var db = DBHelper(this.requireContext())
+        db?.getAllUsers()
+
         view.profilUser_namaUser.text = user.nama
         view.profilUser_emailUser.text = user.email
         view.profilUser_noTelpUser.text = "(+62)-${user.noTelp!!.substring(1)}"
@@ -60,10 +65,9 @@ class ProfilUserFragment : Fragment() {
             val intent = Intent(activity, EditProfilUser::class.java)
 
             intent.putExtra(EXTRA_USER, user)
-            intent.putExtra(EXTRA_USERS, (activity as HomeActivity).users)
+
             activity?.startActivityForResult(intent, REQ_CODE_EDIT_PROFILE)
-            activity?.supportFragmentManager?.beginTransaction()
-                    ?.remove(this)?.commit()
+
         }
 
         // Event ini digunakan untuk membuka Intent Eksplisit AlamatActivity.kt
@@ -80,23 +84,14 @@ class ProfilUserFragment : Fragment() {
             startActivity(intent)
         }
 
-        view.findViewById<ImageButton>(R.id.btn_logout).setOnClickListener {
-<<<<<<< HEAD
-            var dialog = AlertDialog.Builder(activity)
-                    .setTitle("Keluar")
-                    .setMessage("Apakah Anda yakin ingin keluar ?")
-                    .setPositiveButton("Ya", DialogInterface.OnClickListener { dialogInterface, i ->
-                        startActivity(Intent(activity, MainActivity::class.java))
-                        activity?.finishAffinity()
-                    })
-                    .setNegativeButton("Tidak", DialogInterface.OnClickListener {  dialogInterface, i ->
+        view.profilUser_btnSettings.setOnClickListener {
+            startActivity(Intent(activity, SettingsActivity::class.java))
+        }
 
-                    })
-            dialog.show()
-=======
+        view.findViewById<ImageButton>(R.id.btn_logout).setOnClickListener {
             startActivity(Intent(activity, MainActivity::class.java))
+            AccountSharedPref(activity!!).clearValues()
             activity?.finishAffinity()
->>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19
         }
 
         return view

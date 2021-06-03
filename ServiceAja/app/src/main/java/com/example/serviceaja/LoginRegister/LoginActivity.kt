@@ -10,28 +10,34 @@ import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import com.example.serviceaja.*
+import com.example.serviceaja.classes.AccountSharedPref
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_search.*
 
-var sp : SoundPool? = null
-var soundID : Int = 0
-
 class LoginActivity : AppCompatActivity() {
     private lateinit var users: ArrayList<User>
+    var sp : SoundPool? = null
+    var soundID : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        users = intent.getSerializableExtra(EXTRA_USERS) as ArrayList<User>
+        val db = DBHelper(this)
+        users = db.getAllUsers()
+
+        for (i in users)
+            Log.e("Data", "${i.noTelp}, ${i.nama}, ${i.email}, ${i.password}")
 
         // Object Handler yang digunakan untuk menerima pesan yang akan ditampilkan ketika terjadi kesalahan input field Login (ada field yang kosong)
         val handlerThread = object : Handler(Looper.getMainLooper()) {
@@ -143,6 +149,10 @@ class LoginActivity : AppCompatActivity() {
                     // berhasil dilakukan
                 val home = Intent(this, HomeActivity::class.java)
                 home.putExtra(EXTRA_USER, user)
+
+                val sharedPref = AccountSharedPref(this)
+                sharedPref.email = user.email
+
                 startActivity(home)
                 finishAffinity()
             }

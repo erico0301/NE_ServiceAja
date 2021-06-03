@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -11,84 +10,46 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/profile_topbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/gold"
-                android:paddingBottom="10dp"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="62dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Profil Saya"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="23sp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintBottom_toTopOf="@+id/profilUser_btnUser"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_setting"
-                    app:layout_constraintHorizontal_bias="0.054"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.576" />
-
+                android:background="@color/gold"
+                android:paddingBottom="20dp" >
                 <Button
                     android:id="@+id/profilUser_btnUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="50dp"
-                    android:fontFamily="@font/poppins_medium"
                     android:text="@string/user"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/poppins_medium" />
                 <Button
                     android:id="@+id/profilUser_btnMitra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/partner"
+                    app:layout_constraintStart_toEndOf="@id/profilUser_btnUser"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="50dp"
                     android:backgroundTint="@color/white"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/partner"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toEndOf="@id/profilUser_btnUser"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:fontFamily="@font/poppins_medium" />
 
                 <ImageButton
                     android:id="@+id/btn_logout"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@color/transparent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
                     android:contentDescription="@string/logout"
-                    android:src="@drawable/ic_logout_2"
+                    android:src="@drawable/ic_logout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <ImageButton
-                    android:id="@+id/btn_setting"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@color/transparent"
-                    android:contentDescription="Setting"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_setting"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_logout"
-                    app:layout_constraintHorizontal_bias="0.976"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
-                    app:layout_constraintVertical_bias="0.227" />
-=======
                     android:background="@color/transparent" />
-<<<<<<< HEAD
                 <ImageButton
                     android:id="@+id/profilUser_btnSettings"
                     android:layout_width="30dp"
@@ -100,9 +61,6 @@
                     android:contentDescription="Pengaturan"
                     android:src="@drawable/ic_settings"
                     android:background="@color/transparent" />
->>>>>>> 05b7be2e5f1cdf3f336448daf87306ca51c02c19
-=======
->>>>>>> parent of 1c19caa (Commit untuk Database yang dipersiapkan untuk tugas Pertemuan 10 SQLite.)
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
