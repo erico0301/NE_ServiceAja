@@ -433,4 +433,25 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
     fun deleteAllProducts() {
         dbWriter.delete(DBProduk.tableProduk.TABLE_NAME, null, null)
     }
+
+    fun update(user: User) {
+        val dbWriter = this.writableDatabase
+        val contentValues = ContentValues().apply {
+            put(DBUser.tableUser.COLUMN_NAME, user.nama)
+            put(DBUser.tableUser.COLUMN_EMAIL, user.email)
+            put(DBUser.tableUser.COLUMN_NO_TELP, user.noTelp)
+        }
+
+        val selection = "${DBUser.tableUser.COLUMN_NO_TELP} = ?"
+        val selectionArgs = arrayOf(user.noTelp)
+
+        dbWriter.update(DBUser.tableUser.TABLE_USER, contentValues, selection, selectionArgs)
+
+        fun deleteData(email: String) {
+            val db = this.writableDatabase
+            val selection = "${DBUser.tableUser.COLUMN_EMAIL} = ?"
+            val selectionArgs = arrayOf(email)
+            db.delete(DBUser.tableUser.TABLE_USER, selection, selectionArgs)
+        }
+    }
 }

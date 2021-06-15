@@ -28,6 +28,7 @@
         android:padding="5dp">
 
         <EditText
+            android:id="@+id/inputMsg"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:hint="Tulis Pesan"
@@ -39,6 +40,14 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:padding="5dp"/>
+
+        <ImageButton
+            android:id="@+id/btnSendContact"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_contact"
+            android:scaleType="fitXY"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
 
         <ImageButton
             android:id="@+id/btnSend"

@@ -60,13 +60,27 @@ class EditProfilUser : AppCompatActivity() {
             onBackPressed()
         }
 
-        val db = DBHelper(this)
+
+        var db = DBHelper(this)
         user = intent.extras?.getParcelable(EXTRA_USER)!!
-        users = db.getAllUsers()
+        users = db!!.getAllUsers()
 
         editProfil_nama.setText(user.nama)
         editProfil_alamatEmail.setText(user.email)
         editProfil_noTelepon.setText(user.noTelp)
+
+        editProfil_btnEditProfil.setOnClickListener {
+            //Mengambil data yang ingin diubah
+            var userDataTemp = User()
+            userDataTemp.nama = editProfil_nama.text.toString()
+            userDataTemp.noTelp = editProfil_noTelepon.text.toString()
+            userDataTemp.email = editProfil_alamatEmail.text.toString()
+
+            //Update database
+            db?.update(userDataTemp)
+
+            finish()
+        }
 
         editProfil_ubahPassword.visibility = View.GONE
         editProfil_progressUploadFoto.visibility = View.GONE
@@ -192,8 +206,6 @@ class EditProfilUser : AppCompatActivity() {
                 dialog.show()
             }
         }
-
-        editProfil_btnEditProfil.setOnClickListener { finishActivity() }
     }
 
     private fun openCamera() {
@@ -254,7 +266,7 @@ class EditProfilUser : AppCompatActivity() {
             val email = editProfil_alamatEmail.text.toString()
             val noTelp = "0" + editProfil_noTelepon.text.toString()
             if (user.nama == nama && user.email == email && user.noTelp == noTelp)
-                finishActivity()
+                finish()
             if (editProfil_nama.error != null || editProfil_alamatEmail.error != null || editProfil_noTelepon.error != null)
                 error = true
             if (!error) {
@@ -265,7 +277,7 @@ class EditProfilUser : AppCompatActivity() {
                         user.nama = editProfil_nama.text.toString()
                         user.email = editProfil_alamatEmail.text.toString()
                         user.noTelp = "0" + editProfil_noTelepon.text.toString()
-                        finishActivity()
+                        finish()
                     }
                     .setNegativeButton("BATAL") { dialogInterface: DialogInterface, i: Int -> }
                 dialog.show()
@@ -276,7 +288,7 @@ class EditProfilUser : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finishActivity()
+        finish()
     }
 
     // Fungsi ini digunakan untuk membuat file baru untuk menampung gambar yang dipotret langsung dari kamera yang dibuka dalam aplikasi
@@ -290,13 +302,13 @@ class EditProfilUser : AppCompatActivity() {
         }
     }
 
-    fun finishActivity() {
+   /* fun finishActivity() {
         Log.e("Finish Activity", "${user.nama}, ${user.email}, ${user.noTelp}")
         val intent = Intent()
         intent.putExtra(EXTRA_USER_RETURN, user)
         setResult(RESULT_OK, intent)
         finish()
-    }
+    }*/
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -312,7 +324,6 @@ class EditProfilUser : AppCompatActivity() {
             else
                 Toast.makeText(this, "Tidak dapat membuka Gallery karena tidak diberi izin akses", Toast.LENGTH_SHORT).show()
         }
-
 
     }
 
@@ -339,7 +350,7 @@ class EditProfilUser : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        finishActivity()
+        finish()
         unregisterReceiver(uploadReceiver)
     }
 }

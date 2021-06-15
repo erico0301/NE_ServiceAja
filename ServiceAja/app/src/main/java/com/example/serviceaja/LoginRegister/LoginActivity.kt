@@ -1,5 +1,6 @@
 package com.example.serviceaja.LoginRegister
 
+import DBClass.DBUser
 import android.annotation.TargetApi
 import android.app.Notification
 import android.appwidget.AppWidgetManager
@@ -21,6 +22,7 @@ import androidx.core.widget.addTextChangedListener
 import com.example.serviceaja.*
 import com.example.serviceaja.classes.AccountSharedPref
 import com.example.serviceaja.classes.DBHelper
+
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -36,6 +38,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val db = DBHelper(this)
+
+        var tempUser = User("admin", "admin@gmail.com", "085270047772", "admin12345")
+        db.addUser(tempUser)
+
         users = db.getAllUsers()
 
         for (i in users)
@@ -110,7 +116,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-
     fun cekValiditasForm() {
         // 2 baris kode dibawah untuk mengambil isi dari edit text input email dan input password
         val emailOrPhoneNumber = halamanLogin_inputEmail.text.toString()
@@ -147,6 +152,7 @@ class LoginActivity : AppCompatActivity() {
             // Jika salah, maka akan memanggil fungsi loginFailed()
             else if (password != user.password) loginFailed()
             else {
+                var currentUser = emailOrPhoneNumber
                 // Jika user ditemukan, dan password  yang dimasukkan benar, maka button akan membawa masuk ke intent baru yaitu intent home, menandakan proses login
                     // berhasil dilakukan
                 val home = Intent(this, HomeActivity::class.java)

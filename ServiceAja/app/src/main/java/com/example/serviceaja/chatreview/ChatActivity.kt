@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationChannelGroup
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.media.AudioAttributes
 import android.media.RingtoneManager
@@ -13,15 +14,12 @@ import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import com.example.serviceaja.R
 import kotlinx.android.synthetic.main.activity_chat.*
-import kotlinx.android.synthetic.main.activity_on_going_transaction.*
 
 class ChatActivity : AppCompatActivity() {
 
     var notifyChannel1 = 1
     var notificationManager: NotificationManager? = null
     var pesanUser = arrayOf("BMW", "Mitsubisi", "Peugeot")
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +48,11 @@ class ChatActivity : AppCompatActivity() {
                         .setSmallIcon(R.mipmap.ic_launcher)
                 notificationManager!!.notify(notifyChannel1, notification.build())
             }
+        }
+
+        btnSendContact.setOnClickListener {
+            var contactListIntent = Intent(this, ReadContactActivity::class.java)
+            startActivity(contactListIntent)
         }
     }
 

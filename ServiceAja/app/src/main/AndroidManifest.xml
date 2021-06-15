@@ -8,6 +8,7 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <uses-feature android:name="android.hardware.camera2" />
 
@@ -41,6 +42,10 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/info_kendaraan_widget_info" />
         </receiver>
+
+        <activity android:name=".chatreview.ReadContactActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".setting" />
 
         <activity
             android:name=".ManageProduct"

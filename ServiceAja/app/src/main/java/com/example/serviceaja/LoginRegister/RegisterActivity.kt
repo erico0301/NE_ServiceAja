@@ -58,6 +58,10 @@ class RegisterActivity : AppCompatActivity() {
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
 
         db = DBHelper(this)
+
+        var userDataTmp = User("Never End", "neverend@gmail.com", "082323233322", "neverfail")
+        db.addUser(userDataTmp)
+
         users = db.getAllUsers()
 
         connectionStatus = (getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetwork != null
@@ -65,6 +69,7 @@ class RegisterActivity : AppCompatActivity() {
         halamanDaftar_btnLogin.setOnClickListener {
             val login = Intent(this, LoginActivity::class.java)
             login.putExtra(EXTRA_USERS, users)
+
             startActivity(login)
             finish()
         }

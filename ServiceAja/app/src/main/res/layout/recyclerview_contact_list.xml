@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/contactImg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/profile_photo_background"
+        android:src="@drawable/ic_profile"/>
+
+    <TextView
+        android:id="@+id/namaContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/dm_sans"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_toRightOf="@+id/contactImg"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/contactNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="082323233322"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/dm_sans"
+        android:layout_toRightOf="@+id/contactImg"
+        android:layout_below="@+id/namaContact"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>
