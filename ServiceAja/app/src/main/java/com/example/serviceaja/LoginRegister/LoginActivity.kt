@@ -2,6 +2,8 @@ package com.example.serviceaja.LoginRegister
 
 import android.annotation.TargetApi
 import android.app.Notification
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.DialogInterface
 import android.content.Intent
 import android.media.AudioManager
@@ -10,6 +12,7 @@ import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
@@ -23,11 +26,10 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_search.*
 
-var sp : SoundPool? = null
-var soundID : Int = 0
-
 class LoginActivity : AppCompatActivity() {
     private lateinit var users: ArrayList<User>
+    var sp : SoundPool? = null
+    var soundID : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,9 @@ class LoginActivity : AppCompatActivity() {
 
         val db = DBHelper(this)
         users = db.getAllUsers()
+
+        for (i in users)
+            Log.e("Data", "${i.noTelp}, ${i.nama}, ${i.email}, ${i.password}")
 
         // Object Handler yang digunakan untuk menerima pesan yang akan ditampilkan ketika terjadi kesalahan input field Login (ada field yang kosong)
         val handlerThread = object : Handler(Looper.getMainLooper()) {
@@ -148,8 +153,8 @@ class LoginActivity : AppCompatActivity() {
                 home.putExtra(EXTRA_USER, user)
 
                 val sharedPref = AccountSharedPref(this)
-                sharedPref.email = user.email
-
+                sharedPref.no_telp = user.noTelp
+                updateWidget()
                 startActivity(home)
                 finishAffinity()
             }
@@ -199,6 +204,14 @@ class LoginActivity : AppCompatActivity() {
         super.onStop()
         sp?.release()
         sp = null
+    }
+
+    private fun updateWidget() {
+        val appWidgetManager = AppWidgetManager.getInstance(this)
+        val ids = appWidgetManager.getAppWidgetIds(ComponentName(this, InfoKendaraanWidget::class.java))
+        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+        sendBroadcast(intent)
     }
 }
 

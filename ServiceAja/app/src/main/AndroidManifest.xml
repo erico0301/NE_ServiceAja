@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.serviceaja">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -26,8 +27,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
-        <activity android:name=".SettingsActivity"></activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2891315785476294~2010837398"/>
+        <receiver android:name=".InfoKendaraanWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLED" />
+                <action android:name="android.appwidget.action.APPWIDGET_DISABLED" />
+            </intent-filter>
 
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/info_kendaraan_widget_info" />
+        </receiver>
+
+        <activity
+            android:name=".ManageProduct"
+            android:parentActivityName=".HomeActivity" />
+        <activity android:name=".SettingsActivity" />
+
+        <service
+            android:name=".classes.WidgetKendaraanRVS"
+            android:enabled="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
         <service
             android:name=".classes.GetPrakiraanCuaca"
             android:enabled="true"

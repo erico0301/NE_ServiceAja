@@ -1,6 +1,7 @@
 package com.example.serviceaja.fragment
 
 import android.content.Intent
+import android.database.sqlite.SQLiteException
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import com.example.serviceaja.EXTRA_USER
 import com.example.serviceaja.EXTRA_USER_RETURN
 import com.example.serviceaja.R
 import com.example.serviceaja.classes.Alamat
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import com.example.serviceaja.recyclerview.RVDetailAlamat
 import kotlinx.android.synthetic.main.fragment_daftar_alamat.*
@@ -26,6 +28,17 @@ class DaftarAlamat : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         user = (activity as AlamatActivity).user
+        val db = DBHelper(context!!)
+        db.beginTransaction
+        try {
+            user.alamat = db.getAllAlamat(user.noTelp)
+            db.successTransaction
+        } catch (e: SQLiteException) {
+            Log.e("Error while executing query in Database", e.toString())
+        } finally {
+            db.endTransaction
+        }
+
         activity?.title = "Daftar Alamat"
     }
 

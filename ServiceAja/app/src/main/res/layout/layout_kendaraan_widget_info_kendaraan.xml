@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:padding="0dp"
+    android:theme="@style/ThemeOverlay.ServiceAja.AppWidgetContainer">
+    <ImageView
+        android:id="@+id/layoutKendaraanWidget_infoKendaraan_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightGrayBackground" />
+    <TextView
+        android:id="@+id/layoutKendaraanWidget_infoKendaraan_nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/light_blue_900"
+        android:textSize="20sp"
+        android:text="TOYOTA Fortuner TRD Sportivo 4x4 WD" />
+    <TextView
+        android:id="@+id/layoutKendaraanWidget_infoKendaraan_plat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/layoutKendaraanWidget_infoKendaraan_nama"
+        android:layout_marginHorizontal="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/darkGray"
+        android:textSize="25sp"
+        android:text="BK XXXX XYZ" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/layoutKendaraanWidget_infoKendaraan_plat"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:text="Service Terakhir: " />
+    <TextView
+        android:id="@+id/layoutKendaraanWidget_infoKendaraan_serviceTerakhir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/layoutKendaraanWidget_infoKendaraan_plat"
+        android:layout_marginStart="170dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/green"
+        android:textSize="18sp"
+        android:text="1 Januari 2021" />
+    <Button
+        android:id="@+id/layoutKendaraanWidget_infoKendaraan_btnKendaraanLain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp"
+        android:layout_marginEnd="-5dp"
+        android:layout_marginBottom="-10dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:drawableTint="@color/darkBlue"
+        android:textColor="@color/darkBlue"
+        android:text="Kendaraan Lain" />
+</RelativeLayout>

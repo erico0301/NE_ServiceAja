@@ -8,6 +8,7 @@ import com.example.serviceaja.EXTRA_USERS
 import com.example.serviceaja.R
 import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this)
         val db = DBHelper(this)
 
         halamanAwal_btnMasuk.setOnClickListener {

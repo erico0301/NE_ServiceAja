@@ -1,14 +1,20 @@
 package com.example.serviceaja.recyclerview
 
 import android.app.AlertDialog
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.DialogInterface
+import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.*
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.Kendaraan
 import com.example.serviceaja.fragment.DaftarKendaraan
 import com.example.serviceaja.fragment.DaftarMobil
@@ -30,6 +36,10 @@ class RVDetailKendaraan(val fragment: FragmentActivity, val daftarKendaraan: Arr
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
+            val bitmap = context.openFileInput(daftarKendaraan[position].uri_photo + ".jpg").use {
+                BitmapFactory.decodeStream(it)
+            }
+
             detailKendaraan_noPlatKendaraan.text = daftarKendaraan[position].plat
             detailKendaraan_merkKendaraan.text = daftarKendaraan[position].merk
             detailKendaraan_namaKendaraan.text = daftarKendaraan[position].nama
@@ -39,16 +49,26 @@ class RVDetailKendaraan(val fragment: FragmentActivity, val daftarKendaraan: Arr
             detailKendaraan_noRangkaKendaraan.text = daftarKendaraan[position].noRangka
             detailKendaraan_noMesinKendaraan.text = daftarKendaraan[position].noMesin
             detailKendaraan_noBPKBKendaraan.text = daftarKendaraan[position].noBPKB
-            detailKendaraan_serviceTerakhirKendaraan.text = daftarKendaraan[position].serviceTerakhir.format(
-                DateTimeFormatter.ofPattern("dd MMMM yyyy")).toString()
+            detailKendaraan_serviceTerakhirKendaraan.text = daftarKendaraan[position].serviceTerakhir
+            detailKendaraan_fotoKendaraan.setImageBitmap(bitmap)
 
             detailKendaraan_btnDelete.setOnClickListener {
                 val dialog = AlertDialog.Builder(context)
                     .setTitle("Hapus Kendaraan")
                     .setMessage("Apakah Anda yakin ingin menghapus kendaraan ini? Kendaraan yang terhapus akan hilang dari daftar kendaraan Anda.")
                     .setPositiveButton("HAPUS", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
+                        DBHelper(context).apply {
+                            beginTransaction
+                            deleteKendaraanByPlat(daftarKendaraan[position].plat)
+                            successTransaction
+                            endTransaction
+                        }
+                        context.deleteFile(daftarKendaraan[position].uri_photo + ".jpg")
                         daftarKendaraan.removeAt(position)
                         notifyItemRemoved(position)
+
+                        (context as KendaraanActivity).updateListKendaraan()
+
                         fragment.supportFragmentManager.beginTransaction().apply {
                             replace(R.id.kendaraan_fragmentContainer, DaftarKendaraan())
                             commit()

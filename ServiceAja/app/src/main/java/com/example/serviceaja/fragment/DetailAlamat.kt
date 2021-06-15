@@ -3,6 +3,7 @@ package com.example.serviceaja.fragment
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.content.*
+import android.database.sqlite.SQLiteException
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -15,15 +16,13 @@ import android.widget.Button
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import com.example.serviceaja.*
-import com.example.serviceaja.classes.Alamat
-import com.example.serviceaja.classes.GetDaftarKabupatenKota
-import com.example.serviceaja.classes.GetDaftarKecamatan
-import com.example.serviceaja.classes.GetDaftarProvinsi
+import com.example.serviceaja.classes.*
 import kotlinx.android.synthetic.main.fragment_detail_alamat.*
 import kotlinx.android.synthetic.main.fragment_detail_alamat.view.*
 
 class DetailAlamat : Fragment() {
     private lateinit var jobscheduler: JobScheduler
+    private lateinit var user: User
 
     lateinit var daftarProvinsi: HashMap<String, String>
     lateinit var daftarKabupatenKota: HashMap<String, String>
@@ -74,6 +73,7 @@ class DetailAlamat : Fragment() {
         context?.registerReceiver(receiver, filter)
 
         jobscheduler = context?.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+        user = (activity as AlamatActivity).user
     }
 
     override fun onCreateView(
@@ -148,9 +148,34 @@ class DetailAlamat : Fragment() {
             provinsi = rootView.detailAlamat_provinsi.text.toString()
 
             val alamat = Alamat(namaAlamat, namaPenerima, noTelepon, kecamatan, kabupatenKota, provinsi, detailAlamat)
+            val db = DBHelper(context!!)
+            db.beginTransaction
 
-            if (rootView.detailAlamat_btnExecute.text.toString() == "TAMBAH") (activity as AlamatActivity).user.alamat.add(alamat)
-            else (activity as AlamatActivity).user.alamat[arguments?.getInt(ALAMAT_POSITION)!!] = alamat
+            if (rootView.detailAlamat_btnExecute.text.toString() == "TAMBAH") {
+                user.alamat.add(alamat)
+                try {
+                    db.addAlamat(user.noTelp, alamat)
+                    db.successTransaction
+                } catch (e: SQLiteException) {
+                    Log.e("Error while inserting in Database", e.toString())
+                } finally {
+                    db.endTransaction
+                }
+            }
+            else {
+                val oldAddress = user.alamat[arguments?.getInt(ALAMAT_POSITION)!!]
+
+                user.alamat[arguments?.getInt(ALAMAT_POSITION)!!] = alamat
+
+                try {
+                    db.updateAlamat(user.noTelp, oldAddress, alamat)
+                    db.successTransaction
+                } catch (e: SQLiteException) {
+                    Log.e("Error while inserting in Database", e.toString())
+                } finally {
+                    db.endTransaction
+                }
+            }
 
             activity?.supportFragmentManager?.beginTransaction()?.apply {
                 replace(R.id.alamat_fragmentContainer, DaftarAlamat())

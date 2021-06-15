@@ -44,7 +44,7 @@ class EditProfilUser : AppCompatActivity() {
             // Jika progres upload sudah mencapai 100%, maka receiver akan menerima extra berupa URI untuk foto yang diupload oleh user.
             if (uploadProgress == 100) {
                 Toast.makeText(this@EditProfilUser, "Upload Foto Berhasil Dilakukan!", Toast.LENGTH_LONG).show()
-                val uri = intent?.getParcelableExtra<Uri>(EXTRA_IMAGE)
+                val uri = intent.getParcelableExtra<Uri>(EXTRA_IMAGE)
                 editProfil_foto.setImageURI(uri)  // Set imageview dengan gambar yang diterima dari JobIntentService hasil dari upload user
                 editProfil_progressUploadFoto.visibility = View.GONE  // Progress bar akan hilang setelah proses upload selesai
             }

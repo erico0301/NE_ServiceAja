@@ -1,6 +1,8 @@
 package com.example.serviceaja.fragment
 
 import android.app.Activity
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -59,7 +61,6 @@ class ProfilUserFragment : Fragment() {
             val intent = Intent(activity, EditProfilUser::class.java)
 
             intent.putExtra(EXTRA_USER, user)
-            intent.putExtra(EXTRA_USERS, (activity as HomeActivity).users)
             activity?.startActivityForResult(intent, REQ_CODE_EDIT_PROFILE)
             activity?.supportFragmentManager?.beginTransaction()
                     ?.remove(this)?.commit()
@@ -86,9 +87,18 @@ class ProfilUserFragment : Fragment() {
         view.findViewById<ImageButton>(R.id.btn_logout).setOnClickListener {
             startActivity(Intent(activity, MainActivity::class.java))
             AccountSharedPref(activity!!).clearValues()
+            updateWidget()
             activity?.finishAffinity()
         }
 
         return view
+    }
+
+    private fun updateWidget() {
+        val appWidgetManager = AppWidgetManager.getInstance(context!!)
+        val ids = appWidgetManager.getAppWidgetIds(ComponentName(context!!, InfoKendaraanWidget::class.java))
+        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+        context!!.sendBroadcast(intent)
     }
 }

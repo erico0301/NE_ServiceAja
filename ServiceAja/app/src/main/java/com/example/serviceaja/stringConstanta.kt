@@ -1,6 +1,7 @@
 package com.example.serviceaja
 
 const val LOGIN_INFO_FILE = "login_info"
+const val DATA_DOWNLOADED_INFO_FILE ="data_downloaded_info"
 const val ACTIVE_FRAGMENT = "com.example.serviceaja.ACTIVE_FRAGMENT"
 const val REQ_CODE_EDIT_PROFILE = 101
 const val REQ_CODE_EDIT_LOCATION = 102
@@ -39,6 +40,8 @@ const val KENDARAAN_NO_BPKB = "com.example.serviceaja.DaftarKendaraan.KENDARAAN_
 const val JOB_ID = 124
 const val JOB_ID_CUACA = 125
 const val EXTRA_PRAKIRAAN = "com.example.serviceaja.PRAKIRAAN_CUACA"
+const val ACTION_VEHICLE_PICK = "com.example.serviceaja.ACTION_VEHICLE_PICK"
+const val ACTION_VEHICLE_UNPICK = "com.example.serviceaja.ACTION_VEHICLE_UNPICK"
 const val ACTION_UPLOAD_IMAGE = "com.example.serviceaja.ACTION_UPLOAD_IMAGE"
 const val UPLOAD_IMAGE_JOB_ID = 123
 const val EXTRA_IMAGE = "com.example.serviceaja.EXTRA_IMAGE"
@@ -47,3 +50,4 @@ const val EXTRA_UPLOAD_PROGRESS = "com.example.serviceaja.EXTRA_UPLOAD_PROGRESS"
 const val DAFTAR_PROVINSI = "com.example.serviceaja.DAFTAR_PROVINSI"
 const val DAFTAR_KAB_KOTA = "com.example.serviceaja.DAFTAR_KAB_KOTA"
 const val DAFTAR_KECAMATAN = "com.example.serviceaja.DAFTAR_KECAMATAN"
+const val DAFTAR_PRODUK = "com.example.serviceaja.DAFTAR_PRODUK"

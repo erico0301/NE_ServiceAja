@@ -5,17 +5,17 @@ import android.content.SharedPreferences
 import com.example.serviceaja.LOGIN_INFO_FILE
 
 class AccountSharedPref(context: Context) {
-    val EMAIL = "EMAIL"
+    val NO_TELP = "NO_TELP"
     private var sharePref: SharedPreferences
 
     init {
         sharePref = context.getSharedPreferences(LOGIN_INFO_FILE, Context.MODE_PRIVATE)
     }
 
-    var email: String?
-        get() = sharePref.getString(EMAIL, "Kosong")
+    var no_telp: String?
+        get() = sharePref.getString(NO_TELP, "Kosong")
         set(value) {
-            sharePref.edit().putString(EMAIL, value).apply()
+            sharePref.edit().putString(NO_TELP, value).apply()
         }
 
     fun clearValues() {

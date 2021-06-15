@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.serviceaja.LoginRegister.MainActivity
 import com.example.serviceaja.classes.AccountSharedPref
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
@@ -13,20 +14,17 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        var users = arrayListOf(
-                User("admin", "admin@gmail.com", "081234567890", "admin"),
-                User("Budi Doremifasol", "budidoremi123@gmail.com", "082345678910", "budiDoremi123"),
-                User("Anto Supriadi", "antosupriadi123@gmail.com", "081245678910", "antoSupriadi123")
-        )
+        val db = DBHelper(this)
+        val users = db.getAllUsers()
 
         splashScreenLayout.animate().setDuration(200).alpha(1f).withEndAction {
-            val email = AccountSharedPref(this).email
+            val no_telp = AccountSharedPref(this).no_telp
             var user: User? = null
             val intent: Intent
-            if (email != "Kosong") {
+            if (no_telp != "Kosong") {
                 intent = Intent(this, HomeActivity::class.java)
                 for (i in users)
-                    if (i.email.equals(email))
+                    if (i.noTelp.equals(no_telp))
                         user = i
                 intent.putExtra(EXTRA_USER, user)
             }

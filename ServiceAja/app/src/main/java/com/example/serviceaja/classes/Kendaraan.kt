@@ -18,6 +18,8 @@ class Kendaraan (
     var noRangka: String,
     var noMesin: String,
     var noBPKB: String,
-    var serviceTerakhir: LocalDate = LocalDate.parse("2020-01-01")
+    var serviceTerakhir: String,
+    var uri_photo: String = ""
 ) : Parcelable {
+
 }

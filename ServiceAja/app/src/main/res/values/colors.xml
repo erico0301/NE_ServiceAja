@@ -18,7 +18,12 @@
     <color name="darkGray">#303030</color>
     <color name="red">#FF0000</color>
     <color name="grayBackground">#7A303030</color>
+    <color name="lightGrayBackground">#5E757575</color>
     <color name="transparent">#00000000</color>
     <color name="light_blue">#E8F6FE</color>
     <color name="medium_blue">#3993CD</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
 </resources>
