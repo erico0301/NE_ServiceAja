@@ -22,12 +22,25 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
                 ${DBUser.tableUser.COLUMN_PASSWORD} TEXT
             )
         """.trimIndent()
-
         db?.execSQL(CREATE_USER_TABLE)
+
+        val CREATE_TRANSAKSI_TABLE = """
+            CREATE TABLE ${DBUser.tableTransaksi.TABLE_TRANSAKSI}
+            (
+                ${DBUser.tableTransaksi.COLUMN_USERID} TEXT PRIMARY KEY,
+                ${DBUser.tableTransaksi.COLUMN_PAYMENT} TEXT,
+                ${DBUser.tableTransaksi.COLUMN_CONFIRM} TEXT,
+                ${DBUser.tableTransaksi.COLUMN_PACKING} TEXT
+                ${DBUser.tableTransaksi.COLUMN_SEND} TEXT
+                ${DBUser.tableTransaksi.COLUMN_RECEIVE} TEXT
+            )
+        """.trimIndent()
+        db?.execSQL(CREATE_TRANSAKSI_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP TABLE IF EXISTS ${DBUser.tableUser.TABLE_USER}")
+        db?.execSQL("DROP TABLE IF EXISTS ${DBUser.tableTransaksi.TABLE_TRANSAKSI}")
         onCreate(db)
     }
 
@@ -76,5 +89,52 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
         val selection = "${DBUser.tableUser.COLUMN_EMAIL} = ?"
         val selectionArgs = arrayOf(email)
         db.delete(DBUser.tableUser.TABLE_USER,selection,selectionArgs)
+    }
+
+    fun getAllTransaksi(): ArrayList<Transaksi> {
+        val transaksi = arrayListOf<Transaksi>()
+        val dbReader = readableDatabase
+
+        val projection = arrayOf(DBUser.tableTransaksi.COLUMN_USERID, DBUser.tableTransaksi.COLUMN_PAYMENT, DBUser.tableTransaksi.COLUMN_CONFIRM, DBUser.tableTransaksi.COLUMN_PACKING, DBUser.tableTransaksi.COLUMN_SEND, DBUser.tableTransaksi.COLUMN_RECEIVE)
+        val cursor = dbReader.query(
+            DBUser.tableTransaksi.TABLE_TRANSAKSI,
+            projection,
+            null,
+            null,
+            null,
+            null,
+            null
+        )
+        with(cursor) {
+            while (moveToNext()) {
+                transaksi.add(
+                    Transaksi(
+                    getString(getColumnIndex(DBUser.tableTransaksi.COLUMN_USERID)),
+                    getString(getColumnIndex(DBUser.tableTransaksi.COLUMN_PAYMENT)),
+                    getString(getColumnIndex(DBUser.tableTransaksi.COLUMN_CONFIRM)),
+                    getString(getColumnIndex(DBUser.tableTransaksi.COLUMN_PACKING)),
+                    getString(getColumnIndex(DBUser.tableTransaksi.COLUMN_SEND)),
+                    getString(getColumnIndex(DBUser.tableTransaksi.COLUMN_RECEIVE))
+
+                )
+                )
+            }
+        }
+
+        return transaksi
+    }
+
+    fun addTransaksi(transaksi : Transaksi) {
+        val dbWriter = writableDatabase
+        val contentValues = ContentValues().apply {
+            put(DBUser.tableTransaksi.COLUMN_USERID, transaksi.userID)
+            put(DBUser.tableTransaksi.COLUMN_PAYMENT, transaksi.payment)
+            put(DBUser.tableTransaksi.COLUMN_CONFIRM, transaksi.confirm)
+            put(DBUser.tableTransaksi.COLUMN_PACKING, transaksi.packing)
+            put(DBUser.tableTransaksi.COLUMN_SEND, transaksi.payment)
+            put(DBUser.tableTransaksi.COLUMN_RECEIVE, transaksi.receive)
+        }
+        dbWriter.insert(DBUser.tableTransaksi.TABLE_TRANSAKSI, null, contentValues)
+        dbWriter.close()
     }
 }

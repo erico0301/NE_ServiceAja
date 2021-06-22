@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationChannelGroup
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.media.AudioAttributes
 import android.media.RingtoneManager
@@ -11,7 +12,9 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.NotificationCompat
+import com.example.serviceaja.ActivityAddContact
 import com.example.serviceaja.R
+import com.example.serviceaja.checkout.ConfirmPaymentActivity
 import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.activity_on_going_transaction.*
 
@@ -50,6 +53,12 @@ class ChatActivity : AppCompatActivity() {
                         .setSmallIcon(R.mipmap.ic_launcher)
                 notificationManager!!.notify(notifyChannel1, notification.build())
             }
+        }
+
+        //Add Contact
+        btnAddContact.setOnClickListener{
+            var addContact = Intent(this, ActivityAddContact::class.java)
+            startActivity(addContact)
         }
     }
 

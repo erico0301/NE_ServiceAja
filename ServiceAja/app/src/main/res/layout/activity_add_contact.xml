@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityAddContact"
+    android:background="#f7f7f7">
+    <View
+        android:id="@+id/topBg"
+        android:layout_width="657dp"
+        android:layout_height="323dp"
+        android:layout_marginLeft="-80dp"
+        android:layout_marginRight="-80dp"
+        android:layout_marginTop="-250dp"
+        android:background="@drawable/home_background_top" />
+    <LinearLayout
+        android:id="@+id/topMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_action_back"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Contact"
+            android:fontFamily="@font/dm_sans"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topBg"
+        android:padding="10dp">
+
+
+        <ImageView
+            android:id="@+id/profileIv"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="#c0c0c0"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_baseline_person_24"/>
+
+        <EditText
+            android:id="@+id/firstNameEt"
+            android:background="#fff"
+            android:padding="10dp"
+            android:layout_below="@id/profileIv"
+            android:layout_marginTop="5dp"
+            android:textColorHint="#c5c5c5"
+            android:hint="First Name"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"/>
+
+        <EditText
+            android:id="@+id/lastNameEt"
+            android:background="#fff"
+            android:padding="10dp"
+            android:layout_below="@id/firstNameEt"
+            android:layout_marginTop="5dp"
+            android:textColorHint="#c5c5c5"
+            android:hint="Last Name"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"/>
+        <EditText
+            android:id="@+id/phoneMobileEt"
+            android:background="#fff"
+            android:padding="10dp"
+            android:layout_below="@id/lastNameEt"
+            android:layout_marginTop="5dp"
+            android:textColorHint="#c5c5c5"
+            android:hint="Phone Number (Mobile)"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"/>
+        <EditText
+            android:id="@+id/phoneHomeEt"
+            android:background="#fff"
+            android:padding="10dp"
+            android:layout_below="@id/phoneMobileEt"
+            android:layout_marginTop="5dp"
+            android:textColorHint="#c5c5c5"
+            android:hint="Phone Number (Home)"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"/>
+
+        <EditText
+            android:id="@+id/emailEt"
+            android:background="#fff"
+            android:padding="10dp"
+            android:layout_below="@id/phoneHomeEt"
+            android:layout_marginTop="5dp"
+            android:textColorHint="#c5c5c5"
+            android:hint="Email"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/addressEt"
+            android:background="#fff"
+            android:padding="10dp"
+            android:layout_below="@id/emailEt"
+            android:layout_marginTop="5dp"
+            android:textColorHint="#c5c5c5"
+            android:hint="Address"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"/>
+    </RelativeLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_baseline_done_24"/>
+
+</RelativeLayout>
