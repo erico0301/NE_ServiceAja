@@ -12,6 +12,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.serviceaja.classes.Alamat
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import com.example.serviceaja.fragment.DaftarAlamat
 import com.example.serviceaja.fragment.DetailAlamat
@@ -25,7 +26,7 @@ class AlamatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daftar_alamat)
 
-        user = intent.getParcelableExtra(EXTRA_USER) ?: User("Testing", "testing@gmail.com", "08123456789", "asdfghjkl")
+        user = intent.getParcelableExtra(EXTRA_USER)!!
 
         supportFragmentManager.beginTransaction().apply {
             val daftarAlamat = DaftarAlamat()

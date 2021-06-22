@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                 android:text="DAFTAR TRANSAKSI"
                 android:fontFamily="@font/dmsans_regular" />
 
-            <com.google.android.material.tabs.TabLayout
+            <!--<com.google.android.material.tabs.TabLayout
                 android:id="@+id/profilMitra_tabServiceProduk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -194,10 +194,68 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                app:layout_constraintTop_toBottomOf="@id/profilMitra_tabServiceProduk" />
+                app:layout_constraintTop_toBottomOf="@id/profilMitra_tabServiceProduk" /> -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profilMitra_btndaftarTransaksi"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Daftar Produk"
+                android:textSize="20sp"/>
+            <LinearLayout
+                android:id="@+id/profilMitra_downloadData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="30dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintTop_toBottomOf="@id/profilMitra_btndaftarTransaksi"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Download Data Service dan Produk untuk Menampilkan Produk Terdaftar" />
+                <Button
+                    android:id="@+id/profilMitra_btnDownloadData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="DOWNLOAD" />
+                <ProgressBar
+                    android:id="@+id/profilMitra_downloadProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/profilMitra_daftarProduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/profilMitra_btndaftarTransaksi"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="50dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/profilMitra_fabAddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_add" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/profilMitra_fabEditProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/pink"
+        android:src="@drawable/ic_edit" />
     <!--<androidx.viewpager2.widget.ViewPager2
         android:id="@+id/profilMitra_viewPager"
         android:layout_width="match_parent"
@@ -209,4 +267,4 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/profilMitra_tabServiceProduk" />
     -->
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

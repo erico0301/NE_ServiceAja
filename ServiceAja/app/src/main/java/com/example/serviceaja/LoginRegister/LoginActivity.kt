@@ -3,6 +3,8 @@ package com.example.serviceaja.LoginRegister
 import DBClass.DBUser
 import android.annotation.TargetApi
 import android.app.Notification
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.DialogInterface
 import android.content.Intent
 import android.media.AudioManager
@@ -27,10 +29,10 @@ import kotlinx.android.synthetic.main.activity_search.*
 import com.example.serviceaja.classes.User
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import com.example.serviceaja.classes.User
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var users: ArrayList<User>
-    var currentUser : String = "admin@gmail.com"
     var sp : SoundPool? = null
     var soundID : Int = 0
 
@@ -156,16 +158,15 @@ class LoginActivity : AppCompatActivity() {
             // Jika salah, maka akan memanggil fungsi loginFailed()
             else if (password != user.password) loginFailed()
             else {
-                currentUser = emailOrPhoneNumber
+                var currentUser = emailOrPhoneNumber
                 // Jika user ditemukan, dan password  yang dimasukkan benar, maka button akan membawa masuk ke intent baru yaitu intent home, menandakan proses login
                     // berhasil dilakukan
                 val home = Intent(this, HomeActivity::class.java)
                 home.putExtra(EXTRA_USER, user)
 
                 val sharedPref = AccountSharedPref(this)
-                sharedPref.email = user.email
-
-
+                sharedPref.no_telp = user.noTelp
+                updateWidget()
                 startActivity(home)
                 finishAffinity()
             }
@@ -219,6 +220,16 @@ class LoginActivity : AppCompatActivity() {
         val ids = appWidgetManager.getAppWidgetIds(ComponentName(this, Widget_Transaksi::class.java))
         val updateIntent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
         updateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-        sendBroadcast(updateIntent)    }
+        sendBroadcast(updateIntent)     
+    }
+    
+
+    private fun updateWidget() {
+        val appWidgetManager = AppWidgetManager.getInstance(this)
+        val ids = appWidgetManager.getAppWidgetIds(ComponentName(this, InfoKendaraanWidget::class.java))
+        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+        sendBroadcast(intent)
+    }
 }
 

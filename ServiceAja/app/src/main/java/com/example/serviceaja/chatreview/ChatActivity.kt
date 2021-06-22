@@ -16,15 +16,12 @@ import com.example.serviceaja.ActivityAddContact
 import com.example.serviceaja.R
 import com.example.serviceaja.checkout.ConfirmPaymentActivity
 import kotlinx.android.synthetic.main.activity_chat.*
-import kotlinx.android.synthetic.main.activity_on_going_transaction.*
 
 class ChatActivity : AppCompatActivity() {
 
     var notifyChannel1 = 1
     var notificationManager: NotificationManager? = null
     var pesanUser = arrayOf("BMW", "Mitsubisi", "Peugeot")
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +56,10 @@ class ChatActivity : AppCompatActivity() {
         btnAddContact.setOnClickListener{
             var addContact = Intent(this, ActivityAddContact::class.java)
             startActivity(addContact)
+        }
+        btnSendContact.setOnClickListener {
+            var contactListIntent = Intent(this, ReadContactActivity::class.java)
+            startActivity(contactListIntent)
         }
     }
 

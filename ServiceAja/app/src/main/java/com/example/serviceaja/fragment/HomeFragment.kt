@@ -17,10 +17,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceaja.*
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.GetPrakiraanCuaca
 import com.example.serviceaja.classes.User
 import com.example.serviceaja.recyclerview.RVBengkelPreview
 import com.example.serviceaja.search.SearchActivity
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.recyclerview_review_details.*
@@ -64,11 +68,15 @@ class HomeFragment : Fragment() {
         context!!.registerReceiver(receiver, filter)
 
         jobScheduler = context?.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        var db = DBHelper(this.requireContext())
+        db?.getAllUsers()
 
         viewCuaca = view.home_informasiCuaca
         progressBar = view.home_progressBar
@@ -89,6 +97,7 @@ class HomeFragment : Fragment() {
             view.homePage_kendaraanKosong.visibility = View.GONE
         else
             view.layout_vehicle_info.visibility = View.GONE
+
         return view
     }
 
@@ -113,6 +122,16 @@ class HomeFragment : Fragment() {
         wishlistIcon.setOnClickListener {
             var wishlistIntent = Intent(activity, WishlistActivity::class.java)
             startActivity(wishlistIntent)
+        }
+
+        //Inisialisasi mobile ads
+        MobileAds.initialize(activity){}
+        //adsView mengload ads
+        bannerAds.loadAd(AdRequest.Builder().build())
+
+        //Listener untuk adsView Banner
+        bannerAds.adListener = object : AdListener() {
+
         }
     }
 

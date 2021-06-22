@@ -1,6 +1,9 @@
 package com.example.serviceaja.fragment
 
 import android.app.Activity
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.serviceaja.*
 import com.example.serviceaja.LoginRegister.MainActivity
 import com.example.serviceaja.classes.AccountSharedPref
+import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.fragment_profil_user.*
 import kotlinx.android.synthetic.main.fragment_profil_user.view.*
@@ -36,6 +40,10 @@ class ProfilUserFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profil_user, container, false)
         Log.e("profilUserFragment onCreateVIew", "${user.nama}, ${user.email}, ${user.noTelp}")
+
+        var db = DBHelper(this.requireContext())
+        db?.getAllUsers()
+
         view.profilUser_namaUser.text = user.nama
         view.profilUser_emailUser.text = user.email
         view.profilUser_noTelpUser.text = "(+62)-${user.noTelp!!.substring(1)}"
@@ -59,10 +67,8 @@ class ProfilUserFragment : Fragment() {
             val intent = Intent(activity, EditProfilUser::class.java)
 
             intent.putExtra(EXTRA_USER, user)
-            intent.putExtra(EXTRA_USERS, (activity as HomeActivity).users)
             activity?.startActivityForResult(intent, REQ_CODE_EDIT_PROFILE)
-            activity?.supportFragmentManager?.beginTransaction()
-                    ?.remove(this)?.commit()
+
         }
 
         // Event ini digunakan untuk membuka Intent Eksplisit AlamatActivity.kt
@@ -80,15 +86,25 @@ class ProfilUserFragment : Fragment() {
         }
 
         view.profilUser_btnSettings.setOnClickListener {
+            startActivity(Intent(activity, SettingsActivity::class.java))
             startActivity(Intent(activity, setting::class.java))
         }
 
         view.findViewById<ImageButton>(R.id.btn_logout).setOnClickListener {
             startActivity(Intent(activity, MainActivity::class.java))
             AccountSharedPref(activity!!).clearValues()
+            updateWidget()
             activity?.finishAffinity()
         }
 
         return view
+    }
+
+    private fun updateWidget() {
+        val appWidgetManager = AppWidgetManager.getInstance(context!!)
+        val ids = appWidgetManager.getAppWidgetIds(ComponentName(context!!, InfoKendaraanWidget::class.java))
+        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+        context!!.sendBroadcast(intent)
     }
 }

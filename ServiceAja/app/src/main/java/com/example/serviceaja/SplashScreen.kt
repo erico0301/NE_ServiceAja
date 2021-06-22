@@ -18,13 +18,13 @@ class SplashScreen : AppCompatActivity() {
         val users = db.getAllUsers()
 
         splashScreenLayout.animate().setDuration(200).alpha(1f).withEndAction {
-            val email = AccountSharedPref(this).email
+            val no_telp = AccountSharedPref(this).no_telp
             var user: User? = null
             val intent: Intent
-            if (email != "Kosong") {
+            if (no_telp != "Kosong") {
                 intent = Intent(this, HomeActivity::class.java)
                 for (i in users)
-                    if (i.email.equals(email))
+                    if (i.noTelp.equals(no_telp))
                         user = i
                 intent.putExtra(EXTRA_USER, user)
             }

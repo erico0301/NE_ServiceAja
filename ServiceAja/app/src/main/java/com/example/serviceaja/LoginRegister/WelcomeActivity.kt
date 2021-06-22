@@ -1,12 +1,15 @@
 package com.example.serviceaja.LoginRegister
 
 import DBClass.DBUser
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.serviceaja.EXTRA_USER
 import com.example.serviceaja.HomeActivity
+import com.example.serviceaja.InfoKendaraanWidget
 import com.example.serviceaja.R
 import com.example.serviceaja.classes.AccountSharedPref
 import com.example.serviceaja.classes.DBHelper
@@ -21,7 +24,8 @@ class WelcomeActivity : AppCompatActivity() {
 
         val db = DBHelper(this)
         db.addUser(user!!)
-        AccountSharedPref(this).email = user.email
+        AccountSharedPref(this).no_telp = user.noTelp
+        updateWidget()
 
         startBtn.setOnClickListener {
             var homeIntent = Intent(this, HomeActivity::class.java)
@@ -29,5 +33,13 @@ class WelcomeActivity : AppCompatActivity() {
             startActivity(homeIntent)
             finishAffinity()
         }
+    }
+
+    private fun updateWidget() {
+        val appWidgetManager = AppWidgetManager.getInstance(this)
+        val ids = appWidgetManager.getAppWidgetIds(ComponentName(this, InfoKendaraanWidget::class.java))
+        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+        sendBroadcast(intent)
     }
 }

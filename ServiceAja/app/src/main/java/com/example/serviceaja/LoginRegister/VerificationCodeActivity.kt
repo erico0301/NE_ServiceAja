@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.AudioAttributes
@@ -21,6 +22,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.RemoteViews
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.TaskStackBuilder
 import com.example.serviceaja.*
@@ -117,6 +119,11 @@ class VerificationCodeActivity : AppCompatActivity() {
         val filter = IntentFilter()
         filter.addAction(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)
         registerReceiver(smsReceiver, filter)
+
+        if (!checkSelfPermission(android.Manifest.permission.RECEIVE_SMS).equals(PackageManager.PERMISSION_GRANTED)
+                && !checkSelfPermission(android.Manifest.permission.READ_SMS).equals(PackageManager.PERMISSION_GRANTED)) {
+            requestSMSPermission()
+        }
 
         verifikasi_kodeOtomatis1.visibility = View.GONE
         verifikasi_kodeOtomatis2.visibility = View.GONE
@@ -243,6 +250,21 @@ class VerificationCodeActivity : AppCompatActivity() {
                 .build()                                                    // Membangun notifikasi
 
             notificationManager.notify(0, notification)                 // Mengirimkan notifikasi ke perangkat
+        }
+    }
+
+    private fun requestSMSPermission() {
+        requestPermissions(arrayOf(android.Manifest.permission.RECEIVE_SMS, android.Manifest.permission.READ_SMS), 1)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1) {
+            for (i in grantResults)
+                if (i != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Harap beri izin membaca SMS agar proses registrasi dapat dilakukan", Toast.LENGTH_SHORT).show()
+                    requestSMSPermission()
+                }
         }
     }
 }

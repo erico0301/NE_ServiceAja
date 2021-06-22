@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:padding="10dp"
+    android:background="@drawable/widget_kendaraan_background"
+    android:theme="@style/ThemeOverlay.ServiceAja.AppWidgetContainer" >
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="-20dp"
+        android:src="@drawable/ic_logo_color" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="-20dp"
+        android:fontFamily="@font/poppins_light"
+        android:textColor="@color/black"
+        android:text="Daftar Kendaraan masih kosong. Masukkan Kendaraan Anda ke dalam Daftar dan akan ditampilkan dalam Widget" />
+    <Button
+        android:id="@+id/layoutKendaraanWidget_emptyKendaraan_btnDaftarKendaraan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/darkestBlue"
+        android:fontFamily="@font/poppins_light"
+        android:text="DAFTAR KENDARAAN" />
+</LinearLayout>

@@ -21,20 +21,20 @@ class setting : AppCompatActivity() {
         val db = DBHelper(this)
 
         //variable untuk mengecek user yang sedang login
-        var crnUser = LoginActivity().currentUser
+        //var crnUser = LoginActivity().currentUser
 
         //eksekusi pada saat menekan to9mbol hapus akun
         setting_HapusAkun.setOnClickListener{
             //pengecekan apakah emailUser ada atau kosong
-            if(crnUser!=null || crnUser !=""){
+            /*if(crnUser!=null || crnUser !=""){
                 //proses penghapusan data dari database
                 doAsync {
-                    db?.deleteData(crnUser)
+                    //db?.deleteData(crnUser)
 
                     //function kembali ke startpage
                     home()
                 }
-            }
+            }*/
         }
 
         setting_logout.setOnClickListener{
