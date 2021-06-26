@@ -12,7 +12,9 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.NotificationCompat
+import com.example.serviceaja.ActivityAddContact
 import com.example.serviceaja.R
+import com.example.serviceaja.checkout.ConfirmPaymentActivity
 import kotlinx.android.synthetic.main.activity_chat.*
 
 class ChatActivity : AppCompatActivity() {
@@ -50,6 +52,11 @@ class ChatActivity : AppCompatActivity() {
             }
         }
 
+        //Add Contact
+        btnAddContact.setOnClickListener{
+            var addContact = Intent(this, ActivityAddContact::class.java)
+            startActivity(addContact)
+        }
         btnSendContact.setOnClickListener {
             var contactListIntent = Intent(this, ReadContactActivity::class.java)
             startActivity(contactListIntent)

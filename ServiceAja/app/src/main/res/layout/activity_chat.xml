@@ -57,14 +57,48 @@
             style="@style/Widget.AppCompat.Button.Borderless"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/LLContact"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_above="@+id/bottomMenu"
+        android:layout_toRightOf="@+id/bengkelImgChat"
+        android:layout_marginLeft="15dp" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="#c0c0c0"
+                android:src="@drawable/ic_baseline_person_24"/>
 
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:text="ERICO"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnAddContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Contact"/>
+
+    </LinearLayout>
     <TextView
         android:id="@+id/hourB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10:23 am"
         android:fontFamily="@font/dm_sans"
-        android:layout_above="@+id/bottomMenu"
+        android:layout_above="@+id/LLContact"
         android:layout_toRightOf="@+id/bengkelImgChat"
         android:layout_marginLeft="15dp" />
     <TextView

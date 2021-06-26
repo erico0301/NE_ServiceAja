@@ -22,11 +22,14 @@ import androidx.core.widget.addTextChangedListener
 import com.example.serviceaja.*
 import com.example.serviceaja.classes.AccountSharedPref
 import com.example.serviceaja.classes.DBHelper
-
-import com.example.serviceaja.classes.User
+import com.example.serviceaja.classes.Transaksi
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_search.*
+import com.example.serviceaja.classes.User
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import com.example.serviceaja.classes.User
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var users: ArrayList<User>
@@ -40,7 +43,10 @@ class LoginActivity : AppCompatActivity() {
         val db = DBHelper(this)
 
         var tempUser = User("admin", "admin@gmail.com", "085270047772", "admin12345")
+        var tempTransaksi = Transaksi("admin@gmail.com", "0", "0", "1", "0", "2")
+
         db.addUser(tempUser)
+        db.addTransaksi(tempTransaksi)
 
         users = db.getAllUsers()
 
@@ -210,7 +216,13 @@ class LoginActivity : AppCompatActivity() {
         super.onStop()
         sp?.release()
         sp = null
+        val appWidgetManager = AppWidgetManager.getInstance(this)
+        val ids = appWidgetManager.getAppWidgetIds(ComponentName(this, Widget_Transaksi::class.java))
+        val updateIntent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        updateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+        sendBroadcast(updateIntent)     
     }
+    
 
     private fun updateWidget() {
         val appWidgetManager = AppWidgetManager.getInstance(this)

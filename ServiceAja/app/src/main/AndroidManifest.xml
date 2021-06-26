@@ -2,11 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.serviceaja">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the "MyLocation" functionality.
-    -->
+    <!-- Add Premissions Write Contact -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
@@ -28,6 +26,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
+        <receiver android:name=".Widget_Transaksi">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-2891315785476294~2010837398"/>
@@ -40,6 +41,11 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
+                android:resource="@xml/widget__transaksi_info" />
+        </receiver>
+
+        <activity android:name=".ActivityAddContact" />
+        <activity android:name=".setting" />
                 android:resource="@xml/info_kendaraan_widget_info" />
         </receiver>
 
