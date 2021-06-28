@@ -27,9 +27,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_search.*
 import com.example.serviceaja.classes.User
-import android.appwidget.AppWidgetManager
-import android.content.ComponentName
-import com.example.serviceaja.classes.User
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var users: ArrayList<User>
