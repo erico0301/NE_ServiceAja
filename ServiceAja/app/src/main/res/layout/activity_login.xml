@@ -100,7 +100,11 @@
                 app:cornerRadius="15dp"
                 android:fontFamily="@font/poppins_medium"
                 android:textSize="20sp"/>
-
+            <ProgressBar
+                android:id="@+id/halamanLogin_progressLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

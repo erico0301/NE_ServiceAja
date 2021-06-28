@@ -10,6 +10,8 @@ object DBUser {
             val COLUMN_NAME = "nama"
             val COLUMN_EMAIL = "email"
             val COLUMN_PASSWORD = "password"
+            val COLUMN_POINTS = "points"
+            val COLUMN_PREMIUM_USER = "premium_user"
         }
     }
     class  tableTransaksi: BaseColumns{

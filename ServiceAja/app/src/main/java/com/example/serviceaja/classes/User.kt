@@ -9,7 +9,9 @@ class User(
         var nama: String = "",
         var email: String = "",
         var noTelp: String = "",
-        var password: String = ""
+        var password: String = "",
+        var points: Int = 0,
+        var premium_user: Boolean = false
 ): Parcelable {
     var kendaraan: ArrayList<Kendaraan> = arrayListOf()
     var alamat: ArrayList<Alamat> = arrayListOf()

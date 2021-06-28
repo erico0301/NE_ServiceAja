@@ -11,9 +11,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
+import com.example.serviceaja.classes.WatchAdsSharedPref
 import com.example.serviceaja.fragment.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_profil_user.*
+import org.jetbrains.anko.doAsync
 
 class HomeActivity : AppCompatActivity() {
 
@@ -33,8 +37,6 @@ class HomeActivity : AppCompatActivity() {
             user = savedInstanceState.getParcelable(EXTRA_USER)!!
         else
             user = intent.extras?.getParcelable(EXTRA_USER)!!
-
-        val db = DBHelper(this)
 
         activeFragment = "Home"
         activateFragment(activeFragment)
@@ -104,8 +106,9 @@ class HomeActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQ_CODE_EDIT_PROFILE) {
             if (resultCode == RESULT_OK && data != null) {
+                Log.e("updated data accepted", "Acc")
                 this.apply {
-                    user = data.extras?.getParcelable(EXTRA_USER_RETURN)!!
+                    user = data.getParcelableExtra(EXTRA_USER_RETURN)!!
                     activateFragment("Profile")
                 }
             }

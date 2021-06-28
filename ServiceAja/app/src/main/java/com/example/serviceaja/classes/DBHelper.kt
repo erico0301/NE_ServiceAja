@@ -14,7 +14,7 @@ import kotlin.collections.ArrayList
 class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
     companion object {
         val DB_NAME = "ServiceAja.db"
-        val DB_VERSION = 3
+        val DB_VERSION = 1
     }
 
     val dbWriter = writableDatabase
@@ -27,10 +27,11 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
                 ${DBUser.tableUser.COLUMN_NO_TELP} TEXT PRIMARY KEY,
                 ${DBUser.tableUser.COLUMN_NAME} TEXT,
                 ${DBUser.tableUser.COLUMN_EMAIL} TEXT,
-                ${DBUser.tableUser.COLUMN_PASSWORD} TEXT
+                ${DBUser.tableUser.COLUMN_PASSWORD} TEXT,
+                ${DBUser.tableUser.COLUMN_POINTS} INTEGER,
+                ${DBUser.tableUser.COLUMN_PREMIUM_USER} TEXT
             )
         """.trimIndent()
-        db?.execSQL(CREATE_USER_TABLE)
 
         val CREATE_TRANSAKSI_TABLE = """
             CREATE TABLE ${DBUser.tableTransaksi.TABLE_TRANSAKSI}
@@ -43,7 +44,6 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
                 ${DBUser.tableTransaksi.COLUMN_RECEIVE} TEXT
             )
         """.trimIndent()
-        db?.execSQL(CREATE_TRANSAKSI_TABLE)
 
         val CREATE_KENDARAAN_TABLE = """
             CREATE TABLE ${DBKendaraan.tableKendaraan.TABLE_KENDARAAN}
@@ -99,6 +99,7 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
         """.trimIndent()
 
         db?.execSQL(CREATE_USER_TABLE)
+        db?.execSQL(CREATE_TRANSAKSI_TABLE)
         db?.execSQL(CREATE_KENDARAAN_TABLE)
         db?.execSQL(CREATE_FOTO_KENDARAAN_TABLE)
         db?.execSQL(CREATE_ALAMAT_TABLE)
@@ -110,6 +111,9 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
         db?.execSQL("DROP TABLE IF EXISTS ${DBUser.tableUser.TABLE_USER}")
         db?.execSQL("DROP TABLE IF EXISTS ${DBUser.tableTransaksi.TABLE_TRANSAKSI}")
         db?.execSQL("DROP TABLE IF EXISTS ${DBAlamat.tableAlamat.TABLE_ALAMAT}")
+        db?.execSQL("DROP TABLE IF EXISTS ${DBKendaraan.tableKendaraan.TABLE_KENDARAAN}")
+        db?.execSQL("DROP TABLE IF EXISTS ${DBFotoKendaraan.tableFotoKendaraan.TABLE_NAME}")
+        db?.execSQL("DROP TABLE IF EXISTS ${DBProduk.tableProduk.TABLE_NAME}")
         onCreate(db)
     }
 
@@ -129,10 +133,9 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
     fun getAllUsers(): ArrayList<User> {
         val users = arrayListOf<User>()
 
-        val projection = arrayOf(DBUser.tableUser.COLUMN_NO_TELP, DBUser.tableUser.COLUMN_NAME, DBUser.tableUser.COLUMN_EMAIL, DBUser.tableUser.COLUMN_PASSWORD)
         val cursor = dbReader.query(
                 DBUser.tableUser.TABLE_USER,
-                projection,
+                null,
                 null,
                 null,
                 null,
@@ -145,7 +148,9 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
                         getString(getColumnIndex(DBUser.tableUser.COLUMN_NAME)),
                         getString(getColumnIndex(DBUser.tableUser.COLUMN_EMAIL)),
                         getString(getColumnIndex(DBUser.tableUser.COLUMN_NO_TELP)),
-                        getString(getColumnIndex(DBUser.tableUser.COLUMN_PASSWORD))
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_PASSWORD)),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_POINTS)).toInt(),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_PREMIUM_USER)).equals("true")
                 ))
             }
         }
@@ -153,7 +158,9 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
         return users
     }
 
-    fun getUserWithNoTelp(no_telp: String): User {
+    fun getUserWithNoTelp(no_telp: String): User? {
+        var user: User? = null
+
         val cursor = dbReader.query(
                 DBUser.tableUser.TABLE_USER,
                 null,
@@ -163,13 +170,50 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
                 null,
                 null
         )
-        cursor.moveToFirst()
-        return User(
-            cursor.getString(cursor.getColumnIndex(DBUser.tableUser.COLUMN_NO_TELP)),
-            cursor.getString(cursor.getColumnIndex(DBUser.tableUser.COLUMN_NO_TELP)),
-            cursor.getString(cursor.getColumnIndex(DBUser.tableUser.COLUMN_NO_TELP)),
-            cursor.getString(cursor.getColumnIndex(DBUser.tableUser.COLUMN_NO_TELP))
-        ).apply { cursor.close() }
+        if (cursor.count > 0) {
+            cursor.moveToFirst()
+            cursor.apply {
+                user = User(
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_NAME)),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_EMAIL)),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_NO_TELP)),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_PASSWORD)),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_POINTS)).toInt(),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_PREMIUM_USER)).equals("true")
+                )
+            }
+        }
+        cursor.close()
+        return user
+    }
+
+    fun getUserWithEmail(email: String): User? {
+        var user: User? = null
+
+        val cursor = dbReader.query(
+                DBUser.tableUser.TABLE_USER,
+                null,
+                "${DBUser.tableUser.COLUMN_EMAIL} = ?",
+                arrayOf(email),
+                null,
+                null,
+                null
+        )
+        if (cursor.count > 0) {
+            cursor.moveToFirst()
+            cursor.apply {
+                user = User(
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_NAME)),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_EMAIL)),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_NO_TELP)),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_PASSWORD)),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_POINTS)).toInt(),
+                        getString(getColumnIndex(DBUser.tableUser.COLUMN_PREMIUM_USER)).equals("true")
+                )
+            }
+        }
+        cursor.close()
+        return user
     }
 
     fun addUser(user: User) {
@@ -178,8 +222,36 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
             put(DBUser.tableUser.COLUMN_NAME, user.nama)
             put(DBUser.tableUser.COLUMN_EMAIL, user.email)
             put(DBUser.tableUser.COLUMN_PASSWORD, user.password)
+            put(DBUser.tableUser.COLUMN_POINTS, user.points)
+            put(DBUser.tableUser.COLUMN_PREMIUM_USER, user.premium_user.toString())
         }
         dbWriter.insert(DBUser.tableUser.TABLE_USER, null, contentValues)
+    }
+
+    fun updateUser(no_telp: String, user: User) {
+        val contentValues = ContentValues().apply {
+            put(DBUser.tableUser.COLUMN_NAME, user.nama)
+            put(DBUser.tableUser.COLUMN_EMAIL, user.email)
+            put(DBUser.tableUser.COLUMN_NO_TELP, user.noTelp)
+            put(DBUser.tableUser.COLUMN_PASSWORD, user.password)
+            put(DBUser.tableUser.COLUMN_POINTS, user.points)
+            put(DBUser.tableUser.COLUMN_PREMIUM_USER, user.premium_user.toString())
+        }
+
+        dbWriter.update(
+            DBUser.tableUser.TABLE_USER,
+            contentValues,
+            "${DBUser.tableUser.COLUMN_NO_TELP} = ?",
+            arrayOf(no_telp)
+        )
+    }
+
+    fun deleteUser(no_telp: String) {
+        dbWriter.delete(DBUser.tableUser.TABLE_USER, "${DBUser.tableUser.COLUMN_NO_TELP} = ?", arrayOf(no_telp))
+    }
+
+    fun deleteAllUsers() {
+        dbWriter.delete(DBUser.tableUser.TABLE_USER, null, null)
     }
 
     fun getAllKendaraan(no_telp: String) : ArrayList<Kendaraan> {
@@ -504,7 +576,6 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
     }
 
     fun addTransaksi(transaksi : Transaksi) {
-        val dbWriter = writableDatabase
         val contentValues = ContentValues().apply {
             put(DBUser.tableTransaksi.COLUMN_USERID, transaksi.userID)
             put(DBUser.tableTransaksi.COLUMN_PAYMENT, transaksi.payment)
@@ -514,6 +585,5 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
             put(DBUser.tableTransaksi.COLUMN_RECEIVE, transaksi.receive)
         }
         dbWriter.insert(DBUser.tableTransaksi.TABLE_TRANSAKSI, null, contentValues)
-        dbWriter.close()
     }
 }

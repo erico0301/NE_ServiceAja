@@ -15,14 +15,12 @@ import android.provider.BaseColumns
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.core.content.getSystemService
-import com.example.serviceaja.EXTRA_PASSWORD
-import com.example.serviceaja.EXTRA_USER
-import com.example.serviceaja.EXTRA_USERS
-import com.example.serviceaja.R
+import com.example.serviceaja.*
 import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_login.*
@@ -34,8 +32,71 @@ import org.jetbrains.anko.uiThread
 class RegisterActivity : AppCompatActivity() {
     private lateinit var users: ArrayList<User>
     private lateinit var db: DBHelper
+    private lateinit var user: User
+
     // Variabel untuk mengecek koneksi
     private var connectionStatus = false
+    private var phoneNumChecked = false
+    private var phoneNumAvailable = false
+    private var emailAddressChecked = false
+    private var emailAddressAvailable = false
+
+    private val checkDataAvailabilityReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            Log.e("Receiver received", "$phoneNumAvailable, $emailAddressAvailable")
+            when (intent?.action) {
+                PHONE_NUM_USED -> {
+                    phoneNumChecked = true
+                    phoneNumAvailable = false
+                }
+                PHONE_NUM_AVAILABLE -> {
+                    phoneNumChecked = true
+                    phoneNumAvailable = true
+                }
+                EMAIL_ADDRESS_USED -> {
+                    emailAddressChecked = true
+                    emailAddressAvailable = false
+                }
+                EMAIL_ADDRESS_AVAILABLE -> {
+                    emailAddressChecked = true
+                    emailAddressAvailable = true
+                }
+            }
+
+            if (phoneNumChecked && emailAddressChecked) {
+                showDialogDataChecked()
+            }
+        }
+    }
+
+    private fun showDialogDataChecked() {
+        Log.e("showDialogDataChecked called", "$phoneNumAvailable, $emailAddressAvailable")
+        if (phoneNumAvailable && emailAddressAvailable) {
+            Toast.makeText(this, "Anda Berhasil Mendaftar!", Toast.LENGTH_LONG).show()
+            var verificationCodeIntent = Intent(this, VerificationCodeActivity::class.java)
+            verificationCodeIntent.putExtra(EXTRA_USER, user)
+            startActivity(verificationCodeIntent)
+        }
+        else if (phoneNumAvailable && !emailAddressAvailable) {
+            Toast.makeText(this, "E-mail yang digunakan telah terdaftar. Silahkan gunakan alamat e-mail lain.", Toast.LENGTH_SHORT).show()
+            halamanDaftar_alamatEmail.hasFocus()
+            halamanDaftar_alamatEmail.error = "Alamat E-mail telah terdaftar"
+        }
+        else if (!phoneNumAvailable && emailAddressAvailable) {
+            Toast.makeText(this, "No. Telepon yang digunakan telah terdaftar. Silahkan gunakan no. telepon lain.", Toast.LENGTH_SHORT).show()
+            halamanDaftar_noTelepon.hasFocus()
+            halamanDaftar_noTelepon.error = "No. Telepon telah terdaftar"
+        }
+        else {
+            Toast.makeText(this, "No. Telepon dan alamat E-mail yang digunakan telah terdaftar. Silahkan gunakan no. telepon dan alamat e-mail lain.", Toast.LENGTH_SHORT).show()
+            halamanDaftar_noTelepon.hasFocus()
+            halamanDaftar_noTelepon.error = "No. Telepon telah terdaftar"
+            halamanDaftar_alamatEmail.error = "Alamat E-mail telah terdaftar"
+        }
+
+        phoneNumChecked = false
+        emailAddressChecked = false
+    }
 
     // Broadcast Receiver untuk menangkap status konektivitas perangkat
     private var networkReceiver = object : BroadcastReceiver() {
@@ -54,14 +115,14 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        // Menambahkan aksi filter pada IntentFilter
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
 
+        registerReceiver(checkDataAvailabilityReceiver, IntentFilter(PHONE_NUM_AVAILABLE))
+        registerReceiver(checkDataAvailabilityReceiver, IntentFilter(PHONE_NUM_USED))
+        registerReceiver(checkDataAvailabilityReceiver, IntentFilter(EMAIL_ADDRESS_AVAILABLE))
+        registerReceiver(checkDataAvailabilityReceiver, IntentFilter(EMAIL_ADDRESS_USED))
+
         db = DBHelper(this)
-
-        var userDataTmp = User("Never End", "neverend@gmail.com", "082323233322", "neverfail")
-        db.addUser(userDataTmp)
-
         users = db.getAllUsers()
 
         connectionStatus = (getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetwork != null
@@ -77,7 +138,6 @@ class RegisterActivity : AppCompatActivity() {
         halamanDaftar_namaLengkap.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
-            // Event yang dijalankan setiap kali menerima inputan pada field nama
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // Dilakukan proses asynchronous yaitu memanggil fungsi cekValiditasForm() yang berfungsi untuk mengecek setiap inputan pada seluruh field yang terdapat pada
                 // halaman register ini. Jika seluruh inputan benar dan valid, maka proses register akan dapat dilanjutkan ke tahap berikutnya.
@@ -99,7 +159,6 @@ class RegisterActivity : AppCompatActivity() {
         halamanDaftar_alamatEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
-            // Event yang dijalankan setiap kali menerima inputan pada field e-mail
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 doAsync {
                     // Proses asynchronous yang dilakukan dengan memanggil fungsi cekEmail() terlebih dahulu untuk memastikan email yang dimasukkan valid dan tidak pernah
@@ -363,13 +422,11 @@ class RegisterActivity : AppCompatActivity() {
                 // Jika terdapat koneksi yang terhubung (baik Wi-Fi maupun Mobile Data), maka button ini akan dapat
                 // membawa user ke aktivitas berikutnya, menandakan bahwa registrasi akun berhasil dilakukan
                 if (connectionStatus) {
-                    Toast.makeText(this, "Anda Berhasil Mendaftar!", Toast.LENGTH_LONG).show()
-                    // Memasukkan seluruh data dari field yang telah diisi dan membentuk suatu objek baru dari class User
-                    val user = User(name, email, telp, password)
-                    // Akan dilanjutkan dengan pembukaan aktivitas kode verifikasi
-                    var verificationCodeIntent = Intent(this, VerificationCodeActivity::class.java)
-                    verificationCodeIntent.putExtra(EXTRA_USER, user)
-                    startActivity(verificationCodeIntent)
+                    user = User(name, email, telp, password)
+                    FirebaseRealtimeDBHelper(this).apply {
+                        findUserByPhoneNumber(telp)
+                        findUserByEmailAddress(email)
+                    }
                 }
                 // Jika tidak terdapat koneksi, maka penekanan button akan memicu munculnya pesan yang menyatakan
                 // bahwa perangkat tidak memiliki koneksi, dan registrasi akun tidak dapat dilakukan

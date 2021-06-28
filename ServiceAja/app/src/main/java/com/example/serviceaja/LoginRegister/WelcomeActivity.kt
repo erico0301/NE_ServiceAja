@@ -7,10 +7,7 @@ import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.serviceaja.EXTRA_USER
-import com.example.serviceaja.HomeActivity
-import com.example.serviceaja.InfoKendaraanWidget
-import com.example.serviceaja.R
+import com.example.serviceaja.*
 import com.example.serviceaja.classes.AccountSharedPref
 import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
@@ -24,6 +21,10 @@ class WelcomeActivity : AppCompatActivity() {
 
         val db = DBHelper(this)
         db.addUser(user!!)
+
+        val firebaseDb = FirebaseRealtimeDBHelper(this)
+        firebaseDb.addUser(user)
+
         AccountSharedPref(this).no_telp = user.noTelp
         updateWidget()
 

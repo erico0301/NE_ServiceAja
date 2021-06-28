@@ -26,9 +26,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAja">
-        <receiver android:name=".Widget_Transaksi">
+        <!--<receiver android:name=".Widget_Transaksi">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget__transaksi_info" />
+        </receiver>-->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-2891315785476294~2010837398"/>
@@ -38,25 +43,21 @@
                 <action android:name="android.appwidget.action.APPWIDGET_ENABLED" />
                 <action android:name="android.appwidget.action.APPWIDGET_DISABLED" />
             </intent-filter>
-
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget__transaksi_info" />
+                android:resource="@xml/info_kendaraan_widget_info" />
         </receiver>
 
         <activity android:name=".ActivityAddContact" />
         <activity android:name=".setting" />
-                android:resource="@xml/info_kendaraan_widget_info" />
-        </receiver>
 
-        <activity android:name=".chatreview.ReadContactActivity"></activity>
+
+        <activity android:name=".chatreview.ReadContactActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".setting" />
 
         <activity
             android:name=".ManageProduct"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".SettingsActivity" />
 
         <service
             android:name=".classes.WidgetKendaraanRVS"

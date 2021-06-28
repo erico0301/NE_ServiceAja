@@ -3,10 +3,12 @@ package com.example.serviceaja
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.serviceaja.LoginRegister.MainActivity
 import com.example.serviceaja.classes.AccountSharedPref
 import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
+import com.example.serviceaja.classes.WatchAdsSharedPref
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreen : AppCompatActivity() {
@@ -15,18 +17,20 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         val db = DBHelper(this)
-        val users = db.getAllUsers()
-
         splashScreenLayout.animate().setDuration(200).alpha(1f).withEndAction {
             val no_telp = AccountSharedPref(this).no_telp
-            var user: User? = null
+            val user: User?
             val intent: Intent
             if (no_telp != "Kosong") {
-                intent = Intent(this, HomeActivity::class.java)
-                for (i in users)
-                    if (i.noTelp.equals(no_telp))
-                        user = i
-                intent.putExtra(EXTRA_USER, user)
+                user = db.getUserWithNoTelp(no_telp!!)
+                if (user == null) {
+                    AccountSharedPref(this).clearValues()
+                    intent = Intent(this, MainActivity::class.java)
+                }
+                else {
+                    intent = Intent(this, HomeActivity::class.java)
+                    intent.putExtra(EXTRA_USER, user)
+                }
             }
             else
                 intent = Intent(this, MainActivity::class.java)

@@ -1,5 +1,14 @@
 package com.example.serviceaja
 
+const val ACTION_USER_FOUND = "com.example.serviceaja.USER_FOUND"
+const val ACTION_USER_NOT_FOUND = "com.example.serviceaja.USER_NOT_FOUND"
+const val ACTION_USER_ALREADY_EXISTS = "com.example.serviceaja.ACTION_USER_ALREADY_EXISTS"
+
+const val PHONE_NUM_AVAILABLE = "com.example.serviceaja.PHONE_NUM_AVAILABLE"
+const val PHONE_NUM_USED = "com.example.serviceaja.PHONE_NUM_USED"
+const val EMAIL_ADDRESS_AVAILABLE = "com.example.serviceaja.EMAIL_ADDRESS_AVAILABLE"
+const val EMAIL_ADDRESS_USED = "com.example.serviceaja.EMAIL_ADDRESS_USED"
+
 const val LOGIN_INFO_FILE = "login_info"
 const val DATA_DOWNLOADED_INFO_FILE ="data_downloaded_info"
 const val ACTIVE_FRAGMENT = "com.example.serviceaja.ACTIVE_FRAGMENT"

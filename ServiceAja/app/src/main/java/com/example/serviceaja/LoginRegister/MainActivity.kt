@@ -13,24 +13,19 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
-    var users = arrayListOf(User("admin", "admin@gmail.com", "081234567890", "admin"))
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         MobileAds.initialize(this)
-        val db = DBHelper(this)
 
         halamanAwal_btnMasuk.setOnClickListener {
-            var login = Intent(this, LoginActivity::class.java)
-            login.putExtra(EXTRA_USERS, users)
+            val login = Intent(this, LoginActivity::class.java)
             startActivity(login)
         }
 
         halamanAwal_btnDaftar.setOnClickListener {
-            var register = Intent(this, RegisterActivity::class.java)
-            register.putExtra(EXTRA_USERS, users)
+            val register = Intent(this, RegisterActivity::class.java)
             startActivity(register)
         }
     }

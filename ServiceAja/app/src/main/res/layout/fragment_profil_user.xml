@@ -7,169 +7,174 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="80dp">
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/profile_topbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@color/gold"
-                android:paddingBottom="20dp" >
-                <Button
-                    android:id="@+id/profilUser_btnUser"
-                    android:layout_width="wrap_content"
+                android:layout_height="match_parent" >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/profile_topbar"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/user"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="50dp"
-                    android:fontFamily="@font/poppins_medium" />
-                <Button
-                    android:id="@+id/profilUser_btnMitra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/partner"
-                    app:layout_constraintStart_toEndOf="@id/profilUser_btnUser"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="50dp"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_medium" />
+                    android:background="@color/gold"
+                    android:paddingBottom="20dp" >
+                    <Button
+                        android:id="@+id/profilUser_btnUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="50dp"
+                        android:fontFamily="@font/poppins_medium" />
+                    <Button
+                        android:id="@+id/profilUser_btnMitra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/partner"
+                        app:layout_constraintStart_toEndOf="@id/profilUser_btnUser"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="50dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_medium" />
 
-                <ImageButton
-                    android:id="@+id/btn_logout"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:contentDescription="@string/logout"
-                    android:src="@drawable/ic_logout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@color/transparent" />
-                <ImageButton
-                    android:id="@+id/profilUser_btnSettings"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btn_logout"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:contentDescription="Pengaturan"
-                    android:src="@drawable/ic_settings"
-                    android:background="@color/transparent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageButton
+                        android:id="@+id/btn_logout"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:contentDescription="@string/logout"
+                        android:src="@drawable/ic_logout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:background="@color/transparent" />
+                    <ImageButton
+                        android:id="@+id/profilUser_btnSettings"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btn_logout"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="Pengaturan"
+                        android:src="@drawable/ic_settings"
+                        android:background="@color/transparent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/profile_background"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:src="@drawable/profile_bg"
-                android:contentDescription="@string/background_profile_picture"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_topbar"
-                android:scaleType="fitXY" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_profile_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@id/profile_background"
-                app:layout_constraintBottom_toBottomOf="@id/profile_background"
-                app:layout_constraintStart_toStartOf="parent"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="10dp"
-                android:background="@drawable/picture_background_dark">
                 <ImageView
-                    android:id="@+id/profile_picture"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/profile_photo_background"
-                    android:src="@drawable/ic_profile"
-                    android:contentDescription="@string/profile_picture"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/profile_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:src="@drawable/profile_bg"
+                    android:contentDescription="@string/background_profile_picture"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <ImageButton
-                    android:id="@+id/profilUser_btnEdit"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:src="@drawable/ic_edit"
-                    android:contentDescription="@string/edit_profile"
-                    android:tint="@color/white"
-                    android:backgroundTint="@color/transparent"/>
-                <ImageButton
-                    android:id="@+id/profilUser_btnEditLocation"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/profilUser_btnEdit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_edit_location"
-                    android:contentDescription="@string/edit_address"
-                    android:tint="@color/white"
-                    android:backgroundTint="@color/transparent" />
-                <TextView
-                    android:id="@+id/profilUser_namaUser"
-                    android:layout_width="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/profile_topbar"
+                    android:scaleType="fitXY" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_profile_info"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/profile_picture"
+                    app:layout_constraintTop_toTopOf="@id/profile_background"
+                    app:layout_constraintBottom_toBottomOf="@id/profile_background"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/contohNama"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/dmsans_regular" />
-                <TextView
-                    android:id="@+id/label_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/profilUser_namaUser"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="40dp"
-                    android:text="@string/registered_email"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/dmsans_regular" />
-                <TextView
-                    android:id="@+id/profilUser_emailUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/profilUser_namaUser"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="40dp"
-                    android:text="@string/contohEmail"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/dmsans_medium" />
-                <TextView
-                    android:id="@+id/label_no_telp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/label_email"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="40dp"
-                    android:text="@string/tel_number"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/dmsans_regular" />
-                <TextView
-                    android:id="@+id/profilUser_noTelpUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/profilUser_emailUser"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="40dp"
-                    android:text="@string/contohNoTelp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/dmsans_medium" />
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp"
+                    android:background="@drawable/picture_background_dark">
+                    <ImageView
+                        android:id="@+id/profile_picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/profile_photo_background"
+                        android:src="@drawable/ic_profile"
+                        android:contentDescription="@string/profile_picture"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <ImageButton
+                        android:id="@+id/profilUser_btnEdit"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:src="@drawable/ic_edit"
+                        android:contentDescription="@string/edit_profile"
+                        android:tint="@color/white"
+                        android:backgroundTint="@color/transparent"/>
+                    <ImageButton
+                        android:id="@+id/profilUser_btnEditLocation"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/profilUser_btnEdit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_edit_location"
+                        android:contentDescription="@string/edit_address"
+                        android:tint="@color/white"
+                        android:backgroundTint="@color/transparent" />
+                    <TextView
+                        android:id="@+id/profilUser_namaUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/profile_picture"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/contohNama"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/dmsans_regular" />
+                    <TextView
+                        android:id="@+id/label_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/profilUser_namaUser"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="40dp"
+                        android:text="@string/registered_email"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/dmsans_regular" />
+                    <TextView
+                        android:id="@+id/profilUser_emailUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/profilUser_namaUser"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="40dp"
+                        android:text="@string/contohEmail"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/dmsans_medium" />
+                    <TextView
+                        android:id="@+id/label_no_telp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/label_email"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="40dp"
+                        android:text="@string/tel_number"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/dmsans_regular" />
+                    <TextView
+                        android:id="@+id/profilUser_noTelpUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/profilUser_emailUser"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="40dp"
+                        android:text="@string/contohNoTelp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/dmsans_medium" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -189,7 +194,6 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/layout_profile_info"
                 android:padding="10dp"
-                android:layout_marginTop="60dp"
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/info_item_background" >
                 <androidx.cardview.widget.CardView
@@ -302,11 +306,79 @@
                     android:text="Kendaraan Lain"
                     android:textColor="@color/darkBlue"
                     style="@style/Widget.AppCompat.Button.Borderless" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:text="Point Anda"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:gravity="center"
+                android:text="Dapatkan point dari bertransaksi atau dengan menonton iklan untuk Point Gratis. Tukarkan point Anda untuk setiap transaksi yang dilakukan dalam ServiceAja!" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Total Point Anda" />
+                <TextView
+                    android:id="@+id/profilUser_txtUserPoints"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="0" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/profilUser_btnWatchAds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Lihat Iklan\n+20 Points"/>
+            <TextView
+                android:id="@+id/profilUser_txtWatchAdsInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:text="Iklan tidak tersedia untuk sementara waktu." />
+            <LinearLayout
+                android:id="@+id/profilUser_layoutPremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="16sp"
+                    android:text="Bosan melihat iklan? Pertimbangkan beli Premium!" />
+                <Button
+                    android:id="@+id/profilUser_btnBeliPremium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Beli Premium"/>
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

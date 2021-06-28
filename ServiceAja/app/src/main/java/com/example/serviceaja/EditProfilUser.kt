@@ -18,9 +18,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.example.serviceaja.LoginRegister.VerificationCodeActivity
 import com.example.serviceaja.classes.DBHelper
 import com.example.serviceaja.classes.User
 import kotlinx.android.synthetic.main.activity_edit_profil_user.*
+import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_detail_kendaraan.*
 import java.io.File
 import java.io.IOException
@@ -37,16 +39,85 @@ class EditProfilUser : AppCompatActivity() {
     private lateinit var photoPath: String
     private var photoFile: File? = null
 
-    // Receiver untuk menangkap progress upload foto pada JobIntentService
+    private var phoneNumChecked = true
+    private var phoneNumAvailable = true
+    private var emailAddressChecked = true
+    private var emailAddressAvailable = true
+
+    private val checkDataAvailabilityReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            when (intent?.action) {
+                PHONE_NUM_USED -> {
+                    phoneNumChecked = true
+                    phoneNumAvailable = false
+                }
+                PHONE_NUM_AVAILABLE -> {
+                    phoneNumChecked = true
+                    phoneNumAvailable = true
+                }
+                EMAIL_ADDRESS_USED -> {
+                    emailAddressChecked = true
+                    emailAddressAvailable = false
+                }
+                EMAIL_ADDRESS_AVAILABLE -> {
+                    emailAddressChecked = true
+                    emailAddressAvailable = true
+                }
+            }
+
+            if (phoneNumChecked && emailAddressChecked)
+                showDialogDataChecked()
+        }
+    }
+
+    private fun showDialogDataChecked() {
+        if (phoneNumAvailable && emailAddressAvailable) {
+            val dialog = AlertDialog.Builder(this)
+                    .setTitle("Ubah Informasi Akun")
+                    .setMessage("Konfirmasi ubah informasi akun Anda?")
+                    .setPositiveButton("YA") { dialogInterface: DialogInterface, i: Int ->
+                        val newValueUser = User(
+                                editProfil_nama.text.toString(),
+                                editProfil_alamatEmail.text.toString(),
+                                editProfil_noTelepon.text.toString(), user.password, user.points, user.premium_user
+                        )
+                        FirebaseRealtimeDBHelper(this@EditProfilUser).updateUser(user, newValueUser)
+                        DBHelper(this).updateUser(user.noTelp, newValueUser)
+                        setResult(RESULT_OK, Intent().putExtra(EXTRA_USER_RETURN, newValueUser))
+                        finish()
+                    }
+                    .setNegativeButton("BATAL") { dialogInterface: DialogInterface, i: Int -> }
+            dialog.show()
+        }
+        else if (phoneNumAvailable && !emailAddressAvailable) {
+            Toast.makeText(this, "E-mail yang digunakan telah terdaftar. Silahkan gunakan alamat e-mail lain.", Toast.LENGTH_SHORT).show()
+            editProfil_alamatEmail.hasFocus()
+            editProfil_alamatEmail.error = "Alamat E-mail telah terdaftar"
+        }
+        else if (!phoneNumAvailable && emailAddressAvailable) {
+            Toast.makeText(this, "No. Telepon yang digunakan telah terdaftar. Silahkan gunakan no. telepon lain.", Toast.LENGTH_SHORT).show()
+            editProfil_noTelepon.hasFocus()
+            editProfil_noTelepon.error = "No. Telepon telah terdaftar"
+        }
+        else {
+            Toast.makeText(this, "No. Telepon dan alamat E-mail yang digunakan telah terdaftar. Silahkan gunakan no. telepon dan alamat e-mail lain.", Toast.LENGTH_SHORT).show()
+            editProfil_noTelepon.hasFocus()
+            editProfil_noTelepon.error = "No. Telepon telah terdaftar"
+            editProfil_alamatEmail.error = "Alamat E-mail telah terdaftar"
+        }
+
+        phoneNumChecked = false
+        emailAddressChecked = false
+    }
+
     private val uploadReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            val uploadProgress = intent?.getIntExtra(EXTRA_UPLOAD_PROGRESS, 0) // Mendapatkan nilai progress yang dikirimkan dari JobIntentService
-            // Jika progres upload sudah mencapai 100%, maka receiver akan menerima extra berupa URI untuk foto yang diupload oleh user.
+            val uploadProgress = intent?.getIntExtra(EXTRA_UPLOAD_PROGRESS, 0)
             if (uploadProgress == 100) {
                 Toast.makeText(this@EditProfilUser, "Upload Foto Berhasil Dilakukan!", Toast.LENGTH_LONG).show()
                 val uri = intent.getParcelableExtra<Uri>(EXTRA_IMAGE)
-                editProfil_foto.setImageURI(uri)  // Set imageview dengan gambar yang diterima dari JobIntentService hasil dari upload user
-                editProfil_progressUploadFoto.visibility = View.GONE  // Progress bar akan hilang setelah proses upload selesai
+                editProfil_foto.setImageURI(uri)
+                editProfil_progressUploadFoto.visibility = View.GONE
             }
         }
     }
@@ -54,6 +125,11 @@ class EditProfilUser : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profil_user)
+
+        registerReceiver(checkDataAvailabilityReceiver, IntentFilter(PHONE_NUM_AVAILABLE))
+        registerReceiver(checkDataAvailabilityReceiver, IntentFilter(PHONE_NUM_USED))
+        registerReceiver(checkDataAvailabilityReceiver, IntentFilter(EMAIL_ADDRESS_AVAILABLE))
+        registerReceiver(checkDataAvailabilityReceiver, IntentFilter(EMAIL_ADDRESS_USED))
 
         setSupportActionBar(editProfil_toolbar)
         editProfil_toolbar.setNavigationOnClickListener {
@@ -63,21 +139,20 @@ class EditProfilUser : AppCompatActivity() {
 
         var db = DBHelper(this)
         user = intent.extras?.getParcelable(EXTRA_USER)!!
-        users = db!!.getAllUsers()
+        users = db.getAllUsers()
 
         editProfil_nama.setText(user.nama)
         editProfil_alamatEmail.setText(user.email)
         editProfil_noTelepon.setText(user.noTelp)
 
         editProfil_btnEditProfil.setOnClickListener {
-            //Mengambil data yang ingin diubah
             var userDataTemp = User()
             userDataTemp.nama = editProfil_nama.text.toString()
             userDataTemp.noTelp = editProfil_noTelepon.text.toString()
             userDataTemp.email = editProfil_alamatEmail.text.toString()
 
             //Update database
-            db?.update(userDataTemp)
+            db.update(userDataTemp)
 
             finish()
         }
@@ -129,29 +204,20 @@ class EditProfilUser : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {  }
         })
 
-
-        // Bagian ini menambahkan event OnClickListener pada view ImageButton.
-        // ImageButton yang diklik akan memicu munculnya pop up menu yang memberikan dua pilihan.
-        // Pilihan pertama yaitu memasukkan foto dengan langsung menjepret dari kamera
-        // Pilihan kedua yaitu memasukkan foto dengan memilih foto yang sudah ada di Gallery
         editProfil_btnEditFoto.setOnClickListener {
             val menu = PopupMenu(this, editProfil_btnEditFoto)
             menu.menuInflater.inflate(R.menu.menu_choose_image, menu.menu)
             menu.setOnMenuItemClickListener {
                 when(it.itemId) {
                     R.id.menuChooseItem_bukaKamera -> {
-                        // Sebelum membuka kamera, akan dicek terlebih dahulu permission, apakah sudah diberikan
-                        // atau belum
                         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
                             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), 101)
-                        // Bagian ini menunjukkan implementasi dari Intent Implisit, yaitu membuka kamera
                         openCamera()
                         true
                     }
                     R.id.menuChooseItem_ambilDariGallery -> {
                         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
                             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 102)
-                        // Bagian ini menunjukkan implementasi dari Intent Implisit, yaitu membuka Gallery dan memilih foto
                         openGallery()
                         true
                     }
@@ -213,15 +279,12 @@ class EditProfilUser : AppCompatActivity() {
             return
         val openCam = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         if (openCam.resolveActivity(packageManager) != null) {
-            // Saat membuka intent implisit kamera, proses akan sekaligus membuat suatu file baru yang merupakan file foto yang akan disimpan dalam
-            // folder khusus untuk aplikasi, ditandai dengan pemanggilan fungsi createImageFile()
             photoFile = try {
                 createImageFile()
             } catch (ex: IOException) {
                 Log.e("Failed to save image", ex.toString())
                 null
             }
-            // Jika file terbentuk, maka akan disimpan dalam direktori untuk app, lalu akan membuka kamera
             if (photoFile != null) {
                 val photoUri = FileProvider.getUriForFile(this, "com.example.android.fileprovider", photoFile!!)
                 openCam.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
@@ -264,22 +327,45 @@ class EditProfilUser : AppCompatActivity() {
             var error = false
             val nama = editProfil_nama.text.toString()
             val email = editProfil_alamatEmail.text.toString()
-            val noTelp = "0" + editProfil_noTelepon.text.toString()
+            val noTelp = editProfil_noTelepon.text.toString()
+
             if (user.nama == nama && user.email == email && user.noTelp == noTelp)
                 finish()
             if (editProfil_nama.error != null || editProfil_alamatEmail.error != null || editProfil_noTelepon.error != null)
                 error = true
-            if (!error) {
+            if (!noTelp.equals(user.noTelp) || !email.equals(user.email)) {
+
+
+                if (!noTelp.equals(user.noTelp)) {
+                    phoneNumAvailable = false
+                    phoneNumChecked = false
+                    Log.e("user.notelp", user.noTelp)
+                    FirebaseRealtimeDBHelper(this).findUserByPhoneNumber(noTelp)
+                }
+
+                if (!email.equals(user.email)) {
+                    emailAddressChecked = false
+                    emailAddressAvailable = false
+                    Log.e("user.email", user.email)
+                    FirebaseRealtimeDBHelper(this).findUserByEmailAddress(email)
+                }
+            }
+            else {
                 val dialog = AlertDialog.Builder(this)
-                    .setTitle("Ubah Informasi Akun")
-                    .setMessage("Konfirmasi ubah informasi akun Anda?")
-                    .setPositiveButton("YA") { dialogInterface: DialogInterface, i: Int ->
-                        user.nama = editProfil_nama.text.toString()
-                        user.email = editProfil_alamatEmail.text.toString()
-                        user.noTelp = "0" + editProfil_noTelepon.text.toString()
-                        finish()
-                    }
-                    .setNegativeButton("BATAL") { dialogInterface: DialogInterface, i: Int -> }
+                        .setTitle("Ubah Informasi Akun")
+                        .setMessage("Konfirmasi ubah informasi akun Anda?")
+                        .setPositiveButton("YA") { dialogInterface: DialogInterface, i: Int ->
+                            val newValueUser = User(
+                                    editProfil_nama.text.toString(),
+                                    editProfil_alamatEmail.text.toString(),
+                                    editProfil_noTelepon.text.toString(), user.password, user.points, user.premium_user
+                            )
+                            FirebaseRealtimeDBHelper(this@EditProfilUser).updateUser(user, newValueUser)
+                            DBHelper(this).updateUser(user.noTelp, newValueUser)
+                            setResult(RESULT_OK, Intent().putExtra(EXTRA_USER_RETURN, newValueUser))
+                            finish()
+                        }
+                        .setNegativeButton("BATAL") { dialogInterface: DialogInterface, i: Int -> }
                 dialog.show()
             }
         }
@@ -296,7 +382,6 @@ class EditProfilUser : AppCompatActivity() {
         val dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")
         val fileName = "JPEG_" + LocalDateTime.now().format(dateFormat)
         val dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        // Setelah di-generasi nama dan direktori, maka file akan dibentuk, yang kemudian akan diisi dengan foto hasil jepretan.
         return File.createTempFile(fileName, ".jpg", dir).apply {
             photoPath = absolutePath
         }
@@ -330,19 +415,16 @@ class EditProfilUser : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         var uri: Uri? = null
-        // Jika hasil aktivitas berasal dari intent kamera, maka akan diambil path dari file gambar yang telah dibuat sebelumnya dan mendapatkan nilai URI dari file tersebut
-        // untuk kemudian dikirimkan ke JobIntentService untuk memasuki proses upload
         if (data != null) {
             if (requestCode == 1 && resultCode == RESULT_OK)
                 uri = Uri.parse(photoFile?.absolutePath)
-            // Jika hasil aktivitas berasal dari intent membuka gallery, maka langsung diambil nilai data.data yang merupakan URI dari file gambar yang telah terpilih
             else if (requestCode == 2 && resultCode == RESULT_OK)
                 uri = data.data
             Log.d("Upload Image", uri.toString())
-            editProfil_progressUploadFoto.visibility = View.VISIBLE  // Progress bar akan dibuat visible (terlihat) disini
+            editProfil_progressUploadFoto.visibility = View.VISIBLE
             Toast.makeText(this, "Sedang di-upload...", Toast.LENGTH_SHORT).show()
-            val service = Intent(this, UploadImageService::class.java)  // Pembentukan intent untuk JobIntentService yang merupakan proses upload gambar
-            service.putExtra(EXTRA_IMAGE, uri)                                         // Memasukkan URI dari gambar ke dalam extra yang disematkan dalam intent yang telah dibuat
+            val service = Intent(this, UploadImageService::class.java)
+            service.putExtra(EXTRA_IMAGE, uri)
 
             UploadImageService.enqueueWork(this, service)       // Memanggil JobIntentService
         }
